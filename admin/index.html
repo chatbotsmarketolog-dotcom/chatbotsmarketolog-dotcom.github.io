@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>КРИСТИНА.AI — Админ-панель</title>
+  <title>КРИСТИНА.AI — Вход</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -14,8 +14,9 @@
       align-items: center;
       justify-content: center;
       color: #00F0FF;
+      padding: 20px;
     }
-    .container { text-align: center; padding: 40px; max-width: 600px; width: 100%; }
+    .container { text-align: center; max-width: 600px; width: 100%; }
     h1 { margin-bottom: 20px; }
     .info {
       background: rgba(0,240,255,0.1);
@@ -83,8 +84,8 @@
       .then(r => {
         if (!r.ok) throw new Error();
         localStorage.setItem('cms_token', t);
-        // ПЕРЕЗАГРУЗКА СТРАНИЦЫ — чисто и надёжно!
-        window.location.href = window.location.href.split('#')[0];
+        // Перенаправляем на отдельную страницу CMS
+        window.location.href = 'cms.html';
       })
       .catch(() => {
         const e = document.getElementById('error');
@@ -93,28 +94,9 @@
       });
     }
     
-    // Авто-вход при наличии токена
-    const saved = localStorage.getItem('cms_token');
-    if (saved) {
-      document.body.innerHTML = '<div style="position:fixed;inset:0;background:linear-gradient(135deg,#0a0e17,#1a2332);display:flex;align-items:center;justify-content:center;color:#00F0FF;font-family:sans-serif;font-size:1.5rem">Загрузка админ-панели...</div>';
-      
-      setTimeout(() => {
-        const s = document.createElement('script');
-        s.src = 'https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js';
-        s.onload = () => {
-          CMS.init({
-            backend: {
-              name: 'github',
-              repo: 'chatbotsmarketolog-dotcom/Chatbot-and-AI-Agent-Studio',
-              branch: 'main',
-              token: saved
-            },
-            load_config_file: true,
-            config_path: 'admin/config.yml'
-          });
-        };
-        document.head.appendChild(s);
-      }, 100);
+    // Авто-редирект если токен есть
+    if (localStorage.getItem('cms_token')) {
+      window.location.href = 'cms.html';
     }
   </script>
 </body>
