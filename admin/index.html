@@ -4,8 +4,110 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>КРИСТИНА.AI — Админ-панель</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0a0e17 0%, #1a2332 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #00F0FF;
+      padding: 20px;
+    }
+    .container { text-align: center; max-width: 600px; width: 100%; }
+    h1 { margin-bottom: 20px; font-size: 2rem; }
+    .info {
+      background: rgba(0,240,255,0.1);
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+      text-align: left;
+      font-size: 14px;
+      border-left: 4px solid #00F0FF;
+    }
+    .info a { color: #00F0FF; }
+    .input {
+      width: 100%;
+      padding: 14px;
+      margin: 15px 0;
+      border: 2px solid #00F0FF;
+      border-radius: 8px;
+      background: #1a2332;
+      color: #00F0FF;
+      font-size: 14px;
+    }
+    .btn {
+      padding: 14px 28px;
+      background: #00F0FF;
+      color: #0a0e17;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .btn:hover { opacity: 0.9; }
+    .error { color: #ff6b6b; margin-top: 15px; display: none; }
+  </style>
 </head>
 <body>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <div class="container">
+    <h1>🔐 Вход</h1>
+    <div class="info">
+      1. <a href="https://github.com/settings/tokens" target="_blank">github.com/settings/tokens</a><br>
+      2. Generate new token (classic)<br>
+      3. Галочка: <strong>repo</strong><br>
+      4. Generate token<br>
+      5. Скопируй (ghp_...)
+    </div>
+    <input type="password" id="token" class="input" placeholder="ghp_...">
+    <button class="btn" onclick="login()">Войти</button>
+    <div id="error" class="error"></div>
+  </div>
+
+  <script>
+    function login() {
+      const t = document.getElementById('token').value.trim();
+      if (!t || !t.startsWith('ghp_')) {
+        document.getElementById('error').style.display = 'block';
+        document.getElementById('error').textContent = 'Введите токен';
+        return;
+      }
+      localStorage.setItem('cms_token', t);
+      location.reload();
+    }
+    
+    const saved = localStorage.getItem('cms_token');
+    if (saved) {
+      fetch('https://api.github.com/user', {
+        headers: { 'Authorization': 'token ' + saved }
+      })
+      .then(r => {
+        if (!r.ok) {
+          localStorage.removeItem('cms_token');
+          location.reload();
+        } else {
+          document.body.innerHTML = '<div id="cms"></div>';
+          const s = document.createElement('script');
+          s.src = 'https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js';
+          s.onload = () => {
+            CMS.init({
+              backend: {
+                name: 'github',
+                repo: 'chatbotsmarketolog-dotcom/Chatbot-and-AI-Agent-Studio',
+                branch: 'main',
+                token: saved
+              },
+              load_config_file: true,
+              config_path: 'admin/config.yml'
+            });
+          };
+          document.head.appendChild(s);
+        }
+      });
+    }
+  </script>
 </body>
 </html>
