@@ -2,6 +2,9 @@ backend:
   name: github
   repo: chatbotsmarketolog-dotcom/Chatbot-and-AI-Agent-Studio
   branch: main
+  auth_endpoint: oauth
+  client_id: Ov23liMNKPrvdqhLkAqK
+  client_secret: c481cbd56a5adae0998360cb8824cdd658b10683
 
 media_folder: "assets"
 public_folder: "/assets"
@@ -14,7 +17,7 @@ collections:
     files:
       - name: "site-config"
         file: "content/site.json"
-        label: "📄 Главная страница"
+        label: " Главная страница"
         fields:
           # === SEO ===
           - label: "🔍 SEO настройки"
@@ -32,7 +35,7 @@ collections:
                 default: "Создаю чат-ботов и AI-агентов, которые работают вместо вас 24/7."
 
           # === HEADER ===
-          - label: "🔝 Header"
+          - label: " Header"
             name: "header"
             widget: "object"
             collapsed: false
@@ -121,14 +124,6 @@ collections:
                   - label: "Текст"
                     name: "text"
                     widget: "string"
-              - label: "Имя"
-                name: "name"
-                widget: "string"
-                default: "Кристина"
-              - label: "Должность"
-                name: "role"
-                widget: "string"
-                default: "Эксперт по автономным брендам"
               - label: "Цитата"
                 name: "quote"
                 widget: "markdown"
@@ -143,7 +138,7 @@ collections:
                 default: "https://vk.ru/kristinavcifre"
 
           # === SERVICES ===
-          - label: "⚙️ Услуги"
+          - label: "️ Услуги"
             name: "services"
             widget: "object"
             collapsed: false
