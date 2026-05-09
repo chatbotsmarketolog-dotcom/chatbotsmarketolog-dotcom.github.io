@@ -587,12 +587,19 @@
         </div>
     </div>
 
-    <!-- Виджет онлайн-консультации (новый код) -->
+    <!-- Netlify Identity Widget -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script>
-        window.KRISTINA_API_URL = "https://kristina-crm-api.onrender.com";
-        window.KRISTINA_API_KEY = "site_cbd8ee8b";
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
     </script>
-    <script src="https://kristina-crm-api.onrender.com/static/widget.js"></script>
 
     <script>
         // === Particles ===
