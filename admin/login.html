@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход — КРИСТИНА.AI CMS</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+      background: linear-gradient(135deg, #0a0e17 0%, #1a2332 100%); 
+      min-height: 100vh; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      color: #00F0FF;
+      padding: 20px;
+    }
+    .container { text-align: center; max-width: 600px; width: 100%; }
+    h1 { margin-bottom: 20px; font-size: 2rem; }
+    .info { 
+      background: rgba(0,240,255,0.1); 
+      padding: 20px; 
+      border-radius: 12px; 
+      margin: 20px 0; 
+      text-align: left; 
+      font-size: 14px;
+      border-left: 4px solid #00F0FF;
+    }
+    .info a { color: #00F0FF; }
+    .input { 
+      width: 100%; 
+      padding: 14px; 
+      margin: 15px 0; 
+      border: 2px solid #00F0FF; 
+      border-radius: 8px; 
+      background: #1a2332; 
+      color: #00F0FF; 
+      font-size: 14px;
+    }
+    .btn { 
+      padding: 14px 28px; 
+      background: #00F0FF; 
+      color: #0a0e17; 
+      border: none; 
+      border-radius: 8px; 
+      font-size: 16px; 
+      cursor: pointer; 
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn:hover { opacity: 0.9; }
+    .error { color: #ff6b6b; margin-top: 15px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔐 Вход в админ-панель</h1>
+    
+    <div class="info">
+      <strong>Как получить токен:</strong><br>
+      1. Перейди: <a href="https://github.com/settings/tokens" target="_blank">github.com/settings/tokens</a><br>
+      2. Нажми <strong>Generate new token (classic)</strong><br>
+      3. Введи название: <code>КРИСТИНА.AI CMS</code><br>
+      4. Поставь галочку: <strong>repo</strong><br>
+      5. Нажми <strong>Generate token</strong><br>
+      6. Скопируй токен (начинается на <code>ghp_...</code>)
+    </div>
+    
+    <input type="password" id="token-input" class="input" placeholder="Вставь токен (ghp_...)">
+    <button class="btn" onclick="doLogin()">Войти</button>
+    <div id="error-msg" class="error"></div>
+  </div>
+
+  <script>
+    function doLogin() {
+      const token = document.getElementById('token-input').value.trim();
+      if (!token || !token.startsWith('ghp_')) {
+        document.getElementById('error-msg').textContent = 'Введите корректный токен (ghp_...)';
+        return;
+      }
+      
+      // Сохраняем токен
+      localStorage.setItem('kristina-cms-token', token);
+      
+      // Проверяем токен
+      fetch('https://api.github.com/user', {
+        headers: { 'Authorization': 'token ' + token }
+      })
+      .then(res => {
+        if (!res.ok) throw new Error('Invalid token');
+        return res.json();
+      })
+      .then(user => {
+        console.log('✓ Auth:', user.login);
+        // Перенаправляем на CMS
+        window.location.href = 'app.html';
+      })
+      .catch(() => {
+        document.getElementById('error-msg').textContent = 'Неверный токен';
+      });
+    }
+  </script>
+</body>
+</html>
