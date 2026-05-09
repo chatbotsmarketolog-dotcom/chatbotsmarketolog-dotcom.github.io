@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>КРИСТИНА.AI — CMS</title>
+  <style>
+    body { margin: 0; padding: 0; }
+    #loading {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, #0a0e17 0%, #1a2332 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #00F0FF;
+      font-family: sans-serif;
+      font-size: 1.5rem;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+  <div id="loading">Загрузка админ-панели...</div>
+  
+  <script>
+    const token = localStorage.getItem('cms_token');
+    
+    if (!token) {
+      window.location.href = 'index.html';
+    } else {
+      fetch('https://api.github.com/user', {
+        headers: { 'Authorization': 'token ' + token }
+      })
+      .then(r => {
+        if (!r.ok) {
+          localStorage.removeItem('cms_token');
+          window.location.href = 'index.html';
+        }
+      })
+      .then(() => {
+        const s = document.createElement('script');
+        s.src = 'https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js';
+        s.onload = () => {
+          document.getElementById('loading').style.display = 'none';
+          CMS.init({
+            backend: {
+              name: 'github',
+              repo: 'chatbotsmarketolog-dotcom/Chatbot-and-AI-Agent-Studio',
+              branch: 'main',
+              token: token
+            },
+            load_config_file: true,
+            config_path: 'admin/config.yml'
+          });
+        };
+        document.head.appendChild(s);
+      });
+    }
+  </script>
+</body>
+</html>
