@@ -21,7 +21,6 @@
             --cyan: #00F0FF;
             --cyan-dark: #00B8C4;
             --cyan-glow: rgba(0, 240, 255, 0.3);
-            /* осветлённый фон (~15% светлее) */
             --bg-primary: #1C1C26;
             --bg-secondary: #24242E;
             --bg-card: #2A2A35;
@@ -564,7 +563,6 @@
             <h2 class="section-title reveal" style="text-align:center;">Свяжитесь <span>со мной</span></h2>
             <p class="section-subtitle reveal" style="text-align:center; color:var(--text-secondary);">Любым удобным способом. Или оставьте заявку прямо сейчас.</p>
             <div class="contact-inner">
-                <!-- Левая колонка: контакты -->
                 <div class="contact-info reveal">
                     <div class="contact-methods">
                         <a href="https://t.me/marketologdizayner" target="_blank" class="contact-method"><div class="contact-method-icon tg">💬</div><div class="contact-method-info"><h4>Telegram</h4><p>@marketologdizayner</p></div></a>
@@ -575,12 +573,16 @@
                     <div class="contact-highlight"><p><strong>AI-агенты работают 24/7 🤖</strong><br>Если вы готовы выйти из операционки и построить бренд, который работает сам — пишите.</p></div>
                 </div>
 
-                <!-- Правая колонка: форма заявки -->
                 <div class="application-card reveal">
                     <form id="lead-form">
                         <div class="form-group">
                             <label>Ваше имя</label>
                             <input type="text" id="user-name" placeholder="Иван Иванов" required>
+                        </div>
+                        <!-- Поле для контакта Telegram / VK -->
+                        <div class="form-group">
+                            <label>Ваш Telegram или VK</label>
+                            <input type="text" id="user-contact" placeholder="@username или ссылка" required>
                         </div>
                         <div class="form-group">
                             <label>Что вас интересует?</label>
@@ -661,36 +663,20 @@
         </div>
     </footer>
 
-    <!-- Модальное окно Политики конфиденциальности (обновлённая) -->
     <div class="modal-overlay" id="privacyModal">
         <div class="modal">
             <button class="modal-close" onclick="closePrivacy()">✕</button>
             <h2>Политика конфиденциальности</h2>
             <p><strong>Дата публикации:</strong> 01.05.2026</p>
-            <h3>1. Общие положения</h3>
-            <p>Настоящая Политика конфиденциальности определяет порядок обработки и защиты персональных данных пользователей сайта КРИСТИНА.AI.</p>
+            <h3>1. Общие положения</h3><p>Настоящая Политика конфиденциальности определяет порядок обработки и защиты персональных данных пользователей сайта КРИСТИНА.AI.</p>
             <h3>2. Какие данные мы собираем</h3>
-            <p>Мы собираем следующие категории данных:</p>
-            <ul>
-                <li><strong>Контактные данные:</strong> имя, Telegram/VK username, email (если предоставлены через форму заявки)</li>
-                <li><strong>Данные обращения:</strong> описание задачи, выбранная услуга, дополнительные пожелания</li>
-                <li><strong>Технические данные:</strong> IP-адрес, тип браузера, операционная система, время посещения (автоматически)</li>
-            </ul>
-            <h3>3. Цели обработки данных</h3>
-            <ul>
-                <li>Обработка заявок и связь с вами по вопросам услуг</li>
-                <li>Предоставление информации об услугах и проектах</li>
-                <li>Улучшение качества работы Сайта</li>
-                <li>Выполнение обязательств по договорам</li>
-            </ul>
-            <h3>4. Хранение и защита данных</h3>
-            <p>Мы принимаем все необходимые меры для защиты ваших данных. Данные не передаются третьим лицам без вашего согласия.</p>
+            <p>Контактные данные (имя, Telegram/VK username), описание задачи, выбранная услуга, технические данные.</p>
+            <h3>3. Цели обработки</h3><p>Обработка заявок, связь с вами, улучшение сервиса, исполнение договоров.</p>
+            <h3>4. Хранение и защита</h3><p>Данные защищены и не передаются третьим лицам.</p>
             <h3>5. Условия оплаты и возврата</h3>
-            <p>Все услуги предоставляются на условиях <strong>100% предоплаты</strong>. Перед началом работ заключается формальный договор, в котором фиксируются: конкретная услуга, её состав, полная стоимость, обязанности сторон, а также условия возврата. Возврат 50% от уплаченной суммы возможен исключительно в случаях, прямо предусмотренных договором (например, невозможность оказания услуги по нашей вине).</p>
-            <h3>6. Права пользователя</h3>
-            <p>Вы имеете право запросить информацию о хранящихся данных, потребовать исправления или удаления, а также отозвать согласие на обработку данных.</p>
-            <h3>7. Контакты</h3>
-            <p>По вопросам: <a href="https://t.me/marketologdizayner" target="_blank" style="color:var(--cyan);">@marketologdizayner</a></p>
+            <p>Все услуги предоставляются на условиях <strong>100% предоплаты</strong>. Перед началом работ заключается формальный договор, фиксирующий услугу, стоимость, обязанности сторон и условия возврата. Возврат 50% от уплаченной суммы возможен исключительно в случаях, предусмотренных договором (например, невозможность оказания услуги по нашей вине).</p>
+            <h3>6. Права пользователя</h3><p>Вы можете запросить, исправить или удалить свои данные.</p>
+            <h3>7. Контакты</h3><p>По вопросам: <a href="https://t.me/marketologdizayner" target="_blank" style="color:var(--cyan);">@marketologdizayner</a></p>
         </div>
     </div>
 
@@ -711,13 +697,11 @@
             }
         })();
 
-        // === Header Scroll ===
         const header = document.getElementById('header');
         window.addEventListener('scroll', function() {
             header.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // === Mobile Menu ===
         const burger = document.getElementById('burger');
         const mobileMenu = document.getElementById('mobileMenu');
         burger.addEventListener('click', function() {
@@ -731,7 +715,6 @@
             document.body.style.overflow = '';
         }
 
-        // === Scroll Reveal ===
         const revealObserver = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -742,7 +725,6 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-        // === FAQ Accordion ===
         function toggleFaq(btn) {
             const item = btn.parentElement;
             const isActive = item.classList.contains('active');
@@ -757,7 +739,6 @@
             }
         }
 
-        // === Popup для ВК ===
         function showVKPopup() {
             const userName = document.getElementById('user-name').value;
             const popupHTML = `
@@ -785,25 +766,24 @@
             `;
             document.body.insertAdjacentHTML('beforeend', popupHTML);
         }
-
         function closeVKPopup() {
             const popup = document.getElementById('vk-popup');
             if (popup) popup.remove();
         }
 
-        // === Отправка лида ===
         async function submitLead(platform) {
             const name = document.getElementById('user-name').value.trim();
+            const contact = document.getElementById('user-contact').value.trim();
             const service = document.getElementById('user-service').value;
             const task = document.getElementById('user-task').value.trim();
             
-            if (!name || !service || !task) {
+            if (!name || !contact || !service || !task) {
                 alert('Пожалуйста, заполните все поля!');
                 return;
             }
 
             const leadId = 'lead_' + Date.now().toString(36);
-            const payload = { leadId, name, service, task, platform: platform };
+            const payload = { leadId, name, contact, service, task, platform: platform };
             
             try {
                 const res = await fetch('https://kristina-leads.workers.dev/api/leads', {
@@ -827,12 +807,10 @@
             }
         }
 
-        // === Privacy Modal ===
         function openPrivacy(e) { e.preventDefault(); document.getElementById('privacyModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
         function closePrivacy() { document.getElementById('privacyModal').classList.remove('active'); document.body.style.overflow = ''; }
         document.getElementById('privacyModal').addEventListener('click', function(e) { if (e.target === this) closePrivacy(); });
 
-        // === Smooth Scroll ===
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', function(e) {
                 const target = document.querySelector(this.getAttribute('href'));
@@ -840,7 +818,6 @@
             });
         });
 
-        // === Video support (YouTube, Rutube, VK) - готово к использованию ===
         function getVideoEmbed(platform, url) {
             if (!url) return '';
             try {
@@ -876,7 +853,6 @@
             return '';
         }
 
-        // === ScrollSpy (подсветка меню) ===
         function initScrollSpy() {
             const navLinks = document.querySelectorAll('nav a[href^="#"]');
             const sections = document.querySelectorAll('section[id]');
