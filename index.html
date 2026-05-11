@@ -582,8 +582,7 @@
         </div>
     </section>
 
-    <!-- ===== ВИДЕО СЕКЦИЯ (ПУСТАЯ, ПОДДЕРЖИВАЕТ YOUTUBE/RUTUBE/VK) ===== -->
-    <div id="video-section-container"></div>
+    <!-- Видео секция скрыта (контейнер удалён) -->
 
     <div class="glow-line"></div>
 
@@ -853,7 +852,7 @@
             });
         });
 
-        // ========== ВИДЕО И ПОДСВЕТКА МЕНЮ ==========
+        // ========== ПОДДЕРЖКА ВИДЕО (YouTube, Rutube, VK) И ПОДСВЕТКА МЕНЮ ==========
         function getVideoEmbed(platform, url) {
           if (!url) return '';
           try {
@@ -905,37 +904,12 @@
           sections.forEach(section => observer.observe(section));
         }
 
-        function renderVideoSection() {
-          const container = document.getElementById('video-section-container');
-          if (!container) return;
-          // Пустой массив — видео можно добавить позже в формате { platform, video_id, title }
-          const videos = [];
-          const videosHtml = videos.map(v => `
-            <div class="video-card">
-              <div class="video-wrapper">
-                ${getVideoEmbed(v.platform, v.video_id)}
-              </div>
-              <div class="video-title">${v.title || ''}</div>
-            </div>
-          `).join('');
-
-          const videoSectionHtml = `
-            <section id="video-demo">
-              <div class="container">
-                <h2 class="section-title">Видео <span>примеры работ</span></h2>
-                <p class="section-subtitle">Смотрите, как технологии работают в реальных кейсах (добавьте свои видео)</p>
-                <div class="video-grid">
-                  ${videosHtml || '<p style="text-align:center;color:var(--text-muted);">Видео пока нет, но скоро появятся</p>'}
-                </div>
-              </div>
-            </section>
-          `;
-          container.innerHTML = videoSectionHtml;
-        }
+        // Функция renderVideoSection больше не вызывается
+        // При необходимости добавить видео: вставить контейнер <div id="video-section-container"></div> и раскомментировать вызов
 
         document.addEventListener('DOMContentLoaded', function() {
           initScrollSpy();
-          renderVideoSection();
+          // renderVideoSection(); // закомментировано — видео скрыто
         });
     </script>
 </body>
