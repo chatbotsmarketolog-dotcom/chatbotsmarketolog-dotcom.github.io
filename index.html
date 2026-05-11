@@ -693,38 +693,7 @@
             }
         }
 
-        function showVKPopup() {
-            const userName = document.getElementById('user-name').value;
-            const popupHTML = `
-                <div id="vk-popup" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:9999;animation:fadeIn 0.3s;">
-                    <div style="background:white;padding:40px;border-radius:16px;max-width:500px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.3);animation:slideUp 0.3s;">
-                        <div style="font-size:60px;margin-bottom:20px;">🎉</div>
-                        <h2 style="color:#0077FF;margin:0 0 15px;font-size:24px;">Заявка принята!</h2>
-                        <p style="color:#333;font-size:16px;line-height:1.6;margin-bottom:25px;">
-                            <b>${userName}</b>, благодарю за заявку!<br><br>
-                            Она уже отправлена эксперту. С вами свяжутся в самое ближайшее время.<br><br>
-                            А пока ожидаете, предлагаю подписаться на сообщество эксперта, где найдёте больше полезной информации! 🚀
-                        </p>
-                        <div style="display:flex;gap:15px;justify-content:center;flex-wrap:wrap;">
-                            <a href="https://vk.ru/vk_prodvizenie_kristina" target="_blank" style="background:#0077FF;color:white;padding:15px 30px;border-radius:8px;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:8px;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                                <span>📩</span> Подписаться на ВК
-                            </a>
-                            <button onclick="closeVKPopup()" style="background:#f0f0f0;color:#333;padding:15px 30px;border:none;border-radius:8px;font-weight:600;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='#e0e0e0'" onmouseout="this.style.background='#f0f0f0'">Закрыть</button>
-                        </div>
-                    </div>
-                </div>
-                <style>
-                    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-                    @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-                </style>
-            `;
-            document.body.insertAdjacentHTML('beforeend', popupHTML);
-        }
-        function closeVKPopup() {
-            const popup = document.getElementById('vk-popup');
-            if (popup) popup.remove();
-        }
-
+        // === ФУНКЦИЯ ОТПРАВКИ ЗАЯВКИ ===
         async function submitLead(platform) {
             const name = document.getElementById('user-name').value.trim();
             const contact = document.getElementById('user-contact').value.trim();
@@ -737,7 +706,7 @@
             }
 
             const leadId = 'lead_' + Date.now().toString(36);
-            const payload = { leadId, name, contact, service, task, platform: platform };
+            const payload = { leadId, name, contact, service, task, platform };
             
             try {
                 const res = await fetch('https://kristina-leads.chatbotsmarketolog.workers.dev/api/leads', {
@@ -747,18 +716,67 @@
                 });
                 
                 if (res.ok) {
-                    if (platform === 'vk') {
-                        showVKPopup();
-                    } else {
-                        window.open(`https://t.me/kristina_ai_lead_bot?start=${leadId}`, '_blank');
-                    }
+                    showSmartPopup(name, contact, service, leadId, platform);
                     document.getElementById('lead-form').reset();
                 } else {
-                    alert('Ошибка при отправке. Попробуйте ещё раз.');
+                    throw new Error('Ошибка сервера');
                 }
             } catch (e) {
-                alert('Ошибка соединения. Проверьте интернет.');
+                alert('Ошибка соединения. Попробуйте позже.');
             }
+        }
+
+        // === ФУНКЦИЯ УМНОГО ПОПАПА ===
+        function showSmartPopup(name, contact, service, leadId, platform) {
+            let actionLink = '';
+            let actionText = '';
+            
+            if (platform === 'tg') {
+                actionLink = `https://t.me/texna_AI_menegtr_bot?start=${leadId}`;
+                actionText = '✈️ Перейти в Telegram к Техне';
+            } else {
+                actionLink = `https://vk.ru/vk_prodvizenie_kristina`;
+                actionText = '🔵 Перейти в ВКонтакте';
+            }
+
+            const serviceNames = {
+                'chatbot': 'Чат-бот',
+                'ai-agent': 'AI-агент',
+                'site-code': 'Сайт на коде',
+                'site-tilda': 'Сайт на Tilda',
+                'consultation': 'Консультация'
+            };
+            const serviceName = serviceNames[service] || service;
+
+            const popupHTML = `
+                <div id="smart-popup" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;z-index:99999;animation:fadeIn 0.3s;">
+                    <div style="background:#1C1C26;border:1px solid #00F0FF;padding:30px;border-radius:20px;max-width:450px;width:90%;text-align:center;box-shadow:0 0 50px rgba(0,240,255,0.2);">
+                        <div style="font-size:50px;margin-bottom:15px;">👋</div>
+                        <h3 style="color:#fff;font-size:1.4rem;margin:0 0 10px;">${name}, заявка принята!</h3>
+                        <p style="color:#B0B0C8;font-size:0.9rem;margin-bottom:20px;">
+                            Ваш контакт <b>${contact}</b> сохранён.<br>
+                            Услуга: <b style="color:#00F0FF;">${serviceName}</b>
+                        </p>
+                        <div style="background:rgba(255,255,255,0.05);padding:15px;border-radius:12px;margin-bottom:20px;text-align:left;">
+                            <p style="color:#fff;font-size:0.9rem;margin:0;line-height:1.5;">
+                                🤖 Менеджер <b>Техна</b> уже ждёт вас в мессенджере.<br>
+                                Перейдите туда, чтобы <b>выбрать удобную дату и время</b> встречи с экспертом.
+                            </p>
+                        </div>
+                        <a href="${actionLink}" target="_blank" style="display:block;width:100%;padding:15px;background:linear-gradient(90deg, #00F0FF, #0088FF);color:#000;font-weight:700;text-decoration:none;border-radius:12px;font-size:1rem;margin-bottom:10px;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                            ${actionText}
+                        </a>
+                        <button onclick="closeSmartPopup()" style="background:none;border:none;color:#7A7A90;cursor:pointer;font-size:0.9rem;padding:10px;">Закрыть</button>
+                    </div>
+                </div>
+                <style>@keyframes fadeIn{from{opacity:0}to{opacity:1}}</style>
+            `;
+            document.body.insertAdjacentHTML('beforeend', popupHTML);
+        }
+
+        function closeSmartPopup() {
+            const popup = document.getElementById('smart-popup');
+            if (popup) popup.remove();
         }
 
         function openPrivacy(e) { e.preventDefault(); document.getElementById('privacyModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
