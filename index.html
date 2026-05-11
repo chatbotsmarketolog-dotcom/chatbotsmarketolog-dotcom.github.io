@@ -21,16 +21,16 @@
             --cyan: #00F0FF;
             --cyan-dark: #00B8C4;
             --cyan-glow: rgba(0, 240, 255, 0.3);
-            --bg-primary: #0A0A0F;
-            --bg-secondary: #12121A;
-            --bg-card: #1A1A25;
-            --bg-card-hover: #22222F;
+            --bg-primary: #0C0C11;
+            --bg-secondary: #14141C;
+            --bg-card: #1C1C28;
+            --bg-card-hover: #242430;
             --text-primary: #FFFFFF;
             --text-secondary: #A0A0B8;
             --text-muted: #6B6B80;
             --border: rgba(255, 255, 255, 0.08);
             --border-cyan: rgba(0, 240, 255, 0.3);
-            --glass: rgba(10, 10, 15, 0.8);
+            --glass: rgba(12, 12, 17, 0.8);
             --glass-border: rgba(255, 255, 255, 0.1);
         }
 
@@ -48,7 +48,7 @@
         @keyframes floatParticle { 0% { opacity: 0; transform: translateY(100vh) scale(0); } 10% { opacity: 0.6; } 90% { opacity: 0.6; } 100% { opacity: 0; transform: translateY(-10vh) scale(1); } }
 
         .header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 12px 0; transition: all 0.4s ease; backdrop-filter: blur(0px); }
-        .header.scrolled { backdrop-filter: blur(20px); background: rgba(10, 10, 15, 0.85); border-bottom: 1px solid var(--border); padding: 8px 0; }
+        .header.scrolled { backdrop-filter: blur(20px); background: rgba(12, 12, 17, 0.85); border-bottom: 1px solid var(--border); padding: 8px 0; }
         .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
         .logo { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; background: linear-gradient(135deg, var(--cyan), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -0.5px; }
         .nav { display: flex; align-items: center; gap: 32px; }
@@ -65,7 +65,7 @@
         .burger.active span:nth-child(2) { opacity: 0; }
         .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-        .mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(10, 10, 15, 0.97); backdrop-filter: blur(20px); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+        .mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(12, 12, 17, 0.97); backdrop-filter: blur(20px); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
         .mobile-menu.active { display: flex; }
         .mobile-menu a { font-size: 1.5rem; font-weight: 600; color: var(--text-secondary); transition: color 0.3s ease; }
         .mobile-menu a:hover { color: var(--cyan); }
@@ -187,6 +187,22 @@
         .review-role { font-size: 0.8rem; color: var(--text-muted); }
         .reviews-cta { text-align: center; padding: 24px; background: rgba(0, 240, 255, 0.05); border: 1px solid var(--border-cyan); border-radius: 16px; }
         .reviews-cta p { color: var(--text-secondary); margin-bottom: 12px; }
+
+        .contact-section { padding: 100px 0; }
+        .contact-inner { max-width: 600px; margin: 0 auto; text-align: left; }
+        .contact-info h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; margin-bottom: 12px; }
+        .contact-info h2 span { color: var(--cyan); }
+        .contact-info > p { color: var(--text-secondary); margin-bottom: 36px; font-size: 1.05rem; }
+        .contact-methods { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
+        .contact-method { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; transition: all 0.3s ease; flex-wrap: wrap; }
+        .contact-method:hover { border-color: var(--border-cyan); transform: translateX(5px); }
+        .contact-method-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+        .contact-method-icon.tg { background: rgba(0, 136, 204, 0.15); } .contact-method-icon.vk { background: rgba(39, 135, 245, 0.15); } .contact-method-icon.ig { background: rgba(228, 64, 95, 0.15); } .contact-method-icon.clock { background: rgba(0, 240, 255, 0.15); }
+        .contact-method-info h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 2px; }
+        .contact-method-info p { font-size: 0.85rem; color: var(--text-muted); }
+        .contact-highlight { padding: 20px; background: rgba(0, 240, 255, 0.05); border: 1px solid var(--border-cyan); border-radius: 14px; }
+        .contact-highlight p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; }
+        .contact-highlight strong { color: var(--cyan); }
 
         .about-section { padding: 100px 0; }
         .about-inner { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: center; }
@@ -452,8 +468,8 @@
         <a href="#pricing" onclick="closeMobile()">💰 Стоимость</a>
         <a href="#demo" onclick="closeMobile()">🎮 Демо</a>
         <a href="#reviews" onclick="closeMobile()">⭐ Отзывы</a>
-        <a href="#about" onclick="closeMobile()">Обо мне</a>
         <a href="#contact" onclick="closeMobile()">Контакты</a>
+        <a href="#about" onclick="closeMobile()">Обо мне</a>
         <a href="#applications" class="nav-btn" onclick="closeMobile()" style="margin-top:16px;">Оставить заявку</a>
     </div>
 
@@ -525,9 +541,9 @@
             <p class="section-subtitle reveal">Два направления, которые трансформируют ваш бизнес в автономную систему</p>
             <div class="services-grid">
                 <div class="service-card reveal"><div class="service-emoji">🤖</div><h3>Сценарный Чат-Бот</h3><p class="subtitle">Старт · Точка входа в ваш бизнес</p><div class="service-price">4 500 ₽ <small>/ базовый</small></div><ul class="service-features"><li>Приветствие и выдача PDF-материалов</li><li>Запись на консультации и вебинары</li><li>Анкетирование и сбор данных клиентов</li><li>Модерирование чатов и антиспам</li><li>Автостатусы и воронки продаж</li><li>Сбор отзывов</li></ul><button class="btn-service" onclick="document.getElementById('applications').scrollIntoView({behavior:'smooth'})">Заказать бота</button><p class="service-note">Любое усложнение +500 ₽ к базовой стоимости</p></div>
-                <div class="service-card reveal"><div class="service-emoji">💻</div><h3>Сайт на чистом коде</h3><p class="subtitle">База · Уникальный адаптивный дизайн</p><div class="service-price">15 000 ₽ <small>/ фиксировано</small></div><ul class="service-features"><li>Полностью адаптивный дизайн</li><li>HTML/CSS/JS — без конструкторов</li><li>Анимации и микро-взаимодействия</li><li>Интеграция с чат-ботами и AI</li><li>Оптимизация скорости загрузки</li><li>Чистый код для доработки</li></ul><button class="btn-service" onclick="document.getElementById('applications').scrollIntoView({behavior:'smooth'})">Заказать сайт</button><p class="service-note">Условия: 50% старт / 50% сдача</p></div>
-                <div class="service-card reveal"><div class="service-emoji">🧩</div><h3>Сайт на Tilda</h3><p class="subtitle">Альтернатива · Управление в конструкторе</p><div class="service-price">12 000 ₽</div><ul class="service-features"><li>Сборка лендинга под ключ</li><li>Адаптивный дизайн</li><li>Базовые настройки и SEO</li><li>Интеграция форм и заявок</li><li>Вы можете управлять сами</li></ul><button class="btn-service" onclick="document.getElementById('applications').scrollIntoView({behavior:'smooth'})">Заказать Tilda</button><p class="service-note">Условия: 50% старт / 50% сдача</p></div>
-                <div class="service-card popular reveal" id="pricing"><div class="service-emoji">🧠</div><h3>AI-Агент «Бессценарный»</h3><p class="subtitle">Полная автономность · Цифровой двойник</p><div class="service-price">от 25 000 ₽ <small>· Скидка 5%</small></div><ul class="service-features"><li>Обучение на базе ваших знаний</li><li>Свободный диалог без сценария</li><li>Работа в Telegram и на сайте</li><li>Поддержка на 5 языках</li><li>Замена маркетолога, копирайтера, аналитика</li><li>Независимые от мессенджеров решения</li></ul><button class="btn-service" onclick="document.getElementById('applications').scrollIntoView({behavior:'smooth'})">Заказать AI-агента</button><p class="service-note">Скидка 20% при заказе бота + агента</p></div>
+                <div class="service-card reveal"><div class="service-emoji">💻</div><h3>Сайт на чистом коде</h3><p class="subtitle">База · Уникальный адаптивный дизайн</p><div class="service-price">15 000 ₽ <small>/ фиксировано</small></div><ul class="service-features"><li>Полностью адаптивный дизайн</li><li>HTML/CSS/JS — без конструкторов</li><li>Анимации и микро-взаимодействия</li><li>Интеграция с чат-ботами и AI</li><li>Оптимизация скорости загрузки</li><li>Чистый код для доработки</li></ul><button class="btn-service" onclick="document.getElementById('applications').scrollIntoView({behavior:'smooth'})">Заказать сайт</button><p class="service-note">Условия: 100% предоплата при заключении договора</p></div>
+                <div class="service-card reveal"><div class="service-emoji">🧩</div><h3>Сайт на Tilda</h3><p class="subtitle">Альтернатива · Управление в конструкторе</p><div class="service-price">12 000 ₽</div><ul class="service-features"><li>Сборка лендинга под ключ</li><li>Адаптивный дизайн</li><li>Базовые настройки и SEO</li><li>Интеграция форм и заявок</li><li>Вы можете управлять сами</li></ul><button class="btn-service" onclick="document.getElementById('applications').scrollIntoView({behavior:'smooth'})">Заказать Tilda</button><p class="service-note">Условия: 100% предоплата при заключении договора</p></div>
+                <div class="service-card popular reveal" id="pricing"><div class="service-emoji">🧠</div><h3>AI-Агент «Бессценарный»</h3><p class="subtitle">Полная автономность · Цифровой двойник</p><div class="service-price">от 25 000 ₽ <small>· Скидка 5%</small></div><ul class="service-features"><li>Обучение на базе ваших знаний</li><li>Свободный диалог без сценария</li><li>Работа в Telegram и на сайте</li><li>Поддержка на 5 языках</li><li>Замена маркетолога, копирайтера, аналитика</li><li>Независимые от мессенджеров решения</li></ul><button class="btn-service" onclick="document.getElementById('applications').scrollIntoView({behavior:'smooth'})">Заказать AI-агента</button><p class="service-note">Скидка 20% при заказе бота + агента. 100% предоплата при заключении договора</p></div>
             </div>
         </div>
     </section>
@@ -602,6 +618,27 @@
 
     <div class="glow-line"></div>
 
+    <!-- ===== КОНТАКТЫ ===== -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-inner">
+                <div class="contact-info reveal">
+                    <h2>Свяжитесь <span>со мной</span></h2>
+                    <p>Любым удобным способом. Я отвечаю быстро и с удовольствием обсуждаю проекты.</p>
+                    <div class="contact-methods">
+                        <a href="https://t.me/marketologdizayner" target="_blank" class="contact-method"><div class="contact-method-icon tg">💬</div><div class="contact-method-info"><h4>Telegram</h4><p>@marketologdizayner</p></div></a>
+                        <a href="https://vk.ru/kristinavcifre" target="_blank" class="contact-method"><div class="contact-method-icon vk">🔵</div><div class="contact-method-info"><h4>ВКонтакте</h4><p>@kristinavcifre</p></div></a>
+                        <a href="https://www.instagram.com/gap_____ova_kristina/" target="_blank" class="contact-method"><div class="contact-method-icon ig">📸</div><div class="contact-method-info"><h4>Instagram</h4><p>@gap_____ova_kristina</p></div></a>
+                        <div class="contact-method"><div class="contact-method-icon clock">⏰</div><div class="contact-method-info"><h4>Режим работы</h4><p>Пн–Пт: 10:00–19:00 (МСК)</p></div></div>
+                    </div>
+                    <div class="contact-highlight"><p><strong>AI-агенты работают 24/7 🤖</strong><br>Если вы готовы выйти из операционки и построить бренд, который работает сам — пишите.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="glow-line"></div>
+
     <!-- ===== НОВЫЙ БЛОК ЗАЯВКИ С КАРТОЧКОЙ ===== -->
     <section id="applications">
       <div class="container" style="text-align:center; padding: 80px 20px;">
@@ -623,7 +660,9 @@
                 <option value="" disabled selected>Выберите услугу</option>
                 <option value="chatbot">🤖 Чат-бот</option>
                 <option value="ai-agent">🧠 AI-агент</option>
-                <option value="complex">✨ Комплексная автоматизация</option>
+                <option value="site-code">💻 Сайт на чистом коде</option>
+                <option value="site-tilda">🧩 Сайт на Tilda</option>
+                <option value="chatbot-ai-code">🤖+🧠 Чат-бот и AI агент на коде</option>
                 <option value="consultation">💬 Консультация</option>
               </select>
             </div>
@@ -675,10 +714,10 @@
             <h2 class="section-title reveal">Прозрачные <span>условия сотрудничества</span></h2>
             <p class="section-subtitle reveal">Всё честно и без подводных камней</p>
             <div class="faq-list">
-                <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)"><span>Как начинаем работу?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner"><strong>Бесплатное знакомство (15 мин):</strong> короткая встреча или переписка. Знакомимся, я слушаю запрос, кратко описываю решение. На этом этапе консультаций и стратегий нет. Старт работ — только после внесения предоплаты.</div></div></div>
-                <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)"><span>Какие условия оплаты?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner"><ul><li><strong>До 4 500 ₽</strong> (Боты, Нейро-фото, Аудит): 100% предоплата.</li><li><strong>От 15 000 ₽</strong> (Сайты, AI-агенты): 50% предоплата, 50% после утверждения результата.</li><li><strong>Аудит (3 500 ₽):</strong> 100% оплата в день встречи, до начала (без возврата).</li><li><strong>Пакеты Нейро-фото:</strong> 50% предоплата, 50% перед выдачей файлов.</li></ul></div></div></div>
+                <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)"><span>Как начинаем работу?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner"><strong>Бесплатное знакомство (15 мин):</strong> короткая встреча или переписка. Знакомимся, я слушаю запрос, кратко описываю решение. На этом этапе консультаций и стратегий нет. Старт работ — только после внесения предоплаты и заключения договора.</div></div></div>
+                <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)"><span>Какие условия оплаты?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner"><strong>100% предоплата на все услуги.</strong> Перед стартом работы заключается договор, в котором фиксируются обязанности сторон, сумма, состав услуги и условия возврата.</div></div></div>
                 <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)"><span>Какие сроки выполнения?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner"><ul><li>Чат-бот: <strong>2–5 дней</strong></li><li>AI-агент: <strong>5–10 дней</strong></li><li>Сайт на коде: <strong>10–20 дней</strong></li><li>Сайт на Tilda: <strong>3–7 дней</strong></li></ul></div></div></div>
-                <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)"><span>Какие гарантии?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner"><strong>7 дней бесплатной поддержки</strong> после сдачи проекта.</div></div></div>
+                <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)"><span>Какие гарантии?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner"><strong>7 дней бесплатной поддержки</strong> после сдачи проекта. Перед стартом работы составляется формальный договор, в котором обе стороны прописывают свои обязанности, внесённую сумму, услугу и её содержимое, а также случаи, в которых возможен возврат 50% от полной суммы оплаты.</div></div></div>
                 <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)"><span>Нужны ли мне технические знания?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner">Нет. Я беру всю архитектуру, код и интеграции на себя. От вас нужны материалы о бизнесе, стиль общения и утверждение промежуточных этапов.</div></div></div>
             </div>
         </div>
@@ -904,12 +943,8 @@
           sections.forEach(section => observer.observe(section));
         }
 
-        // Функция renderVideoSection больше не вызывается
-        // При необходимости добавить видео: вставить контейнер <div id="video-section-container"></div> и раскомментировать вызов
-
         document.addEventListener('DOMContentLoaded', function() {
           initScrollSpy();
-          // renderVideoSection(); // закомментировано — видео скрыто
         });
     </script>
 </body>
