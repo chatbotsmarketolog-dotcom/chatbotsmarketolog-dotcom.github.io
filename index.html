@@ -693,90 +693,88 @@
             }
         }
 
-        // === ФУНКЦИЯ ОТПРАВКИ ЗАЯВКИ ===
+        // === ПОПАП ДЛЯ ВК-ЗАЯВКИ ===
+        function showVKLeadPopup(name, leadId) {
+          const popup = document.createElement('div');
+          popup.id = 'vk-lead-popup';
+          popup.style.cssText = `
+            position:fixed;top:0;left:0;width:100%;height:100%;
+            background:rgba(0,0,0,0.85);display:flex;align-items:center;
+            justify-content:center;z-index:99999;animation:fadeIn 0.3s;
+          `;
+          popup.innerHTML = `
+            <div style="background:#1C1C26;border:1px solid #0077FF;padding:32px;
+              border-radius:20px;max-width:450px;width:90%;text-align:center;
+              box-shadow:0 0 50px rgba(0,119,255,0.2);">
+              <div style="font-size:48px;margin-bottom:16px;">🔵</div>
+              <h3 style="color:#fff;font-size:1.3rem;margin:0 0 12px;">
+                ${name}, заявка принята!
+              </h3>
+              <p style="color:#B0B0C8;font-size:0.95rem;line-height:1.6;margin:0 0 24px;">
+                Эксперт уже получил вашу заявку.<br><br>
+                <b>Пока ожидаете связи</b>, подпишитесь на сообщество Кристины — 
+                там публикую кейсы, полезные материалы и анонсы:
+              </p>
+              <a href="https://vk.ru/vk_prodvizenie_kristina" target="_blank"
+                 style="display:inline-block;padding:14px 28px;background:#0077FF;
+                 color:#fff;text-decoration:none;border-radius:12px;font-weight:600;
+                 margin-bottom:12px;transition:transform 0.2s;"
+                 onmouseover="this.style.transform='scale(1.02)'"
+                 onmouseout="this.style.transform='scale(1)'">
+                🔵 Подписаться на сообщество
+              </a>
+              <p style="color:#7A7A90;font-size:0.85rem;margin:16px 0 0;">
+                После подписки Техна напишет вам в личные сообщения.
+              </p>
+              <button onclick="closeVKLeadPopup()" style="
+                background:none;border:none;color:#7A7A90;cursor:pointer;
+                font-size:0.9rem;margin-top:8px;">
+                Закрыть
+              </button>
+            </div>
+          `;
+          document.body.appendChild(popup);
+        }
+        function closeVKLeadPopup() {
+          const p = document.getElementById('vk-lead-popup');
+          if (p) p.remove();
+        }
+
+        // === НОВАЯ ФУНКЦИЯ ОТПРАВКИ ЗАЯВКИ ===
         async function submitLead(platform) {
-            const name = document.getElementById('user-name').value.trim();
-            const contact = document.getElementById('user-contact').value.trim();
-            const service = document.getElementById('user-service').value;
-            const task = document.getElementById('user-task').value.trim();
-            
-            if (!name || !contact || !service || !task) {
-                alert('Пожалуйста, заполните все поля!');
-                return;
-            }
+          const name = document.getElementById('user-name').value.trim();
+          const contact = document.getElementById('user-contact').value.trim();
+          const service = document.getElementById('user-service').value;
+          const task = document.getElementById('user-task').value.trim();
+          
+          if (!name || !contact || !service || !task) {
+            alert('Пожалуйста, заполните все поля!');
+            return;
+          }
 
-            const leadId = 'lead_' + Date.now().toString(36);
-            const payload = { leadId, name, contact, service, task, platform };
+          const leadId = 'lead_' + Date.now().toString(36);
+          const payload = { leadId, name, contact, service, task, platform };
+          
+          try {
+            const res = await fetch('https://kristina-leads.chatbotsmarketolog.workers.dev/api/leads', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
             
-            try {
-                const res = await fetch('https://kristina-leads.chatbotsmarketolog.workers.dev/api/leads', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                
-                if (res.ok) {
-                    showSmartPopup(name, contact, service, leadId, platform);
-                    document.getElementById('lead-form').reset();
-                } else {
-                    throw new Error('Ошибка сервера');
-                }
-            } catch (e) {
-                alert('Ошибка соединения. Попробуйте позже.');
-            }
-        }
-
-        // === ФУНКЦИЯ УМНОГО ПОПАПА ===
-        function showSmartPopup(name, contact, service, leadId, platform) {
-            let actionLink = '';
-            let actionText = '';
-            
-            if (platform === 'tg') {
-                actionLink = `https://t.me/texna_AI_menegtr_bot?start=${leadId}`;
-                actionText = '✈️ Перейти в Telegram к Техне';
+            if (res.ok) {
+              if (platform === 'vk') {
+                showVKLeadPopup(name, leadId);
+              } else if (platform === 'tg') {
+                window.open(`https://t.me/texna_AI_menegtr_bot?start=${leadId}`, '_blank');
+              }
+              document.getElementById('lead-form').reset();
             } else {
-                actionLink = `https://vk.ru/vk_prodvizenie_kristina`;
-                actionText = '🔵 Перейти в ВКонтакте';
+              alert('Ошибка при отправке. Попробуйте ещё раз.');
             }
-
-            const serviceNames = {
-                'chatbot': 'Чат-бот',
-                'ai-agent': 'AI-агент',
-                'site-code': 'Сайт на коде',
-                'site-tilda': 'Сайт на Tilda',
-                'consultation': 'Консультация'
-            };
-            const serviceName = serviceNames[service] || service;
-
-            const popupHTML = `
-                <div id="smart-popup" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;z-index:99999;animation:fadeIn 0.3s;">
-                    <div style="background:#1C1C26;border:1px solid #00F0FF;padding:30px;border-radius:20px;max-width:450px;width:90%;text-align:center;box-shadow:0 0 50px rgba(0,240,255,0.2);">
-                        <div style="font-size:50px;margin-bottom:15px;">👋</div>
-                        <h3 style="color:#fff;font-size:1.4rem;margin:0 0 10px;">${name}, заявка принята!</h3>
-                        <p style="color:#B0B0C8;font-size:0.9rem;margin-bottom:20px;">
-                            Ваш контакт <b>${contact}</b> сохранён.<br>
-                            Услуга: <b style="color:#00F0FF;">${serviceName}</b>
-                        </p>
-                        <div style="background:rgba(255,255,255,0.05);padding:15px;border-radius:12px;margin-bottom:20px;text-align:left;">
-                            <p style="color:#fff;font-size:0.9rem;margin:0;line-height:1.5;">
-                                🤖 Менеджер <b>Техна</b> уже ждёт вас в мессенджере.<br>
-                                Перейдите туда, чтобы <b>выбрать удобную дату и время</b> встречи с экспертом.
-                            </p>
-                        </div>
-                        <a href="${actionLink}" target="_blank" style="display:block;width:100%;padding:15px;background:linear-gradient(90deg, #00F0FF, #0088FF);color:#000;font-weight:700;text-decoration:none;border-radius:12px;font-size:1rem;margin-bottom:10px;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                            ${actionText}
-                        </a>
-                        <button onclick="closeSmartPopup()" style="background:none;border:none;color:#7A7A90;cursor:pointer;font-size:0.9rem;padding:10px;">Закрыть</button>
-                    </div>
-                </div>
-                <style>@keyframes fadeIn{from{opacity:0}to{opacity:1}}</style>
-            `;
-            document.body.insertAdjacentHTML('beforeend', popupHTML);
-        }
-
-        function closeSmartPopup() {
-            const popup = document.getElementById('smart-popup');
-            if (popup) popup.remove();
+          } catch (e) {
+            alert('Ошибка соединения. Проверьте интернет.');
+          }
         }
 
         function openPrivacy(e) { e.preventDefault(); document.getElementById('privacyModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
