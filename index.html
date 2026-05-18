@@ -796,6 +796,7 @@
                 history.replaceState(null, null, window.location.pathname + window.location.search);
             }
         }
+        // Немедленно убираем при загрузке
         removeHashFromUrl();
 
         // Обработка якорных ссылок без изменения URL
@@ -810,6 +811,7 @@
             });
         });
 
+        // Следим за возможным появлением хеша
         window.addEventListener('hashchange', removeHashFromUrl);
 
         function getVideoEmbed(platform, url) {
