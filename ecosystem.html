@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои продукты | КРИСТИНА.AI</title>
+    <style>
+        :root {
+            --cyan: #00F0FF; --cyan-dark: #00B8C4; --cyan-glow: rgba(0, 240, 255, 0.3);
+            --bg-primary: #1C1C26; --bg-secondary: #24242E; --bg-card: #2A2A35; --bg-card-hover: #30303D;
+            --text-primary: #FFFFFF; --text-secondary: #B0B0C8; --text-muted: #7A7A90;
+            --border: rgba(255, 255, 255, 0.08); --border-cyan: rgba(0, 240, 255, 0.3);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg-primary); color: var(--text-primary); font-family: 'Inter', sans-serif; line-height: 1.6; padding: 40px 20px; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        h1 { font-size: 2.5rem; text-align: center; margin-bottom: 40px; }
+        h1 span { color: var(--cyan); }
+        .product-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 40px; margin-bottom: 40px; }
+        .product-card img { max-width: 300px; display: block; margin: 0 auto 20px; }
+        .product-card h3 { font-size: 1.8rem; margin-bottom: 15px; }
+        .product-card p { color: var(--text-secondary); margin-bottom: 15px; }
+        .back-link { display: inline-block; margin-top: 30px; color: var(--cyan); text-decoration: underline; }
+        .gallery { display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0; }
+        .gallery img { width: calc(33.33% - 10px); border-radius: 10px; border: 1px solid var(--border); }
+        @media (max-width: 768px) { .gallery img { width: calc(50% - 10px); } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><span>Мои продукты</span></h1>
+        <div class="product-card">
+            <img src="kristincrm.png" alt="KristinCRM">
+            <h3>KristinCRM</h3>
+            <p>Моя собственная CRM для экспертов: управление заявками, прогреванием и сделками без громоздких таблиц. Создано для своих клиентов.</p>
+            <p style="color:var(--cyan);"><strong>Статус:</strong> работает</p>
+        </div>
+        <div class="product-card">
+            <h3>🤖 АгентУм — no-code конструктор мультиканальных AI-агентов</h3>
+            <p>АгентУм — это платформа, позволяющая предпринимателям, экспертам и малому бизнесу создавать и запускать интеллектуальных виртуальных ассистентов без единой строки кода. Агенты работают одновременно в Telegram, ВКонтакте, Instagram, VK Мессенджере и на вашем сайте, обеспечивая единую логику общения и автоматизацию коммуникаций 24/7.</p>
+            <div class="gallery">
+                <img src="agentum1.jpg" alt="АгентУм 1"><img src="agentum2.jpg" alt="АгентУм 2"><img src="agentum.3.jpg" alt="АгентУм 3">
+                <img src="agentum4.jpg" alt="АгентУм 4"><img src="agentum5.jpg" alt="АгентУм 5"><img src="agentum6.jpg" alt="АгентУм 6"><img src="agentum6.1.1.jpg" alt="АгентУм 6.1">
+            </div>
+            <h4>🔑 Ключевые возможности:</h4>
+            <p>✅ Пошаговый конструктор — настройка имени, роли, базы знаний, запретных тем и уровня эмпатии (от «робота» до «друга»).<br>
+            ✅ Модель BYOK (Bring Your Own Key) — самостоятельное подключение API-ключей от YandexGPT, GigaChat, OpenRouter, DeepSeek и других провайдеров. Вы контролируете расходы на токены и не зависите от подписок платформы.<br>
+            ✅ Встроенный календарь с бронированием — автоматическая проверка свободных слотов, запись клиентов и сбор контактных данных прямо в диалоге.<br>
+            ✅ CRM и календари — OAuth-подключение к Битрикс24, amoCRM, GetCourse, Google/Яндекс Календарям и Таблицам.<br>
+            ✅ Мониторинг в реальном времени — единая панель всех чатов со всех каналов, поиск, фильтрация и возможность ручного ответа от имени агента.<br>
+            ✅ Безопасность и приватность — шифрование API-ключей и токенов (AES-256), хеширование паролей (bcrypt), авторизация через Яндекс ID, VK ID, Google и email.</p>
+            <h4>💡 Почему это важно:</h4>
+            <p>«АгентУм» убирает технический барьер между бизнесом и AI. Вы получаете готового цифрового сотрудника, который консультирует, продаёт, записывает клиентов и передаёт сложные случаи вам, не требуя найма разработчиков, настройки серверов или обучения персонала. Платформа масштабируется вместе с вашим проектом: от одного канала до единой экосистемы AI-агентов.</p>
+            <p style="color:var(--cyan);"><strong>Статус:</strong> в разработке</p>
+        </div>
+        <a href="index.html" class="back-link">← На главную</a>
+    </div>
+</body>
+</html>
