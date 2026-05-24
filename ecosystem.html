@@ -40,7 +40,6 @@
             position: relative;
         }
 
-        /* === ФОНОВЫЕ СЛОИ === */
         .bg-layer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
         .bg-gradient {
             background:
@@ -74,7 +73,6 @@
         }
         .particles-canvas { z-index: 1; }
 
-        /* === ЗОЛОТЫЕ ЛЕНТЫ === */
         .gold-ribbons { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; }
         .ribbon {
             position: absolute; width: 2px;
@@ -117,7 +115,6 @@
             75% { opacity: 0.4; transform: translate(30px, -120px) scale(0.6); }
         }
 
-        /* === ОБЩИЕ СТИЛИ === */
         a { text-decoration: none; color: inherit; }
         .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
         .section-title {
@@ -142,7 +139,6 @@
             margin: 16px auto 0;
         }
 
-        /* === HEADER === */
         .header {
             position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
             padding: 18px 0; transition: all 0.5s ease;
@@ -164,11 +160,10 @@
         .back-link-header {
             display: flex; align-items: center; gap: 8px;
             color: var(--gold-primary); font-size: 0.9rem; font-weight: 600;
-            transition: all 0.3s ease;
+            transition: all 0.3s ease; cursor: pointer;
         }
         .back-link-header:hover { color: var(--gold-bright); transform: translateX(-4px); }
 
-        /* === HERO === */
         .hero { min-height: 80vh; display: flex; align-items: center; justify-content: center; padding: 120px 0 60px; text-align: center; }
         .hero-badge {
             display: inline-flex; align-items: center; gap: 8px;
@@ -182,7 +177,6 @@
         }
         @keyframes badgePulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.1); } 50% { box-shadow: 0 0 0 8px rgba(201, 168, 76, 0); } }
 
-        /* === 3D SCENE === */
         .scene-3d { perspective: 1200px; margin: 40px auto; max-width: 700px; }
 
         .platform-card-3d {
@@ -226,7 +220,6 @@
             margin: 0 auto 40px;
         }
 
-        /* === 3D STEPS TIMELINE === */
         .steps-3d { position: relative; padding: 0; }
         .steps-3d::before {
             content: '';
@@ -252,7 +245,6 @@
         .step-item.visible { opacity: 1; transform: translateY(0); }
         .step-item:last-child { margin-bottom: 0; }
 
-        /* Точка на линии */
         .step-dot {
             position: absolute;
             left: 50%;
@@ -316,7 +308,6 @@
         .step-item:nth-child(odd) { flex-direction: row; }
         .step-item:nth-child(even) { flex-direction: row-reverse; }
 
-        /* === WHY SECTION === */
         .why-section {
             margin-top: 48px;
             padding: 36px;
@@ -339,7 +330,6 @@
         }
         .why-section p { color: var(--text-secondary); line-height: 1.8; font-size: 1rem; }
 
-        /* === FEATURES GRID === */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -361,7 +351,6 @@
         .feature-item .feat-icon { font-size: 1.8rem; margin-bottom: 8px; display: block; }
         .feature-item .feat-text { color: var(--text-secondary); font-size: 0.85rem; }
 
-        /* === BACK LINK === */
         .back-link {
             display: inline-flex; align-items: center; gap: 10px;
             margin: 48px 0;
@@ -372,6 +361,7 @@
             padding: 12px 24px;
             border: 1px solid rgba(201, 168, 76, 0.2);
             border-radius: 50px;
+            cursor: pointer;
         }
         .back-link:hover {
             color: var(--gold-bright);
@@ -380,7 +370,6 @@
             box-shadow: 0 0 20px rgba(201, 168, 76, 0.1);
         }
 
-        /* === FOOTER === */
         .footer {
             border-top: 1px solid rgba(201, 168, 76, 0.08);
             padding: 36px 0;
@@ -392,11 +381,9 @@
             z-index: 2;
         }
 
-        /* === REVEAL === */
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
-        /* === RESPONSIVE === */
         @media (max-width: 900px) {
             .platform-card-3d { padding: 36px 28px; }
             .features-grid { grid-template-columns: repeat(2, 1fr); }
@@ -428,7 +415,6 @@
             .back-link { width: 100%; justify-content: center; }
         }
 
-        /* Скроллбар */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--cherry-deepest); }
         ::-webkit-scrollbar-thumb { background: rgba(201, 168, 76, 0.3); border-radius: 4px; }
@@ -442,14 +428,12 @@
     </style>
 </head>
 <body>
-    <!-- ФОНОВЫЕ СЛОИ -->
     <div class="bg-layer bg-gradient"></div>
     <div class="bg-layer bg-grid"></div>
     <div class="bg-layer bg-gold-nodes"></div>
     <div class="bg-layer bg-overlay"></div>
     <canvas class="bg-layer particles-canvas" id="particlesCanvas"></canvas>
 
-    <!-- ЗОЛОТЫЕ ЛЕНТЫ -->
     <div class="gold-ribbons">
         <div class="ribbon"></div>
         <div class="ribbon"></div>
@@ -462,18 +446,16 @@
     </div>
     <div class="gold-dust" id="goldDust"></div>
 
-    <!-- HEADER -->
     <header class="header" id="header">
         <div class="header-inner">
-            <a href="index.html" class="logo">КРИСТИНА.AI</a>
-            <a href="index.html" class="back-link-header">
+            <a href="#" class="logo">КРИСТИНА.AI</a>
+            <a href="#" class="back-link-header" id="backToHome">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 2L4 8l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 На главную
             </a>
         </div>
     </header>
 
-    <!-- HERO -->
     <section class="hero">
         <div class="container">
             <div class="hero-badge reveal">✦ NO-CODE КОНСТРУКТОР ✦</div>
@@ -482,14 +464,12 @@
         </div>
     </section>
 
-    <!-- 3D PLATFORM CARD -->
     <section class="container">
         <div class="scene-3d">
             <div class="platform-card-3d reveal">
                 <h2>Создайте своего AI-агента без программистов</h2>
                 <p class="intro-text">Платформа, позволяющая предпринимателям, экспертам и малому бизнесу запускать интеллектуальных виртуальных ассистентов без единой строки кода. Агенты работают одновременно в Telegram, ВКонтакте, Instagram, VK Мессенджере и на сайте.</p>
 
-                <!-- 3D STEPS -->
                 <div class="steps-3d">
                     <div class="step-item">
                         <div class="step-dot"></div>
@@ -553,35 +533,33 @@
                     </div>
                 </div>
 
-                <!-- WHY -->
                 <div class="why-section reveal">
                     <h3>💡 Почему это важно</h3>
                     <p>«АгентУм» убирает технический барьер между бизнесом и AI. Вы получаете готового цифрового сотрудника, который консультирует, продаёт, записывает клиентов и масштабируется вместе с вашим проектом.</p>
                 </div>
 
-                <!-- FEATURES GRID -->
                 <div class="features-grid">
-                    <div class="feature-item reveal">
+                    <div class="feature-item">
                         <span class="feat-icon">💬</span>
                         <span class="feat-text">Telegram</span>
                     </div>
-                    <div class="feature-item reveal">
+                    <div class="feature-item">
                         <span class="feat-icon">🔵</span>
                         <span class="feat-text">ВКонтакте</span>
                     </div>
-                    <div class="feature-item reveal">
+                    <div class="feature-item">
                         <span class="feat-icon">📸</span>
                         <span class="feat-text">Instagram</span>
                     </div>
-                    <div class="feature-item reveal">
+                    <div class="feature-item">
                         <span class="feat-icon">🌐</span>
                         <span class="feat-text">Сайт</span>
                     </div>
-                    <div class="feature-item reveal">
+                    <div class="feature-item">
                         <span class="feat-icon">🔒</span>
                         <span class="feat-text">AES-256</span>
                     </div>
-                    <div class="feature-item reveal">
+                    <div class="feature-item">
                         <span class="feat-icon">⚡</span>
                         <span class="feat-text">No-Code</span>
                     </div>
@@ -590,7 +568,7 @@
         </div>
 
         <div style="text-align:center;">
-            <a href="index.html" class="back-link reveal">
+            <a href="#" class="back-link reveal" id="backToHome2">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 2L4 8l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 На главную КРИСТИНА.AI
             </a>
@@ -606,7 +584,6 @@
     </footer>
 
     <script>
-        // === PARTICLES ===
         const canvas = document.getElementById('particlesCanvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -654,7 +631,6 @@
         }
         animateParticles();
 
-        // === GOLD DUST ===
         const goldDust = document.getElementById('goldDust');
         for (let i = 0; i < 15; i++) {
             const dust = document.createElement('div');
@@ -666,11 +642,9 @@
             goldDust.appendChild(dust);
         }
 
-        // === HEADER SCROLL ===
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50));
 
-        // === REVEAL ON SCROLL ===
         const revealObserver = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -691,7 +665,7 @@
             revealObserver.observe(el);
         });
 
-        // === 3D TILT ON HOVER ===
+        // 3D TILT
         const card3d = document.querySelector('.platform-card-3d');
         if (card3d && window.innerWidth > 768) {
             card3d.addEventListener('mousemove', (e) => {
@@ -708,6 +682,29 @@
                 card3d.style.transform = 'rotateX(0deg) rotateY(0deg)';
             });
         }
+
+        // Убираем # из адресной строки
+        function removeHash() {
+            history.replaceState(null, null, window.location.pathname + window.location.search);
+        }
+        removeHash();
+
+        // Кнопки "На главную" — скролл вверх и очистка hash
+        document.querySelectorAll('#backToHome, #backToHome2').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                removeHash();
+            });
+        });
+
+        // Убираем hash при любом клике на ссылки с #
+        document.querySelectorAll('a[href="#"]').forEach(a => {
+            a.addEventListener('click', (e) => {
+                e.preventDefault();
+                removeHash();
+            });
+        });
     </script>
 </body>
 </html>
