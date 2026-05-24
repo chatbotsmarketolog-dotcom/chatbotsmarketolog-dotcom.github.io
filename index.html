@@ -13,173 +13,1057 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700;800;900&family=Cormorant+Garamond:wght@500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gold: #D4AF37;
-            --gold-light: #E5C158;
-            --gold-glow: rgba(212, 175, 55, 0.3);
-            --emerald: #0B3B2A;
+            --cherry-deepest: #1A0508;
+            --cherry-deep: #2D0A12;
+            --cherry-dark: #4A1020;
+            --cherry-primary: #6B1830;
+            --cherry-mid: #8C2240;
+            --cherry-light: #A82D52;
+            --gold-primary: #C9A84C;
+            --gold-light: #D4BA5E;
+            --gold-bright: #E8D078;
+            --gold-pale: #F0E0A0;
+            --gold-glow: rgba(201, 168, 76, 0.25);
+            --gold-glow-strong: rgba(201, 168, 76, 0.45);
+            --emerald-deep: #0A2E1A;
+            --emerald-primary: #0B3B2A;
             --emerald-light: #1A5B3A;
-            --emerald-glow: rgba(11, 59, 42, 0.4);
-            --bg-primary: #5C1E2E;
-            --bg-secondary: #6B2A3A;
-            --bg-card: rgba(80, 20, 40, 0.85);
-            --bg-card-hover: rgba(100, 30, 50, 0.9);
-            --text-primary: #F5F0EB;
-            --text-secondary: #D0C0B0;
-            --text-muted: #B0A090;
-            --border: rgba(255, 255, 255, 0.06);
-            --border-gold: rgba(212, 175, 55, 0.4);
-            --border-emerald: rgba(11, 59, 42, 0.4);
-            --shadow-gold: 0 0 20px rgba(212, 175, 55, 0.15);
-            --shadow-emerald: 0 0 20px rgba(11, 59, 42, 0.2);
+            --emerald-glow: rgba(11, 59, 42, 0.35);
+            --text-primary: #F8F0E8;
+            --text-secondary: #D8C8B8;
+            --text-muted: #A89888;
+            --card-bg: rgba(74, 16, 32, 0.55);
+            --card-bg-solid: rgba(74, 16, 32, 0.75);
+            --card-border: rgba(201, 168, 76, 0.12);
+            --card-border-hover: rgba(201, 168, 76, 0.35);
+            --glass-bg: rgba(45, 10, 18, 0.6);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; position: relative; }
-        body::before {
+        html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--cherry-deepest);
+            color: var(--text-primary);
+            line-height: 1.65;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* === ФОНОВЫЕ СЛОИ === */
+        .bg-layer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+
+        /* Слой 1: Вишнёвый градиент */
+        .bg-gradient {
+            background:
+                radial-gradient(ellipse at 15% 20%, rgba(107, 24, 48, 0.5) 0%, transparent 50%),
+                radial-gradient(ellipse at 85% 80%, rgba(74, 16, 32, 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(45, 10, 18, 0.8) 0%, transparent 70%),
+                linear-gradient(180deg, var(--cherry-deepest) 0%, var(--cherry-deep) 50%, var(--cherry-deepest) 100%);
+        }
+
+        /* Слой 2: Клеточки-плитка */
+        .bg-grid {
+            background-image:
+                linear-gradient(rgba(201, 168, 76, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201, 168, 76, 0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+        }
+
+        .bg-grid::before {
             content: '';
-            position: fixed;
-            top: 0;
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(201, 168, 76, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201, 168, 76, 0.015) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* Слой 3: Золотые слитки на клетках */
+        .bg-gold-nodes {
+            background-image:
+                radial-gradient(circle, rgba(201, 168, 76, 0.15) 1px, transparent 1px);
+            background-size: 80px 80px;
+            background-position: 40px 40px;
+            animation: goldNodesPulse 4s ease-in-out infinite;
+        }
+        @keyframes goldNodesPulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        /* Слой 4: Полупрозрачная вишня поверх */
+        .bg-overlay {
+            background: linear-gradient(180deg,
+                rgba(26, 5, 8, 0.3) 0%,
+                rgba(45, 10, 18, 0.15) 40%,
+                rgba(74, 16, 32, 0.2) 60%,
+                rgba(26, 5, 8, 0.4) 100%);
+        }
+
+        /* Слой 5: Анимированные частицы */
+        .particles-canvas { z-index: 1; }
+
+        /* === ЗОЛОТЫЕ ЛЕНТЫ === */
+        .gold-ribbons { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; }
+        .ribbon {
+            position: absolute;
+            width: 2px;
+            background: linear-gradient(to bottom,
+                transparent 0%,
+                var(--gold-primary) 15%,
+                var(--gold-light) 30%,
+                var(--emerald-primary) 55%,
+                var(--emerald-light) 70%,
+                transparent 100%);
+            opacity: 0;
+            animation: ribbonFlow 12s ease-in-out infinite;
+        }
+        .ribbon:nth-child(1) { left: 8%; top: -10%; height: 35%; animation-delay: 0s; }
+        .ribbon:nth-child(2) { left: 22%; top: -15%; height: 45%; animation-delay: -3s; }
+        .ribbon:nth-child(3) { right: 12%; top: -20%; height: 40%; animation-delay: -6s; }
+        .ribbon:nth-child(4) { right: 28%; top: -10%; height: 30%; animation-delay: -9s; }
+        .ribbon:nth-child(5) { left: 45%; top: -5%; height: 25%; animation-delay: -2s; }
+        .ribbon:nth-child(6) { right: 45%; top: -15%; height: 35%; animation-delay: -7s; }
+        @keyframes ribbonFlow {
+            0% { opacity: 0; transform: translateY(-100%) rotate(2deg); }
+            15% { opacity: 0.5; }
+            50% { opacity: 0.7; }
+            85% { opacity: 0.4; }
+            100% { opacity: 0; transform: translateY(120vh) rotate(-2deg); }
+        }
+
+        /* Горизонтальные золотые волны */
+        .gold-waves { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+        .gold-wave {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                rgba(201, 168, 76, 0.08) 20%,
+                rgba(201, 168, 76, 0.15) 50%,
+                rgba(11, 59, 42, 0.1) 70%,
+                transparent 100%);
+            animation: waveSlide 15s linear infinite;
+        }
+        .gold-wave:nth-child(1) { top: 25%; width: 60%; left: -60%; }
+        .gold-wave:nth-child(2) { top: 55%; width: 40%; left: -40%; animation-delay: -5s; animation-duration: 20s; }
+        .gold-wave:nth-child(3) { top: 75%; width: 50%; left: -50%; animation-delay: -10s; animation-duration: 18s; }
+        @keyframes waveSlide {
+            0% { transform: translateX(0); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateX(250vw); opacity: 0; }
+        }
+
+        /* Плавающие золотые точки */
+        .gold-dust { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+        .dust-particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--gold-primary);
+            border-radius: 50%;
+            box-shadow: 0 0 6px var(--gold-glow);
+            animation: dustFloat 8s ease-in-out infinite;
+        }
+        @keyframes dustFloat {
+            0%, 100% { transform: translate(0, 0) scale(0.5); opacity: 0; }
+            25% { opacity: 0.8; transform: translate(20px, -40px) scale(1); }
+            50% { opacity: 0.6; transform: translate(-10px, -80px) scale(0.8); }
+            75% { opacity: 0.4; transform: translate(30px, -120px) scale(0.6); }
+        }
+
+        /* === ОБЩИЕ СТИЛИ === */
+        h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; font-weight: 700; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+            position: relative;
+        }
+        .section-title span {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-bright), var(--gold-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), var(--emerald-primary), transparent);
+            margin: 16px auto 0;
+        }
+        .section-subtitle { text-align: center; color: var(--text-secondary); font-size: 1.1rem; max-width: 600px; margin: 0 auto 48px; }
+
+        /* === HEADER === */
+        .header {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            padding: 18px 0;
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            background: transparent;
+            border-bottom: 1px solid transparent;
+        }
+        .header.scrolled {
+            background: rgba(26, 5, 8, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--card-border);
+            padding: 12px 0;
+        }
+        .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-bright));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 3px;
+            position: relative;
+        }
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
             left: 0;
             width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-            background: 
-                linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 30%),
-                radial-gradient(circle at 80% 70%, rgba(11, 59, 42, 0.08) 0%, transparent 30%);
-            animation: bgFloat 20s ease-in-out infinite;
+            height: 1px;
+            background: linear-gradient(90deg, var(--gold-primary), transparent);
         }
-        @keyframes bgFloat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        /* Золотые анимированные линии */
-        .gold-lines { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
-        .gold-line { position: absolute; opacity: 0.2; background: linear-gradient(to bottom, transparent, var(--gold), transparent); animation: floatLine 8s ease-in-out infinite; }
-        .gold-line:nth-child(1) { left: 5%; top: 10%; width: 2px; height: 200px; animation-delay: 0s; }
-        .gold-line:nth-child(2) { left: 15%; top: 40%; width: 2px; height: 150px; animation-delay: -2s; }
-        .gold-line:nth-child(3) { right: 10%; bottom: 20%; width: 2px; height: 250px; animation-delay: -4s; }
-        .gold-line:nth-child(4) { right: 25%; top: 30%; width: 2px; height: 180px; animation-delay: -6s; }
-        @keyframes floatLine {
-            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
-            50% { transform: translateY(-30px) rotate(3deg); opacity: 0.4; }
-        }
-
-        h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', 'Cormorant Garamond', serif; font-weight: 700; }
-        a { text-decoration: none; color: inherit; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
-        .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; text-align: center; margin-bottom: 16px; color: var(--text-primary); }
-        .section-title span { color: var(--gold); }
-        .section-subtitle { text-align: center; color: var(--text-secondary); font-size: 1.1rem; max-width: 600px; margin: 0 auto 40px; }
-
-        /* Header */
-        .header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; transition: all 0.4s ease; backdrop-filter: blur(10px); background: rgba(80, 20, 40, 0.8); }
-        .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
-        .logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 800; color: var(--gold); letter-spacing: 2px; }
         .nav { display: flex; align-items: center; gap: 32px; }
-        .nav a { font-size: 0.9rem; font-weight: 500; color: var(--text-secondary); transition: color 0.3s ease; position: relative; }
-        .nav a:hover { color: var(--gold); }
-        .nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease; }
+        .nav a { font-size: 0.85rem; font-weight: 500; color: var(--text-secondary); transition: all 0.3s ease; position: relative; letter-spacing: 0.5px; }
+        .nav a:hover { color: var(--gold-primary); }
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, var(--gold-primary), var(--emerald-primary));
+            transition: width 0.4s ease;
+        }
         .nav a:hover::after { width: 100%; }
-        .nav-btn { background: var(--gold); color: var(--bg-primary); padding: 10px 24px; border-radius: 50px; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease; border: none; cursor: pointer; }
-        .nav-btn:hover { box-shadow: 0 0 30px var(--gold-glow); transform: translateY(-2px); }
+        .nav-btn {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
+            color: var(--cherry-deepest);
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: none;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        .nav-btn:hover::before { transform: translateX(100%); }
+        .nav-btn:hover { box-shadow: 0 0 30px var(--gold-glow), 0 0 60px rgba(201, 168, 76, 0.15); transform: translateY(-2px); }
 
-        /* Hero */
-        .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; position: relative; overflow: hidden; background: transparent; }
-        .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
-        .hero-content { animation: fadeInUp 1s ease forwards; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: rgba(212,175,55,0.15); border: 1px solid var(--border-gold); border-radius: 50px; font-size: 0.85rem; font-weight: 500; color: var(--gold); margin-bottom: 24px; }
-        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 24px; color: var(--text-primary); }
-        .hero h1 span { color: var(--gold); }
-        .hero-text { font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 36px; max-width: 500px; }
+        /* === HERO === */
+        .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; position: relative; overflow: hidden; }
+        .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 2; }
+        .hero-content { animation: heroFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes heroFadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.12), rgba(11, 59, 42, 0.08));
+            border: 1px solid rgba(201, 168, 76, 0.25);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--gold-primary);
+            margin-bottom: 28px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            animation: badgePulse 3s ease-in-out infinite;
+        }
+        @keyframes badgePulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.1); }
+            50% { box-shadow: 0 0 0 8px rgba(201, 168, 76, 0); }
+        }
+        .hero h1 {
+            font-size: clamp(2.8rem, 5vw, 4.2rem);
+            font-weight: 800;
+            line-height: 1.08;
+            margin-bottom: 28px;
+            color: var(--text-primary);
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-bright) 40%, var(--emerald-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-text { font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 40px; max-width: 520px; line-height: 1.7; }
         .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
-        .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; background: var(--emerald); color: var(--text-primary); border: none; border-radius: 50px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; font-family: inherit; }
-        .btn-primary:hover { background: var(--emerald-light); box-shadow: 0 0 30px var(--emerald-glow); transform: translateY(-2px); }
-        .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; background: transparent; color: var(--gold); border: 1px solid var(--gold); border-radius: 50px; font-size: 1rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease; font-family: inherit; }
-        .btn-secondary:hover { background: var(--gold); color: var(--bg-primary); }
-        .hero-visual { display: flex; justify-content: center; animation: fadeInRight 1s ease 0.3s forwards; opacity: 0; }
-        .phone-mockup { position: relative; width: 300px; height: 580px; background: var(--bg-card); border-radius: 40px; border: 2px solid var(--border-gold); overflow: hidden; box-shadow: 0 0 60px rgba(212,175,55,0.2), 0 20px 60px rgba(0,0,0,0.4); animation: phoneFloat 6s ease-in-out infinite; }
-        @keyframes phoneFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        .phone-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 28px; background: var(--bg-primary); border-radius: 0 0 20px 20px; z-index: 2; }
+
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 16px 36px;
+            background: linear-gradient(135deg, var(--emerald-primary), var(--emerald-light));
+            color: var(--text-primary);
+            border: 1px solid rgba(26, 91, 58, 0.5);
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            font-family: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(255,255,255,0.08), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        .btn-primary:hover::before { transform: translateX(100%); }
+        .btn-primary:hover { box-shadow: 0 0 40px var(--emerald-glow); transform: translateY(-3px); }
+
+        .btn-secondary {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 16px 36px;
+            background: transparent;
+            color: var(--gold-primary);
+            border: 1px solid rgba(201, 168, 76, 0.35);
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            font-family: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.1), rgba(201, 168, 76, 0.05));
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 30px rgba(201, 168, 76, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .hero-visual {
+            display: flex; justify-content: center;
+            animation: heroFadeRight 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+            opacity: 0;
+        }
+        @keyframes heroFadeRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
+
+        .phone-mockup {
+            position: relative;
+            width: 300px; height: 580px;
+            background: linear-gradient(160deg, rgba(74, 16, 32, 0.9), rgba(45, 10, 18, 0.95));
+            border-radius: 40px;
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            overflow: hidden;
+            box-shadow:
+                0 0 80px rgba(201, 168, 76, 0.08),
+                0 30px 80px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(201, 168, 76, 0.1);
+            animation: phoneFloat 6s ease-in-out infinite;
+        }
+        @keyframes phoneFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(0.5deg); }
+        }
+        .phone-mockup::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 40px;
+            padding: 1px;
+            background: linear-gradient(180deg, rgba(201, 168, 76, 0.3), transparent 40%, transparent 60%, rgba(11, 59, 42, 0.3));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        .phone-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 28px; background: var(--cherry-deepest); border-radius: 0 0 20px 20px; z-index: 2; }
         .phone-screen { padding: 40px 16px 16px; height: 100%; display: flex; flex-direction: column; }
-        .phone-header { text-align: center; padding-bottom: 12px; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
-        .phone-header h4 { font-size: 0.9rem; color: var(--gold); }
+        .phone-header { text-align: center; padding-bottom: 12px; border-bottom: 1px solid rgba(201, 168, 76, 0.08); margin-bottom: 16px; }
+        .phone-header h4 { font-size: 0.9rem; color: var(--gold-primary); }
         .phone-header p { font-size: 0.7rem; color: var(--text-muted); }
         .chat-messages { flex: 1; display: flex; flex-direction: column; gap: 12px; }
-        .chat-msg { max-width: 85%; padding: 10px 14px; border-radius: 16px; font-size: 0.8rem; line-height: 1.4; opacity: 0; animation: msgAppear 0.5s ease forwards; }
-        .chat-msg.ai { background: rgba(11,59,42,0.25); border: 1px solid var(--border-emerald); align-self: flex-start; border-bottom-left-radius: 4px; color: var(--text-secondary); }
-        .chat-msg.user { background: rgba(212,175,55,0.2); border: 1px solid var(--border-gold); align-self: flex-end; border-bottom-right-radius: 4px; color: var(--text-primary); }
-        .chat-msg:nth-child(1) { animation-delay: 0.8s; } .chat-msg:nth-child(2) { animation-delay: 1.6s; } .chat-msg:nth-child(3) { animation-delay: 2.4s; } .chat-msg:nth-child(4) { animation-delay: 3.2s; } .chat-msg:nth-child(5) { animation-delay: 4s; }
-        @keyframes msgAppear { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+        .chat-msg {
+            max-width: 85%; padding: 10px 14px; border-radius: 16px; font-size: 0.78rem; line-height: 1.45;
+            opacity: 0;
+            animation: chatAppear 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .chat-msg.ai {
+            background: rgba(11, 59, 42, 0.2);
+            border: 1px solid rgba(11, 59, 42, 0.3);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+            color: var(--text-secondary);
+        }
+        .chat-msg.user {
+            background: rgba(201, 168, 76, 0.1);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+            color: var(--text-primary);
+        }
+        .chat-msg:nth-child(1) { animation-delay: 0.8s; }
+        .chat-msg:nth-child(2) { animation-delay: 1.8s; }
+        .chat-msg:nth-child(3) { animation-delay: 2.8s; }
+        .chat-msg:nth-child(4) { animation-delay: 3.8s; }
+        .chat-msg:nth-child(5) { animation-delay: 4.8s; }
+        @keyframes chatAppear { from { opacity: 0; transform: translateY(12px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
-        /* Services cards animation */
-        .service-card { transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1.2); }
-        .service-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 20px 40px rgba(212,175,55,0.25); }
+        /* === REVEAL ANIMATIONS === */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
 
-        /* Reveal animation for scroll */
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
+        /* === PAIN SECTION === */
+        .pain-section { padding: 100px 0; }
+        .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .pain-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 36px 28px;
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        .pain-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.05), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .pain-card:hover::before { opacity: 1; }
+        .pain-card:hover {
+            border-color: var(--card-border-hover);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(201, 168, 76, 0.08), 0 0 1px rgba(201, 168, 76, 0.2);
+        }
+        .pain-icon { font-size: 2.5rem; margin-bottom: 16px; display: block; }
+        .pain-card h3 { font-size: 1.2rem; margin-bottom: 10px; color: var(--gold-primary); }
+        .pain-card p { color: var(--text-secondary); font-size: 0.95rem; }
 
-        .pain-card:hover { border-color: var(--border-gold); transform: translateY(-5px); box-shadow: var(--shadow-gold); }
+        .pain-conclusion {
+            text-align: center;
+            padding: 24px 32px;
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.06), rgba(11, 59, 42, 0.04));
+            margin-top: 32px;
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+        .pain-conclusion::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 16px;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.2), transparent, rgba(11, 59, 42, 0.2));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        /* === STATS === */
         .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin: 60px 0; }
-        .stat-item { text-align: center; padding: 24px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; }
-        .stat-number { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 800; color: var(--gold); }
-        .quiz-container { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 40px; text-align: center; }
-        .quiz-answer { padding: 16px 20px; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; color: var(--text-secondary); cursor: pointer; transition: all 0.3s ease; }
-        .quiz-answer:hover { border-color: var(--gold); background: rgba(212,175,55,0.1); }
-        .reviews-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 40px; }
-        .review-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: all 0.4s ease; }
-        .review-card:hover { border-color: var(--border-gold); }
-        .contact-method { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; transition: all 0.3s ease; }
-        .contact-method:hover { border-color: var(--border-gold); }
-        .application-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 36px; }
-        .application-card input, .application-card select, .application-card textarea { width: 100%; padding: 14px 16px; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; color: var(--text-primary); font-size: 0.95rem; margin-bottom: 20px; outline: none; }
-        .application-card input:focus, .application-card select:focus, .application-card textarea:focus { border-color: var(--gold); }
-        .btn-lead { flex: 1; min-width: 180px; padding: 16px 20px; border: none; border-radius: 14px; font-size: 1rem; font-weight: 700; color: #fff; cursor: pointer; }
-        .btn-lead.vk { background: var(--emerald); border: 1px solid var(--emerald-light); }
-        .btn-lead.vk:hover { background: var(--emerald-light); }
-        .btn-lead.tg { background: var(--gold); color: var(--bg-primary); }
-        .btn-lead.tg:hover { background: var(--gold-light); }
-        .footer { border-top: 1px solid var(--border); padding: 48px 0 32px; background: rgba(60, 20, 30, 0.9); }
+        .stat-item {
+            text-align: center;
+            padding: 32px 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        .stat-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+            opacity: 0.3;
+        }
+        .stat-item:hover {
+            border-color: var(--card-border-hover);
+            transform: translateY(-5px);
+        }
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-bright));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-label { color: var(--text-secondary); font-size: 0.9rem; margin-top: 8px; }
+
+        /* === QUIZ === */
+        .quiz-section { padding: 100px 0; }
+        .quiz-container {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 28px;
+            padding: 48px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+        }
+        .quiz-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), var(--emerald-primary), transparent);
+        }
+        .quiz-answer {
+            padding: 18px 24px;
+            background: rgba(45, 10, 18, 0.6);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+        .quiz-answer:hover {
+            border-color: var(--gold-primary);
+            background: rgba(201, 168, 76, 0.06);
+            color: var(--text-primary);
+            transform: translateX(4px);
+        }
+
+        /* === SERVICES === */
+        .services-section { padding: 100px 0; }
+        .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 40px;
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(160deg, rgba(201, 168, 76, 0.04) 0%, transparent 40%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .service-card:hover::before { opacity: 1; }
+        .service-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            border-color: var(--card-border-hover);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3), 0 0 1px rgba(201, 168, 76, 0.3);
+        }
+        .service-card h3 { font-size: 1.3rem; margin-bottom: 14px; color: var(--gold-primary); }
+        .service-card p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0; }
+        .service-card .price { font-size: 2rem; font-weight: 800; margin: 24px 0; }
+        .btn-service {
+            border: 1px solid rgba(201, 168, 76, 0.35);
+            color: var(--gold-primary);
+            padding: 14px 28px;
+            border-radius: 12px;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            width: 100%;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-service::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .btn-service:hover::before { opacity: 1; }
+        .btn-service:hover {
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 25px rgba(201, 168, 76, 0.12);
+        }
+        .service-card.highlight {
+            border: 1px solid rgba(201, 168, 76, 0.25);
+            background: linear-gradient(160deg, rgba(74, 16, 32, 0.7), rgba(45, 10, 18, 0.8));
+        }
+        .service-card.highlight::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), var(--emerald-primary), transparent);
+        }
+
+        /* === REVIEWS === */
+        .reviews-section { padding: 100px 0; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-bottom: 40px; }
+        .review-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 36px;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        .review-card::before {
+            content: '❝';
+            position: absolute;
+            top: 12px; right: 20px;
+            font-size: 4rem;
+            color: rgba(201, 168, 76, 0.06);
+            font-family: serif;
+        }
+        .review-card:hover {
+            border-color: var(--card-border-hover);
+            transform: translateY(-5px);
+        }
+        .review-text { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; font-style: italic; }
+        .review-avatar {
+            width: 44px; height: 44px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--emerald-primary), var(--gold-primary));
+            display: flex; align-items: center; justify-content: center;
+            color: var(--cherry-deepest); font-weight: 700; font-size: 1.1rem;
+        }
+        .review-name { font-weight: 600; color: var(--text-primary); }
+        .review-link-box {
+            text-align: center;
+            padding: 28px;
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.06), rgba(11, 59, 42, 0.04));
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            border-radius: 20px;
+        }
+
+        /* === CONTACT === */
+        .contact-section { padding: 100px 0; }
+        .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+        .contact-method {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+        .contact-method:hover {
+            border-color: var(--card-border-hover);
+            transform: translateX(6px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        .contact-method-icon {
+            width: 48px; height: 48px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+        .contact-method h4 { font-size: 1rem; margin-bottom: 2px; }
+        .contact-method p { color: var(--text-muted); font-size: 0.85rem; }
+
+        .application-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 28px;
+            padding: 40px;
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+        }
+        .application-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 2px;
+            background: linear-gradient(90deg, var(--gold-primary), var(--emerald-primary), var(--gold-primary));
+        }
+        .application-card input,
+        .application-card select,
+        .application-card textarea {
+            width: 100%;
+            padding: 16px 18px;
+            background: rgba(26, 5, 8, 0.6);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            margin-bottom: 18px;
+            outline: none;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        .application-card input:focus,
+        .application-card select:focus,
+        .application-card textarea:focus {
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 20px rgba(201, 168, 76, 0.1);
+        }
+        .application-card input::placeholder,
+        .application-card textarea::placeholder { color: var(--text-muted); }
+        .application-card select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='%23C9A84C'%3E%3Cpath d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; }
+
+        .btn-lead {
+            flex: 1;
+            min-width: 180px;
+            padding: 16px 20px;
+            border: none;
+            border-radius: 14px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-family: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-lead.vk {
+            background: linear-gradient(135deg, var(--emerald-primary), var(--emerald-light));
+            color: var(--text-primary);
+            border: 1px solid rgba(26, 91, 58, 0.4);
+        }
+        .btn-lead.vk:hover { box-shadow: 0 0 30px var(--emerald-glow); transform: translateY(-2px); }
+        .btn-lead.tg {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
+            color: var(--cherry-deepest);
+        }
+        .btn-lead.tg:hover { box-shadow: 0 0 30px var(--gold-glow); transform: translateY(-2px); }
+
+        /* === ABOUT === */
+        .about-section { padding: 100px 0; }
+        .about-inner { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: center; }
+        .about-photo { position: relative; }
+        .about-photo img {
+            width: 300px; height: 400px;
+            object-fit: cover;
+            border-radius: 28px;
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+        .about-photo::before {
+            content: '';
+            position: absolute;
+            top: -10px; left: -10px;
+            width: 100%; height: 100%;
+            border: 1px solid rgba(201, 168, 76, 0.1);
+            border-radius: 32px;
+        }
+        .about-content h2 { font-size: 2rem; margin-bottom: 20px; line-height: 1.3; }
+        .about-content p { color: var(--text-secondary); margin-bottom: 16px; line-height: 1.7; }
+
+        /* === FAQ === */
+        .faq-section { padding: 100px 0; }
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+        .faq-item:hover { border-color: var(--card-border-hover); }
+        .faq-question {
+            width: 100%;
+            padding: 22px 28px;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: inherit;
+            transition: color 0.3s ease;
+        }
+        .faq-question:hover { color: var(--gold-primary); }
+        .faq-icon {
+            color: var(--gold-primary);
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: transform 0.4s ease;
+        }
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .faq-answer-content { padding: 0 28px 24px; color: var(--text-secondary); line-height: 1.7; }
+
+        /* === FOOTER === */
+        .footer {
+            border-top: 1px solid rgba(201, 168, 76, 0.08);
+            padding: 56px 0 36px;
+            background: rgba(26, 5, 8, 0.6);
+            position: relative;
+            z-index: 2;
+        }
         .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(10px); z-index: 2000; align-items: center; justify-content: center; padding: 24px; }
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-bright));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-secondary); font-size: 0.85rem; transition: color 0.3s ease; }
+        .footer-links a:hover { color: var(--gold-primary); }
+
+        /* === MODALS === */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10, 2, 4, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
         .modal-overlay.active { display: flex; }
-        .modal { background: var(--bg-card); border: 1px solid var(--border-gold); border-radius: 20px; padding: 40px; max-width: 700px; width: 100%; max-height: 80vh; overflow-y: auto; position: relative; color: var(--text-primary); }
-        .modal-close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; background: var(--bg-secondary); border: 1px solid var(--border); color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center; }
-        .modal-close:hover { color: var(--gold); border-color: var(--gold); }
-        @media (max-width: 1024px) {
-            .hero-inner, .about-inner, .contact-inner { grid-template-columns: 1fr; text-align: center; }
-            .services-grid { grid-template-columns: 1fr; }
-            .hero-visual { order: -1; }
+        .modal {
+            background: linear-gradient(160deg, rgba(74, 16, 32, 0.95), rgba(45, 10, 18, 0.98));
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            border-radius: 28px;
+            padding: 44px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            color: var(--text-primary);
         }
-        @media (max-width: 768px) {
-            .nav { display: none; } .burger { display: flex; }
-            .pain-grid, .stats-row { grid-template-columns: 1fr; }
-            .reviews-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2rem; }
+        .modal::-webkit-scrollbar { width: 6px; }
+        .modal::-webkit-scrollbar-track { background: transparent; }
+        .modal::-webkit-scrollbar-thumb { background: rgba(201, 168, 76, 0.3); border-radius: 3px; }
+        .modal-close {
+            position: absolute;
+            top: 18px; right: 18px;
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: rgba(26, 5, 8, 0.6);
+            border: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
         }
+        .modal-close:hover { color: var(--gold-primary); border-color: var(--gold-primary); }
+        .modal h2 { font-size: 1.8rem; margin-bottom: 12px; color: var(--gold-primary); }
+        .modal h3 { font-size: 1.15rem; margin: 24px 0 10px; color: var(--gold-primary); }
+        .modal p { color: var(--text-secondary); margin-bottom: 12px; line-height: 1.7; }
+        .modal a { color: var(--gold-primary); }
+
+        /* === POPUPs === */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10, 2, 4, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 99999;
+            align-items: center;
+            justify-content: center;
+        }
+        .popup-overlay.active { display: flex; }
+        .popup-content {
+            background: linear-gradient(160deg, rgba(74, 16, 32, 0.95), rgba(45, 10, 18, 0.98));
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            padding: 36px;
+            border-radius: 24px;
+            max-width: 450px;
+            text-align: center;
+            color: var(--text-primary);
+            position: relative;
+            overflow: hidden;
+        }
+        .popup-content::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+        }
+        .popup-content h3 { font-size: 1.4rem; margin-bottom: 12px; }
+        .popup-content p { color: var(--text-secondary); margin-bottom: 16px; }
+        .popup-btn {
+            display: block;
+            padding: 14px;
+            border-radius: 12px;
+            margin: 12px 0;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .popup-btn.vk-btn { background: linear-gradient(135deg, var(--emerald-primary), var(--emerald-light)); color: var(--text-primary); }
+        .popup-btn.vk-btn:hover { box-shadow: 0 0 25px var(--emerald-glow); }
+        .popup-btn.tg-btn { background: linear-gradient(135deg, var(--gold-primary), var(--gold-light)); color: var(--cherry-deepest); }
+        .popup-btn.tg-btn:hover { box-shadow: 0 0 25px var(--gold-glow); }
+        .popup-close { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 0.9rem; margin-top: 8px; transition: color 0.3s ease; }
+        .popup-close:hover { color: var(--gold-primary); }
+
+        /* === BURGER === */
         .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; z-index: 1001; }
         .burger span { width: 28px; height: 2px; background: var(--text-primary); transition: all 0.3s ease; border-radius: 2px; }
         .burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
         .burger.active span:nth-child(2) { opacity: 0; }
         .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-        .mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(60, 20, 30, 0.97); backdrop-filter: blur(20px); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            background: rgba(26, 5, 8, 0.97);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 36px;
+        }
         .mobile-menu.active { display: flex; }
-        .mobile-menu a { font-size: 1.5rem; font-weight: 600; color: var(--text-secondary); transition: color 0.3s ease; }
-        .mobile-menu a:hover { color: var(--gold); }
+        .mobile-menu a { font-size: 1.5rem; font-weight: 600; color: var(--text-secondary); transition: all 0.3s ease; }
+        .mobile-menu a:hover { color: var(--gold-primary); }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 1024px) {
+            .hero-inner, .about-inner, .contact-inner { grid-template-columns: 1fr; text-align: center; }
+            .services-grid { grid-template-columns: 1fr; }
+            .hero-visual { order: -1; }
+            .hero-buttons { justify-content: center; }
+            .hero-text { margin-left: auto; margin-right: auto; }
+            .stats-row { grid-template-columns: repeat(2, 1fr); }
+            .pain-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .nav { display: none; }
+            .burger { display: flex; }
+            .pain-grid { grid-template-columns: 1fr; }
+            .stats-row { grid-template-columns: repeat(2, 1fr); }
+            .reviews-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.2rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .service-card.highlight { grid-column: span 1; }
+            .contact-inner { grid-template-columns: 1fr; }
+            .about-photo img { width: 250px; height: 320px; }
+            .about-inner { gap: 32px; }
+            .quiz-container { padding: 32px 24px; }
+            .application-card { padding: 28px 24px; }
+        }
+        @media (max-width: 480px) {
+            .stats-row { grid-template-columns: 1fr 1fr; gap: 16px; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn-lead { min-width: 100%; }
+        }
+
+        /* Скроллбар */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--cherry-deepest); }
+        ::-webkit-scrollbar-thumb { background: rgba(201, 168, 76, 0.3); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(201, 168, 76, 0.5); }
+
+        /* Декоративные разделители секций */
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.1), rgba(11, 59, 42, 0.1), transparent);
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
-    <div class="gold-lines">
-        <div class="gold-line"></div>
-        <div class="gold-line"></div>
-        <div class="gold-line"></div>
-        <div class="gold-line"></div>
+    <!-- ФОНОВЫЕ СЛОИ -->
+    <div class="bg-layer bg-gradient"></div>
+    <div class="bg-layer bg-grid"></div>
+    <div class="bg-layer bg-gold-nodes"></div>
+    <div class="bg-layer bg-overlay"></div>
+    <canvas class="bg-layer particles-canvas" id="particlesCanvas"></canvas>
+
+    <!-- ЗОЛОТЫЕ ЛЕНТЫ -->
+    <div class="gold-ribbons">
+        <div class="ribbon"></div>
+        <div class="ribbon"></div>
+        <div class="ribbon"></div>
+        <div class="ribbon"></div>
+        <div class="ribbon"></div>
+        <div class="ribbon"></div>
     </div>
+
+    <!-- ЗОЛОТЫЕ ВОЛНЫ -->
+    <div class="gold-waves">
+        <div class="gold-wave"></div>
+        <div class="gold-wave"></div>
+        <div class="gold-wave"></div>
+    </div>
+
+    <!-- ЗОЛОТАЯ ПЫЛЬ -->
+    <div class="gold-dust" id="goldDust"></div>
+
+    <!-- HEADER -->
     <header class="header" id="header">
         <div class="header-inner">
             <a href="#" class="logo">КРИСТИНА.AI</a>
@@ -203,11 +1087,12 @@
         <a href="#contact" onclick="closeMobile()">Контакты</a>
     </div>
 
+    <!-- HERO -->
     <section class="hero" id="hero">
         <div class="container">
             <div class="hero-inner">
                 <div class="hero-content">
-                    <div class="hero-badge">ТЁПЛАЯ МАГИЯ ТЕХНОЛОГИЙ</div>
+                    <div class="hero-badge">✦ ТЁПЛАЯ МАГИЯ ТЕХНОЛОГИЙ ✦</div>
                     <h1>Ваш бренд будет <span>работать самостоятельно</span></h1>
                     <p class="hero-text">Создаю чат-ботов и AI-агентов, которые работают вместо вас 24/7, говорят вашим голосом и закрывают вопросы без вашего участия.</p>
                     <div class="hero-buttons">
@@ -234,35 +1119,44 @@
         </div>
     </section>
 
-    <section class="pain-section" id="pain" style="padding: 80px 0;">
+    <div class="section-divider"></div>
+
+    <!-- PAIN -->
+    <section class="pain-section" id="pain">
         <div class="container">
             <h2 class="section-title reveal">Узнаете себя?</h2>
             <p class="section-subtitle reveal">Эти проблемы знакомы большинству экспертов</p>
-            <div class="pain-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
-                <div class="pain-card reveal" style="background:var(--bg-card); border:1px solid var(--border); border-radius:20px; padding:32px;">
+            <div class="pain-grid">
+                <div class="pain-card reveal reveal-delay-1">
                     <div class="pain-icon">📩</div><h3>Хаос в переписках</h3><p>Клиенты пишут везде, вы путаетесь и теряете заявки.</p>
                 </div>
-                <div class="pain-card reveal" style="background:var(--bg-card); border:1px solid var(--border); border-radius:20px; padding:32px;">
+                <div class="pain-card reveal reveal-delay-2">
                     <div class="pain-icon">🔋</div><h3>Выгорание от рутины</h3><p>80% времени уходит на однотипные ответы.</p>
                 </div>
-                <div class="pain-card reveal" style="background:var(--bg-card); border:1px solid var(--border); border-radius:20px; padding:32px;">
+                <div class="pain-card reveal reveal-delay-3">
                     <div class="pain-icon">📉</div><h3>Слив бюджета</h3><p>Лиды не обрабатываются, деньги уходят конкурентам.</p>
                 </div>
             </div>
-            <div class="pain-conclusion reveal" style="text-align:center; padding:24px; border:1px solid var(--border-gold); border-radius:16px; background:rgba(212,175,55,0.05); margin-top:24px;">Вам нужна <strong>система, которая берёт рутину на себя</strong>.</div>
+            <div class="pain-conclusion reveal">Вам нужна <strong>система, которая берёт рутину на себя</strong>.</div>
         </div>
     </section>
 
-    <section class="container" style="padding: 60px 24px;">
+    <div class="section-divider"></div>
+
+    <!-- STATS -->
+    <section class="container">
         <div class="stats-row">
-            <div class="stat-item reveal"><div class="stat-number">6+</div><div class="stat-label">лет в маркетинге</div></div>
-            <div class="stat-item reveal"><div class="stat-number">4+</div><div class="stat-label">года в чат-ботах</div></div>
-            <div class="stat-item reveal"><div class="stat-number">30+</div><div class="stat-label">AI-проектов</div></div>
-            <div class="stat-item reveal"><div class="stat-number">24/7</div><div class="stat-label">работа агентов</div></div>
+            <div class="stat-item reveal reveal-delay-1"><div class="stat-number">6+</div><div class="stat-label">лет в маркетинге</div></div>
+            <div class="stat-item reveal reveal-delay-2"><div class="stat-number">4+</div><div class="stat-label">года в чат-ботах</div></div>
+            <div class="stat-item reveal reveal-delay-3"><div class="stat-number">30+</div><div class="stat-label">AI-проектов</div></div>
+            <div class="stat-item reveal reveal-delay-4"><div class="stat-number">24/7</div><div class="stat-label">работа агентов</div></div>
         </div>
     </section>
 
-    <section class="quiz-section" id="quiz" style="padding: 80px 0;">
+    <div class="section-divider"></div>
+
+    <!-- QUIZ -->
+    <section class="quiz-section" id="quiz">
         <div class="container">
             <h2 class="section-title reveal">Какой AI-инструмент нужен вашему бизнесу?</h2>
             <div class="quiz-container reveal" id="quizContainer">
@@ -278,89 +1172,135 @@
         </div>
     </section>
 
-    <section class="services-section" id="services" style="padding: 80px 0;">
+    <div class="section-divider"></div>
+
+    <!-- SERVICES -->
+    <section class="services-section" id="services">
         <div class="container">
             <h2 class="section-title reveal">VIP-решения для вашего бизнеса</h2>
             <p class="section-subtitle reveal">Каждая услуга — трансформация вашей системы</p>
-            <div class="services-grid" style="display:grid; grid-template-columns:repeat(2,1fr); gap:24px;">
-                <div class="service-card reveal" style="background:var(--bg-card); border:1px solid var(--border); border-radius:24px; padding:40px;">
-                    <h3 style="color:var(--gold);">Стратегическая диагностика</h3>
-                    <p style="color:var(--text-secondary);">Полный разбор вашей воронки продаж: от блога до чат-бота. Я нахожу, где теряются заявки и что нужно усилить. Вы получаете чёткий план действий.</p>
-                    <div style="font-size:1.8rem; font-weight:800; color:var(--gold); margin:20px 0;">3 000 ₽</div>
-                    <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="border:1px solid var(--gold); color:var(--gold); padding:14px 28px; border-radius:12px; background:transparent; cursor:pointer;">Записаться на диагностику</button>
+            <div class="services-grid">
+                <div class="service-card reveal reveal-delay-1">
+                    <h3>Стратегическая диагностика</h3>
+                    <p>Полный разбор вашей воронки продаж: от блога до чат-бота. Я нахожу, где теряются заявки и что нужно усилить. Вы получаете чёткий план действий.</p>
+                    <div class="price" style="color:var(--gold-primary);">3 000 ₽</div>
+                    <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Записаться на диагностику</button>
                 </div>
-                <div class="service-card reveal" style="background:var(--bg-card); border:1px solid var(--border); border-radius:24px; padding:40px;">
-                    <h3 style="color:var(--gold);">Чат-бот, который работает по вашим правилам</h3>
-                    <p style="color:var(--text-secondary);">Настраиваю помощника, который сам отвечает клиентам, собирает заявки и передаёт вам только готовых к покупке.</p>
-                    <div style="font-size:1.8rem; font-weight:800; color:var(--gold); margin:20px 0;">от 12 000 ₽</div>
-                    <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="border:1px solid var(--gold); color:var(--gold); padding:14px 28px; border-radius:12px; background:transparent; cursor:pointer;">Заказать бота</button>
+                <div class="service-card reveal reveal-delay-2">
+                    <h3>Чат-бот, который работает по вашим правилам</h3>
+                    <p>Настраиваю помощника, который сам отвечает клиентам, собирает заявки и передаёт вам только готовых к покупке.</p>
+                    <div class="price" style="color:var(--gold-primary);">от 12 000 ₽</div>
+                    <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Заказать бота</button>
                 </div>
-                <div class="service-card reveal" style="background:var(--bg-card); border:1px solid var(--border); border-radius:24px; padding:40px;">
-                    <h3 style="color:var(--gold);">Сайт на чистом коде с вашим личным конструктором</h3>
-                    <p style="color:var(--text-secondary);">Создаю сайт, который продаёт за вас, и даю инструмент для самостоятельных правок.</p>
-                    <div style="font-size:1.8rem; font-weight:800; color:var(--gold); margin:20px 0;">28 888 ₽</div>
-                    <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="border:1px solid var(--gold); color:var(--gold); padding:14px 28px; border-radius:12px; background:transparent; cursor:pointer;">Обсудить сайт</button>
+                <div class="service-card reveal reveal-delay-1">
+                    <h3>Сайт на чистом коде с вашим личным конструктором</h3>
+                    <p>Создаю сайт, который продаёт за вас, и даю инструмент для самостоятельных правок.</p>
+                    <div class="price" style="color:var(--gold-primary);">28 888 ₽</div>
+                    <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Обсудить сайт</button>
                 </div>
-                <div class="service-card reveal" style="background:var(--bg-card); border:1px solid var(--border); border-radius:24px; padding:40px;">
-                    <h3 style="color:var(--gold);">Сайт на Tilda: быстро и эффективно</h3>
-                    <p style="color:var(--text-secondary);">Для тех, кому нужен стильный работающий сайт в короткие сроки. Я настраиваю всё под вашу нишу.</p>
-                    <div style="font-size:1.8rem; font-weight:800; color:var(--gold); margin:20px 0;">12 000 ₽</div>
-                    <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="border:1px solid var(--gold); color:var(--gold); padding:14px 28px; border-radius:12px; background:transparent; cursor:pointer;">Хочу сайт на Tilda</button>
+                <div class="service-card reveal reveal-delay-2">
+                    <h3>Сайт на Tilda: быстро и эффективно</h3>
+                    <p>Для тех, кому нужен стильный работающий сайт в короткие сроки. Я настраиваю всё под вашу нишу.</p>
+                    <div class="price" style="color:var(--gold-primary);">12 000 ₽</div>
+                    <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Хочу сайт на Tilda</button>
                 </div>
-                <div class="service-card reveal" style="background:var(--bg-card); border:1px solid var(--border); border-radius:24px; padding:40px;">
-                    <h3 style="color:var(--gold);">AI-менеджер, который общается сам</h3>
-                    <p style="color:var(--text-secondary);">Нейросетевой помощник, обученный вашей экспертизе. Понимает вопросы клиентов и подводит их к покупке.</p>
-                    <div style="font-size:1.8rem; font-weight:800; color:var(--gold); margin:20px 0;">от 50 000 ₽</div>
-                    <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="border:1px solid var(--gold); color:var(--gold); padding:14px 28px; border-radius:12px; background:transparent; cursor:pointer;">Внедрить AI-агента</button>
+                <div class="service-card reveal reveal-delay-1">
+                    <h3>AI-менеджер, который общается сам</h3>
+                    <p>Нейросетевой помощник, обученный вашей экспертизе. Понимает вопросы клиентов и подводит их к покупке.</p>
+                    <div class="price" style="color:var(--gold-primary);">от 50 000 ₽</div>
+                    <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Внедрить AI-агента</button>
                 </div>
-                <div class="service-card reveal" style="background:var(--bg-card); border:1px solid var(--border); border-radius:24px; padding:40px;">
-                    <h3 style="color:var(--gold);">Коучинг: убрать страхи, которые мешают зарабатывать</h3>
-                    <p style="color:var(--text-secondary);">Даже если вы сами психолог или коуч, есть блоки, которые вы не видите у себя. Я помогу снять страх высокой цены, отказа или самозванца.</p>
-                    <div style="font-size:1.8rem; font-weight:800; color:var(--gold); margin:20px 0;">1 сессия — 5 500 ₽<br><small>4 сессии — 8 888 ₽</small></div>
-                    <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="border:1px solid var(--gold); color:var(--gold); padding:14px 28px; border-radius:12px; background:transparent; cursor:pointer;">Записаться на сессию</button>
+                <div class="service-card reveal reveal-delay-2">
+                    <h3>Коучинг: убрать страхи, которые мешают зарабатывать</h3>
+                    <p>Даже если вы сами психолог или коуч, есть блоки, которые вы не видите у себя. Я помогу снять страх высокой цены, отказа или самозванца.</p>
+                    <div class="price" style="color:var(--gold-primary); font-size:1.5rem;">1 сессия — 5 500 ₽<br><small>4 сессии — 8 888 ₽</small></div>
+                    <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Записаться на сессию</button>
                 </div>
-                <div class="service-card reveal" style="grid-column: span 2; background:var(--bg-card); border:2px solid var(--border-gold); border-radius:24px; padding:40px;">
-                    <h3 style="color:var(--gold);">Полный запуск системы продаж под ключ</h3>
-                    <p style="color:var(--text-secondary);">Сайт, чат-бот, автоматизация заявок и параллельная работа с внутренними препятствиями. Через месяц вы получаете работающий механизм и уверенность.</p>
-                    <div style="font-size:1.8rem; font-weight:800; color:var(--gold); margin:20px 0;">250 000 ₽</div>
+                <div class="service-card highlight reveal" style="grid-column: span 2;">
+                    <h3>Полный запуск системы продаж под ключ</h3>
+                    <p>Сайт, чат-бот, автоматизация заявок и параллельная работа с внутренними препятствиями. Через месяц вы получаете работающий механизм и уверенность.</p>
+                    <div class="price" style="color:var(--gold-primary);">250 000 ₽</div>
                     <p style="color:var(--text-muted);">Рассрочка: 2×125 000 ₽ или 4×62 500 ₽</p>
-                    <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="border:1px solid var(--gold); color:var(--gold); padding:14px 28px; border-radius:12px; background:transparent; cursor:pointer; margin-top:12px;">Обсудить систему под ключ</button>
+                    <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="margin-top:12px;">Обсудить систему под ключ</button>
                 </div>
-                <div class="service-card reveal" style="grid-column: span 2; text-align:center; background:var(--bg-card); border:1px solid var(--border); border-radius:24px; padding:40px;">
-                    <h3 style="color:var(--gold);">Курс «Триггер AI»</h3>
-                    <p style="color:var(--text-secondary);">Создайте своего агента без программистов. Пошаговая программа с шаблонами и моей поддержкой.</p>
-                    <div style="font-size:1.8rem; font-weight:800; color:var(--gold); margin:20px 0;">10 000 ₽</div>
-                    <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="border:1px solid var(--gold); color:var(--gold); padding:14px 28px; border-radius:12px; background:transparent; cursor:pointer;">Записаться на курс</button>
+                <div class="service-card highlight reveal" style="grid-column: span 2; text-align:center;">
+                    <h3>Курс «Триггер AI»</h3>
+                    <p>Создайте своего агента без программистов. Пошаговая программа с шаблонами и моей поддержкой.</p>
+                    <div class="price" style="color:var(--gold-primary);">10 000 ₽</div>
+                    <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Записаться на курс</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="reviews-section" id="reviews" style="padding: 80px 0;">
+    <div class="section-divider"></div>
+
+    <!-- REVIEWS -->
+    <section class="reviews-section" id="reviews">
         <div class="container">
             <h2 class="section-title reveal">Цифры и эмоции говорят громче слов</h2>
             <div class="reviews-grid">
-                <div class="review-card reveal"><div class="review-stars" style="color:var(--gold);">★★★★★</div><p class="review-text" style="color:var(--text-secondary);">«Поработали с Кристиной, мне нужно было сделать чат-бот. Справилась великолепно! Рекомендую!»</p><div class="review-author" style="display:flex; align-items:center; gap:12px;"><div class="review-avatar" style="width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg, var(--emerald), var(--gold)); display:flex; align-items:center; justify-content:center; color:var(--bg-primary); font-weight:700;">И</div><div><div class="review-name" style="font-weight:600;">Ирина</div></div></div></div>
-                <div class="review-card reveal"><div class="review-stars" style="color:var(--gold);">★★★★★</div><p class="review-text" style="color:var(--text-secondary);">«Спустя месяц: работаем в долгую. Схватывает на лету, подстраивается под запросы. Профессионал!»</p><div class="review-author" style="display:flex; align-items:center; gap:12px;"><div class="review-avatar" style="width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg, var(--emerald), var(--gold)); display:flex; align-items:center; justify-content:center; color:var(--bg-primary); font-weight:700;">И</div><div><div class="review-name" style="font-weight:600;">Ирина</div></div></div></div>
-                <div class="review-card reveal"><div class="review-stars" style="color:var(--gold);">★★★★★</div><p class="review-text" style="color:var(--text-secondary);">«Теперь клиент сам смотрит и пишет по делу. Кристина взяла меня в глубокую работу по запуску.»</p><div class="review-author" style="display:flex; align-items:center; gap:12px;"><div class="review-avatar" style="width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg, var(--emerald), var(--gold)); display:flex; align-items:center; justify-content:center; color:var(--bg-primary); font-weight:700;">Е</div><div><div class="review-name" style="font-weight:600;">Елена</div></div></div></div>
-                <div class="review-card reveal"><div class="review-stars" style="color:var(--gold);">★★★★★</div><p class="review-text" style="color:var(--text-secondary);">«AI-агент работает как мой цифровой двойник. Трачу в 3 раза меньше времени на коммуникацию.»</p><div class="review-author" style="display:flex; align-items:center; gap:12px;"><div class="review-avatar" style="width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg, var(--emerald), var(--gold)); display:flex; align-items:center; justify-content:center; color:var(--bg-primary); font-weight:700;">Д</div><div><div class="review-name" style="font-weight:600;">Дмитрий</div></div></div></div>
+                <div class="review-card reveal reveal-delay-1">
+                    <div class="review-stars" style="color:var(--gold-primary); margin-bottom:12px;">★★★★★</div>
+                    <p class="review-text">«Поработали с Кристиной, мне нужно было сделать чат-бот. Справилась великолепно! Рекомендую!»</p>
+                    <div class="review-author" style="display:flex; align-items:center; gap:12px; margin-top:20px;">
+                        <div class="review-avatar">И</div>
+                        <div><div class="review-name">Ирина</div></div>
+                    </div>
+                </div>
+                <div class="review-card reveal reveal-delay-2">
+                    <div class="review-stars" style="color:var(--gold-primary); margin-bottom:12px;">★★★★★</div>
+                    <p class="review-text">«Спустя месяц: работаем в долгую. Схватывает на лету, подстраивается под запросы. Профессионал!»</p>
+                    <div class="review-author" style="display:flex; align-items:center; gap:12px; margin-top:20px;">
+                        <div class="review-avatar">И</div>
+                        <div><div class="review-name">Ирина</div></div>
+                    </div>
+                </div>
+                <div class="review-card reveal reveal-delay-1">
+                    <div class="review-stars" style="color:var(--gold-primary); margin-bottom:12px;">★★★★★</div>
+                    <p class="review-text">«Теперь клиент сам смотрит и пишет по делу. Кристина взяла меня в глубокую работу по запуску.»</p>
+                    <div class="review-author" style="display:flex; align-items:center; gap:12px; margin-top:20px;">
+                        <div class="review-avatar">Е</div>
+                        <div><div class="review-name">Елена</div></div>
+                    </div>
+                </div>
+                <div class="review-card reveal reveal-delay-2">
+                    <div class="review-stars" style="color:var(--gold-primary); margin-bottom:12px;">★★★★★</div>
+                    <p class="review-text">«AI-агент работает как мой цифровой двойник. Трачу в 3 раза меньше времени на коммуникацию.»</p>
+                    <div class="review-author" style="display:flex; align-items:center; gap:12px; margin-top:20px;">
+                        <div class="review-avatar">Д</div>
+                        <div><div class="review-name">Дмитрий</div></div>
+                    </div>
+                </div>
             </div>
-            <div style="text-align:center; padding:24px; background:rgba(212,175,55,0.05); border:1px solid var(--border-gold); border-radius:16px;">
-                <p style="color:var(--text-secondary); margin-bottom:12px;">Оставьте отзыв в Google ⭐</p>
+            <div class="review-link-box reveal">
+                <p style="color:var(--text-secondary); margin-bottom:16px;">Оставьте отзыв в Google ⭐</p>
                 <a href="https://g.page/r/CY8vfg7bKgMSEBI/review" target="_blank" class="btn-secondary">Написать отзыв</a>
             </div>
         </div>
     </section>
 
-    <section class="contact-section" id="contact" style="padding:80px 0;">
+    <div class="section-divider"></div>
+
+    <!-- CONTACT -->
+    <section class="contact-section" id="contact">
         <div class="container">
-            <h2 class="section-title reveal" style="text-align:center;">Свяжитесь со мной</h2>
-            <div class="contact-inner" style="display:grid; grid-template-columns:1fr 1fr; gap:48px;">
+            <h2 class="section-title reveal">Свяжитесь со мной</h2>
+            <div class="contact-inner">
                 <div class="contact-info reveal">
                     <div style="display:flex; flex-direction:column; gap:16px;">
-                        <a href="https://t.me/marketologdizayner" target="_blank" class="contact-method"><div style="width:44px; height:44px; border-radius:12px; background:rgba(212,175,55,0.1); display:flex; align-items:center; justify-content:center;">💬</div><div><h4>Telegram</h4><p style="color:var(--text-muted);">@marketologdizayner</p></div></a>
-                        <a href="https://vk.ru/kristinavcifre" target="_blank" class="contact-method"><div style="width:44px; height:44px; border-radius:12px; background:rgba(11,59,42,0.1); display:flex; align-items:center; justify-content:center;">🔵</div><div><h4>ВКонтакте</h4><p style="color:var(--text-muted);">@kristinavcifre</p></div></a>
-                        <a href="https://www.instagram.com/gap_____ova_kristina/" target="_blank" class="contact-method"><div style="width:44px; height:44px; border-radius:12px; background:rgba(212,175,55,0.1); display:flex; align-items:center; justify-content:center;">📸</div><div><h4>Instagram</h4><p style="color:var(--text-muted);">@gap_____ova_kristina</p></div></a>
+                        <a href="https://t.me/marketologdizayner" target="_blank" class="contact-method">
+                            <div class="contact-method-icon" style="background:rgba(201,168,76,0.1);">💬</div>
+                            <div><h4>Telegram</h4><p>@marketologdizayner</p></div>
+                        </a>
+                        <a href="https://vk.ru/kristinavcifre" target="_blank" class="contact-method">
+                            <div class="contact-method-icon" style="background:rgba(11,59,42,0.15);">🔵</div>
+                            <div><h4>ВКонтакте</h4><p>@kristinavcifre</p></div>
+                        </a>
+                        <a href="https://www.instagram.com/gap_____ova_kristina/" target="_blank" class="contact-method">
+                            <div class="contact-method-icon" style="background:rgba(201,168,76,0.1);">📸</div>
+                            <div><h4>Instagram</h4><p>@gap_____ova_kristina</p></div>
+                        </a>
                     </div>
                 </div>
                 <div class="application-card reveal">
@@ -389,88 +1329,98 @@
         </div>
     </section>
 
-    <section class="about-section" id="about" style="padding:80px 0;">
+    <div class="section-divider"></div>
+
+    <!-- ABOUT -->
+    <section class="about-section" id="about">
         <div class="container">
-            <div class="about-inner" style="display:grid; grid-template-columns:auto 1fr; gap:48px; align-items:center;">
-                <div class="about-photo reveal"><img src="avatar.jpg" alt="Кристина" loading="lazy" style="width:300px; height:380px; object-fit:cover; border-radius:24px; border:2px solid var(--border-gold);"></div>
+            <div class="about-inner">
+                <div class="about-photo reveal">
+                    <img src="avatar.jpg" alt="Кристина" loading="lazy">
+                </div>
                 <div class="about-content reveal">
-                    <h2 style="font-family:'Playfair Display',serif;">Техно-маркетолог <span style="color:var(--gold);">и коуч по страхам в продажах</span></h2>
+                    <h2>Техно-маркетолог <span style="background:linear-gradient(135deg, var(--gold-primary), var(--gold-bright));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">и коуч по страхам в продажах</span></h2>
                     <p>Система без смелости — мёртвая архитектура. Смелость без системы — выгорание. Я работаю с обоими.</p>
-                    <p><strong style="color:var(--gold);">🔹 Диагностика</strong> — аудит воронки, сайта, чат-бота → пошаговый план.<br>
-                    <strong style="color:var(--gold);">🔹 Коучинг</strong> — проработка страхов за 2–5 сессий.<br>
-                    <strong style="color:var(--gold);">🔹 Под ключ</strong> — техника + внутренняя свобода.</p>
+                    <p><strong style="color:var(--gold-primary);">🔹 Диагностика</strong> — аудит воронки, сайта, чат-бота → пошаговый план.<br>
+                    <strong style="color:var(--gold-primary);">🔹 Коучинг</strong> — проработка страхов за 2–5 сессий.<br>
+                    <strong style="color:var(--gold-primary);">🔹 Под ключ</strong> — техника + внутренняя свобода.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="faq-section" id="faq" style="padding:80px 0;">
+    <div class="section-divider"></div>
+
+    <!-- FAQ -->
+    <section class="faq-section" id="faq">
         <div class="container">
             <h2 class="section-title reveal">Прозрачные условия сотрудничества</h2>
             <div style="max-width:800px; margin:0 auto; display:flex; flex-direction:column; gap:12px;">
-                <div class="faq-item reveal" style="background:var(--bg-card); border:1px solid var(--border); border-radius:16px; overflow:hidden;">
-                    <button class="faq-question" onclick="toggleFaq(this)" style="width:100%; padding:20px 24px; background:none; border:none; color:var(--text-primary); font-size:1rem; font-weight:600; text-align:left; cursor:pointer; display:flex; justify-content:space-between;">
-                        <span>Как начинаем работу?</span><span class="faq-icon" style="color:var(--gold);">+</span>
+                <div class="faq-item reveal reveal-delay-1">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Как начинаем работу?</span><span class="faq-icon">+</span>
                     </button>
-                    <div class="faq-answer" style="max-height:0; overflow:hidden; transition:max-height 0.4s ease;">
-                        <div style="padding:0 24px 20px; color:var(--text-secondary);">
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
                             <strong>Два пути:</strong><br>
                             1. <strong>Стратегическая диагностика</strong> (3 000 ₽) — отдельная услуга, полный аудит и план.<br>
                             2. <strong>Платная консультация</strong> (3 000 ₽) — после неё начинаем полноценную работу, и эти 3 000 ₽ вычитаются из итоговой стоимости заказанной услуги. Если выбрали диагностику, сумма не вычитается, так как это самостоятельная услуга.
                         </div>
                     </div>
                 </div>
-                <div class="faq-item reveal" style="background:var(--bg-card); border:1px solid var(--border); border-radius:16px; overflow:hidden;">
-                    <button class="faq-question" onclick="toggleFaq(this)" style="width:100%; padding:20px 24px; background:none; border:none; color:var(--text-primary); font-size:1rem; font-weight:600; text-align:left; cursor:pointer; display:flex; justify-content:space-between;">
-                        <span>Какие условия оплаты?</span><span class="faq-icon" style="color:var(--gold);">+</span>
+                <div class="faq-item reveal reveal-delay-2">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Какие условия оплаты?</span><span class="faq-icon">+</span>
                     </button>
-                    <div class="faq-answer" style="max-height:0; overflow:hidden; transition:max-height 0.4s ease;">
-                        <div style="padding:0 24px 20px; color:var(--text-secondary);"><strong>100% предоплата на все услуги.</strong> Перед стартом заключается договор, фиксирующий обязанности, сумму и условия возврата.</div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content"><strong>100% предоплата на все услуги.</strong> Перед стартом заключается договор, фиксирующий обязанности, сумму и условия возврата.</div>
                     </div>
                 </div>
-                <div class="faq-item reveal" style="background:var(--bg-card); border:1px solid var(--border); border-radius:16px; overflow:hidden;">
-                    <button class="faq-question" onclick="toggleFaq(this)" style="width:100%; padding:20px 24px; background:none; border:none; color:var(--text-primary); font-size:1rem; font-weight:600; text-align:left; cursor:pointer; display:flex; justify-content:space-between;">
-                        <span>Какие сроки выполнения?</span><span class="faq-icon" style="color:var(--gold);">+</span>
+                <div class="faq-item reveal reveal-delay-3">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Какие сроки выполнения?</span><span class="faq-icon">+</span>
                     </button>
-                    <div class="faq-answer" style="max-height:0; overflow:hidden; transition:max-height 0.4s ease;">
-                        <div style="padding:0 24px 20px; color:var(--text-secondary);">Точные сроки устанавливаются в ходе обсуждения заказанной услуги.</div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">Точные сроки устанавливаются в ходе обсуждения заказанной услуги.</div>
                     </div>
                 </div>
-                <div class="faq-item reveal" style="background:var(--bg-card); border:1px solid var(--border); border-radius:16px; overflow:hidden;">
-                    <button class="faq-question" onclick="toggleFaq(this)" style="width:100%; padding:20px 24px; background:none; border:none; color:var(--text-primary); font-size:1rem; font-weight:600; text-align:left; cursor:pointer; display:flex; justify-content:space-between;">
-                        <span>Какие гарантии?</span><span class="faq-icon" style="color:var(--gold);">+</span>
+                <div class="faq-item reveal reveal-delay-1">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Какие гарантии?</span><span class="faq-icon">+</span>
                     </button>
-                    <div class="faq-answer" style="max-height:0; overflow:hidden; transition:max-height 0.4s ease;">
-                        <div style="padding:0 24px 20px; color:var(--text-secondary);"><strong>7 дней поддержки</strong> после сдачи. Возврат 50% возможен по условиям договора.</div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content"><strong>7 дней поддержки</strong> после сдачи. Возврат 50% возможен по условиям договора.</div>
                     </div>
                 </div>
-                <div class="faq-item reveal" style="background:var(--bg-card); border:1px solid var(--border); border-radius:16px; overflow:hidden;">
-                    <button class="faq-question" onclick="toggleFaq(this)" style="width:100%; padding:20px 24px; background:none; border:none; color:var(--text-primary); font-size:1rem; font-weight:600; text-align:left; cursor:pointer; display:flex; justify-content:space-between;">
-                        <span>Нужны ли технические знания?</span><span class="faq-icon" style="color:var(--gold);">+</span>
+                <div class="faq-item reveal reveal-delay-2">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Нужны ли технические знания?</span><span class="faq-icon">+</span>
                     </button>
-                    <div class="faq-answer" style="max-height:0; overflow:hidden; transition:max-height 0.4s ease;">
-                        <div style="padding:0 24px 20px; color:var(--text-secondary);">Нет. Я беру всю архитектуру, код и интеграции на себя. От вас нужны материалы о бизнесе и стиль общения.</div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">Нет. Я беру всю архитектуру, код и интеграции на себя. От вас нужны материалы о бизнесе и стиль общения.</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="footer-inner">
-                <div class="footer-logo" style="font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:800; color:var(--gold);">КРИСТИНА.AI</div>
-                <div class="footer-links" style="display:flex; gap:24px;">
-                    <a href="https://t.me/marketologdizayner" target="_blank" style="color:var(--text-secondary);">Telegram</a>
-                    <a href="https://vk.ru/kristinavcifre" target="_blank" style="color:var(--text-secondary);">VK</a>
-                    <a href="https://www.instagram.com/gap_____ova_kristina/" target="_blank" style="color:var(--text-secondary);">Instagram</a>
-                    <a href="#" onclick="openPrivacy(event)" style="color:var(--text-secondary);">Политика конфиденциальности</a>
+                <div class="footer-logo">КРИСТИНА.AI</div>
+                <div class="footer-links">
+                    <a href="https://t.me/marketologdizayner" target="_blank">Telegram</a>
+                    <a href="https://vk.ru/kristinavcifre" target="_blank">VK</a>
+                    <a href="https://www.instagram.com/gap_____ova_kristina/" target="_blank">Instagram</a>
+                    <a href="#" onclick="openPrivacy(event)">Политика конфиденциальности</a>
                 </div>
             </div>
-            <div style="text-align:center; color:var(--text-muted); margin-top:32px; padding-top:24px; border-top:1px solid var(--border);">© 2026 КРИСТИНА.AI — Оазис будущего. Все права защищены.</div>
+            <div style="text-align:center; color:var(--text-muted); margin-top:36px; padding-top:28px; border-top:1px solid rgba(201,168,76,0.06);">© 2026 КРИСТИНА.AI — Оазис будущего. Все права защищены.</div>
         </div>
     </footer>
 
+    <!-- PRIVACY MODAL -->
     <div class="modal-overlay" id="privacyModal">
         <div class="modal">
             <button class="modal-close" onclick="closePrivacy()">✕</button>
@@ -482,30 +1432,103 @@
             <h3>4. Хранение и защита</h3><p>Данные защищены и не передаются третьим лицам.</p>
             <h3>5. Условия оплаты и возврата</h3><p>Все услуги предоставляются на условиях <strong>100% предоплаты</strong>. При заключении договора фиксируются услуга, стоимость, обязанности сторон и условия возврата. Возврат 50% возможен исключительно в случаях, предусмотренных договором.</p>
             <h3>6. Права пользователя</h3><p>Вы можете запросить, исправить или удалить свои данные.</p>
-            <h3>7. Контакты</h3><p>По вопросам: <a href="https://t.me/marketologdizayner" target="_blank" style="color:var(--gold);">@marketologdizayner</a></p>
+            <h3>7. Контакты</h3><p>По вопросам: <a href="https://t.me/marketologdizayner" target="_blank">@marketologdizayner</a></p>
         </div>
     </div>
 
-    <div id="vkPopup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:99999;align-items:center;justify-content:center;">
-        <div style="background:#5C1E2E;border:2px solid var(--emerald);padding:30px;border-radius:16px;max-width:450px;text-align:center;color:#F5F0EB;">
+    <!-- POPUPs -->
+    <div class="popup-overlay" id="vkPopup">
+        <div class="popup-content">
             <h3>Заявка принята!</h3>
             <p>Подпишитесь на сообщество:</p>
-            <a href="https://vk.ru/vk_prodvizenie_kristina" target="_blank" style="display:block;background:var(--emerald);color:#fff;padding:12px;border-radius:8px;margin:10px 0;">Перейти в сообщество</a>
-            <button onclick="closePopup('vkPopup')" style="background:none;border:none;color:#B0A090;cursor:pointer;">Закрыть</button>
+            <a href="https://vk.ru/vk_prodvizenie_kristina" target="_blank" class="popup-btn vk-btn">Перейти в сообщество</a>
+            <button class="popup-close" onclick="closePopup('vkPopup')">Закрыть</button>
         </div>
     </div>
-    <div id="tgPopup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:99999;align-items:center;justify-content:center;">
-        <div style="background:#5C1E2E;border:2px solid var(--gold);padding:30px;border-radius:16px;max-width:450px;text-align:center;color:#F5F0EB;">
+    <div class="popup-overlay" id="tgPopup">
+        <div class="popup-content">
             <h3>Заявка принята!</h3>
             <p>Подпишитесь на канал:</p>
-            <a href="https://t.me/fullstack_razrabotka" target="_blank" style="display:block;background:var(--gold);color:var(--bg-primary);padding:12px;border-radius:8px;margin:10px 0;">Перейти в канал</a>
-            <button onclick="closePopup('tgPopup')" style="background:none;border:none;color:#B0A090;cursor:pointer;">Закрыть</button>
+            <a href="https://t.me/fullstack_razrabotka" target="_blank" class="popup-btn tg-btn">Перейти в канал</a>
+            <button class="popup-close" onclick="closePopup('tgPopup')">Закрыть</button>
         </div>
     </div>
 
     <script>
+        // === PARTICLES ===
+        const canvas = document.getElementById('particlesCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const particleCount = 50;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Particle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.3;
+                this.speedY = (Math.random() - 0.5) * 0.3;
+                this.opacity = Math.random() * 0.4 + 0.1;
+                this.life = Math.random() * 200 + 100;
+                this.maxLife = this.life;
+                this.isGold = Math.random() > 0.3;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.life--;
+                if (this.life <= 0 || this.x < -10 || this.x > canvas.width + 10 || this.y < -10 || this.y > canvas.height + 10) {
+                    this.reset();
+                }
+            }
+            draw() {
+                const lifeRatio = this.life / this.maxLife;
+                const alpha = this.opacity * lifeRatio;
+                if (this.isGold) {
+                    ctx.fillStyle = `rgba(201, 168, 76, ${alpha})`;
+                } else {
+                    ctx.fillStyle = `rgba(11, 59, 42, ${alpha * 1.5})`;
+                }
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) particles.push(new Particle());
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // === GOLD DUST ===
+        const goldDust = document.getElementById('goldDust');
+        for (let i = 0; i < 20; i++) {
+            const dust = document.createElement('div');
+            dust.className = 'dust-particle';
+            dust.style.left = Math.random() * 100 + '%';
+            dust.style.top = Math.random() * 100 + '%';
+            dust.style.animationDelay = Math.random() * 8 + 's';
+            dust.style.animationDuration = (Math.random() * 6 + 6) + 's';
+            goldDust.appendChild(dust);
+        }
+
+        // === HEADER SCROLL ===
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50));
+
+        // === BURGER ===
         const burger = document.getElementById('burger');
         const mobileMenu = document.getElementById('mobileMenu');
         burger.addEventListener('click', () => {
@@ -518,18 +1541,28 @@
             mobileMenu.classList.remove('active');
             document.body.style.overflow = '';
         }
+
+        // === REVEAL ===
         const revealObserver = new IntersectionObserver(entries => {
             entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.08 });
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // === FAQ ===
         function toggleFaq(btn) {
             const item = btn.parentElement;
             const isActive = item.classList.contains('active');
             document.querySelectorAll('.faq-item').forEach(faq => { faq.classList.remove('active'); faq.querySelector('.faq-answer').style.maxHeight = '0'; });
             if (!isActive) { item.classList.add('active'); item.querySelector('.faq-answer').style.maxHeight = item.querySelector('.faq-answer').scrollHeight + 'px'; }
         }
-        function closePopup(id) { document.getElementById(id).style.display = 'none'; }
-        window.onclick = e => { if (e.target.id === 'vkPopup') closePopup('vkPopup'); if (e.target.id === 'tgPopup') closePopup('tgPopup'); };
+
+        // === POPUPS ===
+        function closePopup(id) { document.getElementById(id).classList.remove('active'); }
+        window.onclick = e => {
+            if (e.target.classList.contains('popup-overlay')) e.target.classList.remove('active');
+        };
+
+        // === LEAD SUBMIT ===
         async function submitLead(platform) {
             const name = document.getElementById('user-name').value.trim();
             const contact = document.getElementById('user-contact').value.trim();
@@ -540,18 +1573,18 @@
             try {
                 const res = await fetch('https://kristina-leads.chatbotsmarketolog.workers.dev/api/leads', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ leadId, name, contact, service, task, platform }) });
                 if (res.ok) {
-                    const prefix = platform === 'vk' ? 'vk' : 'tg';
-                    document.getElementById(prefix + 'Name').textContent = name;
-                    document.getElementById(prefix + 'Contact').textContent = contact;
-                    document.getElementById(prefix + 'Service').textContent = service;
-                    document.getElementById(prefix + 'Popup').style.display = 'flex';
+                    document.getElementById(platform + 'Popup').classList.add('active');
                     document.getElementById('lead-form').reset();
                 } else alert('Ошибка отправки');
             } catch (e) { alert('Ошибка соединения'); }
         }
+
+        // === PRIVACY ===
         function openPrivacy(e) { e.preventDefault(); document.getElementById('privacyModal').classList.add('active'); }
         function closePrivacy() { document.getElementById('privacyModal').classList.remove('active'); }
         document.getElementById('privacyModal').addEventListener('click', e => { if (e.target === document.getElementById('privacyModal')) closePrivacy(); });
+
+        // === SMOOTH SCROLL ===
         function removeHashFromUrl() { if (window.location.hash) history.replaceState(null, null, window.location.pathname + window.location.search); }
         removeHashFromUrl();
         document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
@@ -559,7 +1592,8 @@
             if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); removeHashFromUrl(); }
         }));
         window.addEventListener('hashchange', removeHashFromUrl);
-        // quiz
+
+        // === QUIZ ===
         const quizData = [
             { question: "Что вас больше всего беспокоит в бизнесе?", answers: [
                 { text: "Хаос в коммуникациях, теряю заявки", points: { diagnostics: 2, chatbot: 1 } },
@@ -610,3 +1644,4 @@
     </script>
 </body>
 </html>
+
