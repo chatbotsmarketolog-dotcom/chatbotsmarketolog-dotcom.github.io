@@ -448,8 +448,8 @@
 
     <header class="header" id="header">
         <div class="header-inner">
-            <a href="#" class="logo">КРИСТИНА.AI</a>
-            <a href="#" class="back-link-header" id="backToHome">
+            <a href="#" class="logo" onclick="goHome(event)">КРИСТИНА.AI</a>
+            <a href="#" class="back-link-header" onclick="goHome(event)">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 2L4 8l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 На главную
             </a>
@@ -568,7 +568,7 @@
         </div>
 
         <div style="text-align:center;">
-            <a href="#" class="back-link reveal" id="backToHome2">
+            <a href="#" class="back-link reveal" onclick="goHome(event)">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 2L4 8l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 На главную КРИСТИНА.AI
             </a>
@@ -584,6 +584,11 @@
     </footer>
 
     <script>
+        function goHome(e) {
+            e.preventDefault();
+            window.location.href = 'index.html';
+        }
+
         const canvas = document.getElementById('particlesCanvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -665,7 +670,6 @@
             revealObserver.observe(el);
         });
 
-        // 3D TILT
         const card3d = document.querySelector('.platform-card-3d');
         if (card3d && window.innerWidth > 768) {
             card3d.addEventListener('mousemove', (e) => {
@@ -685,26 +689,10 @@
 
         // Убираем # из адресной строки
         function removeHash() {
-            history.replaceState(null, null, window.location.pathname + window.location.search);
+            if (window.location.hash) history.replaceState(null, null, window.location.pathname + window.location.search);
         }
         removeHash();
-
-        // Кнопки "На главную" — скролл вверх и очистка hash
-        document.querySelectorAll('#backToHome, #backToHome2').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                removeHash();
-            });
-        });
-
-        // Убираем hash при любом клике на ссылки с #
-        document.querySelectorAll('a[href="#"]').forEach(a => {
-            a.addEventListener('click', (e) => {
-                e.preventDefault();
-                removeHash();
-            });
-        });
+        window.addEventListener('hashchange', removeHash);
     </script>
 </body>
 </html>
