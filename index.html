@@ -13,24 +13,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700;800;900&family=Cormorant+Garamond:wght@500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --emerald: #1A4A3A;
-            --emerald-light: #2A6A5A;
-            --burgundy: #7A2E2E;
-            --burgundy-light: #9A4E4E;
-            --gold: #B8965A;
-            --gold-light: #D4B06A;
-            --bg-primary: #0B0B0B;
-            --bg-secondary: #121212;
-            --bg-card: rgba(20, 20, 20, 0.8);
+            --gold: #C9A85A;
+            --gold-light: #E0C080;
+            --gold-glow: rgba(201, 168, 90, 0.3);
+            --emerald: #0F4C3A;
+            --emerald-light: #1A6A4A;
+            --emerald-glow: rgba(15, 76, 58, 0.4);
+            --bg-primary: #2D0A0A;
+            --bg-secondary: #3A1212;
+            --bg-card: rgba(40, 10, 10, 0.8);
+            --bg-card-hover: rgba(50, 15, 15, 0.9);
             --text-primary: #F5F0EB;
-            --text-secondary: #C0C0C8;
-            --text-muted: #8A8A92;
+            --text-secondary: #C0B0A0;
+            --text-muted: #A09080;
             --border: rgba(255, 255, 255, 0.06);
-            --border-gold: rgba(184, 150, 90, 0.3);
-            --border-emerald: rgba(26, 74, 58, 0.3);
-            --border-burgundy: rgba(122, 46, 46, 0.3);
-            --shadow-gold: 0 0 20px rgba(184, 150, 90, 0.1);
-            --shadow-emerald: 0 0 20px rgba(26, 74, 58, 0.15);
+            --border-gold: rgba(201, 168, 90, 0.4);
+            --border-emerald: rgba(15, 76, 58, 0.4);
+            --shadow-gold: 0 0 20px rgba(201, 168, 90, 0.15);
+            --shadow-emerald: 0 0 20px rgba(15, 76, 58, 0.2);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; scroll-padding-top: 80px; }
@@ -41,20 +41,20 @@
         .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; text-align: center; margin-bottom: 16px; color: var(--text-primary); }
         .section-title span { color: var(--gold); }
         .section-subtitle { text-align: center; color: var(--text-secondary); font-size: 1.1rem; max-width: 600px; margin: 0 auto 48px; }
-        .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; position: relative; overflow: hidden; background: var(--bg-primary); }
+        .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; position: relative; overflow: hidden; background: linear-gradient(135deg, #2D0A0A 0%, #1A0A0A 100%); }
         .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
         .hero-content { animation: fadeInUp 1s ease forwards; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: rgba(184,150,90,0.1); border: 1px solid var(--border-gold); border-radius: 50px; font-size: 0.85rem; font-weight: 500; color: var(--gold); margin-bottom: 24px; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: rgba(201,168,90,0.1); border: 1px solid var(--border-gold); border-radius: 50px; font-size: 0.85rem; font-weight: 500; color: var(--gold); margin-bottom: 24px; }
         .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 24px; color: var(--text-primary); }
         .hero h1 span { color: var(--gold); }
         .hero-text { font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 36px; max-width: 500px; }
         .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
         .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; background: var(--emerald); color: var(--text-primary); border: none; border-radius: 50px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; font-family: inherit; }
-        .btn-primary:hover { background: var(--emerald-light); box-shadow: 0 0 30px rgba(26,74,58,0.4); transform: translateY(-2px); }
+        .btn-primary:hover { background: var(--emerald-light); box-shadow: 0 0 30px var(--emerald-glow); transform: translateY(-2px); }
         .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; background: transparent; color: var(--gold); border: 1px solid var(--gold); border-radius: 50px; font-size: 1rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease; font-family: inherit; }
         .btn-secondary:hover { background: var(--gold); color: var(--bg-primary); }
         .hero-visual { display: flex; justify-content: center; animation: fadeInRight 1s ease 0.3s forwards; opacity: 0; }
-        .phone-mockup { position: relative; width: 300px; height: 580px; background: rgba(20,20,20,0.9); border-radius: 40px; border: 2px solid var(--border-gold); overflow: hidden; box-shadow: 0 0 60px rgba(184,150,90,0.1), 0 20px 60px rgba(0,0,0,0.5); }
+        .phone-mockup { position: relative; width: 300px; height: 580px; background: var(--bg-card); border-radius: 40px; border: 2px solid var(--border-gold); overflow: hidden; box-shadow: 0 0 60px rgba(201,168,90,0.15), 0 20px 60px rgba(0,0,0,0.5); }
         .phone-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 28px; background: var(--bg-primary); border-radius: 0 0 20px 20px; z-index: 2; }
         .phone-screen { padding: 40px 16px 16px; height: 100%; display: flex; flex-direction: column; }
         .phone-header { text-align: center; padding-bottom: 12px; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
@@ -62,11 +62,15 @@
         .phone-header p { font-size: 0.7rem; color: var(--text-muted); }
         .chat-messages { flex: 1; display: flex; flex-direction: column; gap: 12px; }
         .chat-msg { max-width: 85%; padding: 10px 14px; border-radius: 16px; font-size: 0.8rem; line-height: 1.4; opacity: 0; animation: msgAppear 0.5s ease forwards; }
-        .chat-msg.ai { background: rgba(26,74,58,0.2); border: 1px solid var(--border-emerald); align-self: flex-start; color: var(--text-secondary); }
-        .chat-msg.user { background: rgba(184,150,90,0.15); border: 1px solid var(--border-gold); align-self: flex-end; color: var(--text-primary); }
+        .chat-msg.ai { background: rgba(15,76,58,0.2); border: 1px solid var(--border-emerald); align-self: flex-start; border-bottom-left-radius: 4px; color: var(--text-secondary); }
+        .chat-msg.user { background: rgba(201,168,90,0.15); border: 1px solid var(--border-gold); align-self: flex-end; border-bottom-right-radius: 4px; color: var(--text-primary); }
+        .chat-msg:nth-child(1) { animation-delay: 0.8s; } .chat-msg:nth-child(2) { animation-delay: 1.6s; } .chat-msg:nth-child(3) { animation-delay: 2.4s; } .chat-msg:nth-child(4) { animation-delay: 3.2s; } .chat-msg:nth-child(5) { animation-delay: 4s; }
         @keyframes msgAppear { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+        .hero-visual::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(201,168,90,0.08) 0%, transparent 70%); animation: pulseGlow 4s ease-in-out infinite; }
+        @keyframes pulseGlow { 0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; } 50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; } }
+
         .pain-section { padding: 100px 0; }
         .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px; }
         .pain-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: all 0.4s ease; }
@@ -74,7 +78,7 @@
         .pain-icon { font-size: 2.5rem; margin-bottom: 16px; }
         .pain-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; color: var(--text-primary); }
         .pain-card p { color: var(--text-secondary); line-height: 1.6; }
-        .pain-conclusion { text-align: center; font-size: 1.2rem; font-weight: 600; color: var(--gold); padding: 24px; border: 1px solid var(--border-gold); border-radius: 16px; background: rgba(184,150,90,0.05); }
+        .pain-conclusion { text-align: center; font-size: 1.2rem; font-weight: 600; color: var(--gold); padding: 24px; border: 1px solid var(--border-gold); border-radius: 16px; background: rgba(201,168,90,0.05); }
         .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin: 60px 0; }
         .stat-item { text-align: center; padding: 24px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; }
         .stat-number { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 800; color: var(--gold); }
@@ -85,10 +89,12 @@
         .quiz-answers { display: flex; flex-direction: column; gap: 12px; }
         .quiz-answer { padding: 16px 20px; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; color: var(--text-secondary); cursor: pointer; transition: all 0.3s ease; }
         .quiz-answer:hover { border-color: var(--gold); color: var(--text-primary); }
+        .quiz-progress { margin-bottom: 24px; font-size: 0.9rem; color: var(--text-muted); }
+        .quiz-result { display: none; }
         .services-section { padding: 100px 0; }
         .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
         .service-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; padding: 40px; transition: all 0.4s ease; }
-        .service-card:hover { transform: translateY(-6px); box-shadow: 0 0 30px rgba(184,150,90,0.15); border-color: var(--border-gold); }
+        .service-card:hover { transform: translateY(-6px); box-shadow: 0 0 30px rgba(201,168,90,0.2); border-color: var(--border-gold); }
         .service-card.full-width { grid-column: 1 / -1; }
         .service-card h3 { font-size: 1.6rem; font-weight: 700; color: var(--gold); margin-bottom: 12px; }
         .service-card .subtitle { font-size: 1rem; color: var(--text-secondary); margin-bottom: 20px; }
@@ -109,7 +115,7 @@
         .contact-methods { display: flex; flex-direction: column; gap: 16px; }
         .contact-method { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; transition: all 0.3s ease; }
         .contact-method:hover { border-color: var(--border-gold); }
-        .contact-method-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: rgba(184,150,90,0.1); }
+        .contact-method-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: rgba(201,168,90,0.1); }
         .application-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 36px; }
         .application-card input, .application-card select, .application-card textarea { width: 100%; padding: 14px 16px; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; color: var(--text-primary); font-size: 0.95rem; margin-bottom: 20px; outline: none; }
         .application-card input:focus, .application-card select:focus, .application-card textarea:focus { border-color: var(--gold); }
@@ -194,9 +200,11 @@
                         <div class="phone-screen">
                             <div class="phone-header"><h4>AI-Агент Кристины</h4><p>онлайн • отвечает мгновенно</p></div>
                             <div class="chat-messages">
-                                <div class="chat-msg ai">Здравствуйте! Я AI-агент. Чем могу помочь?</div>
-                                <div class="chat-msg user">Хочу автоматизировать бизнес</div>
-                                <div class="chat-msg ai">Отлично! Подберём решение под ваши задачи.</div>
+                                <div class="chat-msg ai">Здравствуйте! 👋 Я AI-агент Кристины. Чем могу помочь?</div>
+                                <div class="chat-msg user">Хочу автоматизировать свой бизнес</div>
+                                <div class="chat-msg ai">Отлично! Я помогу подобрать решение. Расскажите, какие задачи хотите автоматизировать?</div>
+                                <div class="chat-msg user">Ответы клиентам и сбор заявок</div>
+                                <div class="chat-msg ai">Идеально! Чат-бот + AI-агент закроют эти задачи на 100%. Хотите узнать стоимость? 🚀</div>
                             </div>
                         </div>
                     </div>
@@ -318,7 +326,7 @@
                 <div class="review-card reveal"><div class="review-stars">★★★★★</div><p class="review-text">«Теперь клиент сам смотрит и пишет по делу. Кристина взяла меня в глубокую работу по запуску.»</p><div class="review-author"><div class="review-avatar">Е</div><div><div class="review-name">Елена</div></div></div></div>
                 <div class="review-card reveal"><div class="review-stars">★★★★★</div><p class="review-text">«AI-агент работает как мой цифровой двойник. Трачу в 3 раза меньше времени на коммуникацию.»</p><div class="review-author"><div class="review-avatar">Д</div><div><div class="review-name">Дмитрий</div></div></div></div>
             </div>
-            <div class="reviews-cta reveal" style="text-align:center; padding:24px; background:rgba(184,150,90,0.05); border:1px solid var(--border-gold); border-radius:16px;">
+            <div class="reviews-cta reveal" style="text-align:center; padding:24px; background:rgba(201,168,90,0.05); border:1px solid var(--border-gold); border-radius:16px;">
                 <p style="color:var(--text-secondary); margin-bottom:12px;">Оставьте отзыв в Google ⭐</p>
                 <a href="https://g.page/r/CY8vfg7bKgMSEBI/review" target="_blank" class="btn-secondary">Написать отзыв</a>
             </div>
@@ -383,7 +391,7 @@
             <div class="faq-list">
                 <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)"><span>Как начинаем работу?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner"><strong>Два пути:</strong><br>1. <strong>Стратегическая диагностика</strong> (3 000 ₽) — отдельная услуга, полный аудит и план.<br>2. <strong>Платная консультация</strong> (3 000 ₽) — после неё начинаем полноценную работу, и эти 3 000 ₽ вычитаются из итоговой стоимости заказанной услуги. Если выбрали диагностику, сумма не вычитается, так как это самостоятельная услуга.</div></div></div>
                 <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)"><span>Какие условия оплаты?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner"><strong>100% предоплата на все услуги.</strong> Перед стартом заключается договор, фиксирующий обязанности, сумму и условия возврата.</div></div></div>
-                <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)"><span>Какие сроки выполнения?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner">Чат-бот: 2–5 дней, AI-агент: 5–10 дней, сайт: 10–20 дней, Tilda: 3–7 дней, Система под ключ: 1 месяц.</div></div></div>
+                <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)"><span>Какие сроки выполнения?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner">Точные сроки устанавливаются в ходе обсуждения заказанной услуги.</div></div></div>
                 <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)"><span>Какие гарантии?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner"><strong>7 дней поддержки</strong> после сдачи. Возврат 50% возможен по условиям договора.</div></div></div>
                 <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)"><span>Нужны ли технические знания?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner">Нет. Я беру всю архитектуру, код и интеграции на себя. От вас нужны материалы о бизнесе и стиль общения.</div></div></div>
             </div>
@@ -421,7 +429,7 @@
     </div>
 
     <div id="vkPopup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:99999;align-items:center;justify-content:center;">
-        <div style="background:#121212;border:2px solid #0077FF;padding:30px;border-radius:16px;max-width:450px;text-align:center;color:#F5F0EB;">
+        <div style="background:#2D0A0A;border:2px solid #0077FF;padding:30px;border-radius:16px;max-width:450px;text-align:center;color:#F5F0EB;">
             <h3>Заявка принята!</h3>
             <p>Подпишитесь на сообщество:</p>
             <a href="https://vk.ru/vk_prodvizenie_kristina" target="_blank" style="display:block;background:#0077FF;color:#fff;padding:12px;border-radius:8px;margin:10px 0;">Перейти в сообщество</a>
@@ -429,7 +437,7 @@
         </div>
     </div>
     <div id="tgPopup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:99999;align-items:center;justify-content:center;">
-        <div style="background:#121212;border:2px solid #2AABEE;padding:30px;border-radius:16px;max-width:450px;text-align:center;color:#F5F0EB;">
+        <div style="background:#2D0A0A;border:2px solid #2AABEE;padding:30px;border-radius:16px;max-width:450px;text-align:center;color:#F5F0EB;">
             <h3>Заявка принята!</h3>
             <p>Подпишитесь на канал:</p>
             <a href="https://t.me/fullstack_razrabotka" target="_blank" style="display:block;background:#2AABEE;color:#fff;padding:12px;border-radius:8px;margin:10px 0;">Перейти в канал</a>
