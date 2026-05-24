@@ -116,6 +116,7 @@
         .service-card .price-block small { font-size: 0.9rem; font-weight: 400; color: var(--text-muted); }
         .btn-service { display: inline-flex; align-items: center; justify-content: center; padding: 14px 28px; border: 1px solid var(--accent); color: var(--accent); border-radius: 12px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; background: transparent; font-family: inherit; }
         .btn-service:hover { background: var(--accent); color: var(--bg-primary); }
+
         @media (max-width: 1024px) {
             .hero-inner, .about-inner, .contact-inner { grid-template-columns: 1fr; text-align: center; }
             .services-grid { grid-template-columns: 1fr; }
@@ -127,10 +128,12 @@
             .stats-row { grid-template-columns: repeat(2, 1fr); }
             .hero h1 { font-size: 2rem; }
         }
+
         .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin: 60px 0; }
         .stat-item { text-align: center; padding: 24px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; }
         .stat-number { font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--accent); }
         .stat-label { font-size: 0.85rem; color: var(--text-muted); }
+
         .quiz-section { padding: 100px 0; }
         .quiz-container { max-width: 600px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 40px; text-align: center; backdrop-filter: blur(10px); }
         .quiz-question { font-size: 1.3rem; font-weight: 600; margin-bottom: 30px; }
@@ -140,6 +143,7 @@
         .quiz-progress { margin-bottom: 24px; font-size: 0.9rem; color: var(--text-muted); }
         .quiz-result { display: none; }
         .quiz-result h3 { font-size: 1.5rem; margin-bottom: 12px; }
+
         .reviews-section { padding: 100px 0; }
         .reviews-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 40px; }
         .review-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: all 0.4s ease; }
@@ -148,6 +152,7 @@
         .review-text { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
         .review-author { display: flex; align-items: center; gap: 12px; }
         .review-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), #0066FF); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 700; color: var(--bg-primary); }
+
         .contact-section { padding: 100px 0; }
         .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
         .contact-methods { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
@@ -160,10 +165,12 @@
         .lead-buttons { display: flex; gap: 16px; justify-content: center; margin-top: 24px; }
         .btn-lead { flex: 1; min-width: 180px; padding: 16px 20px; border: none; border-radius: 14px; font-size: 1rem; font-weight: 700; color: #fff; cursor: pointer; transition: all 0.3s ease; }
         .btn-lead.vk { background: #0077FF; } .btn-lead.tg { background: #2AABEE; }
+
         .about-section { padding: 100px 0; }
         .about-inner { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: center; }
         .about-photo img { width: 300px; height: 380px; object-fit: cover; border-radius: 24px; border: 2px solid var(--border); }
         .about-content h2 span { color: var(--accent); }
+
         .faq-section { padding: 100px 0; }
         .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
         .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
@@ -171,6 +178,7 @@
         .faq-icon { font-size: 1.2rem; color: var(--accent); }
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
         .faq-answer-inner { padding: 0 24px 20px; color: var(--text-secondary); }
+
         .footer { padding: 48px 0 32px; border-top: 1px solid var(--border); }
         .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
@@ -282,58 +290,57 @@
             <h2 class="section-title reveal">VIP-решения для <span>вашего бизнеса</span></h2>
             <p class="section-subtitle reveal">Каждая услуга — трансформация вашей системы</p>
             <div class="services-grid">
-                <!-- Карточки в 2 колонки, кроме полноразмерных -->
                 <div class="service-card reveal">
-                    <h3>Понять, где ваша система теряет деньги</h3>
-                    <p class="subtitle">Аудит воронки, сайта, чат-бота. Результат — ясный пошаговый план.</p>
+                    <h3>Стратегическая диагностика</h3>
+                    <p class="subtitle">Понять, где ваша система теряет деньги, без вашего участия</p>
                     <div class="for-who">— Чувствуете, что блог должен продавать лучше<br>— Не хотите тратить время на созвоны</div>
                     <p class="description">Я проведу диагностику целиком, без единого звонка вам. Вы получите презентацию с моими комментариями и конкретными шагами. Никакой психологии — только цифры, логика и точки роста.</p>
                     <div class="price-block">3 000 ₽</div>
                     <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Записаться на диагностику</button>
                 </div>
                 <div class="service-card reveal">
-                    <h3>Чат-бот, который консультирует и продаёт вместо вас</h3>
-                    <p class="subtitle">Работает по сценарию 24/7, не просит зарплату, не выгорает.</p>
+                    <h3>Чат-боты с кнопочным меню</h3>
+                    <p class="subtitle">Чат-бот, который консультирует и продаёт вместо вас</p>
                     <div class="for-who">— Есть поток заявок, но вы не успеваете<br>— Хотите освободить время</div>
                     <p class="description">Создам бота, который встречает клиента, отвечает на вопросы, квалифицирует и передаёт вам уже тёплого. Сценарий пишется под вашу экспертность.</p>
                     <div class="price-block">от 12 000 ₽</div>
                     <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Заказать бота</button>
                 </div>
                 <div class="service-card reveal">
-                    <h3>Сайт, который становится вашим тихим отделом продаж</h3>
-                    <p class="subtitle">Индивидуальная разработка + no-code конструктор для правок.</p>
+                    <h3>Сайт на чистом коде</h3>
+                    <p class="subtitle">Сайт, который становится вашим тихим отделом продаж</p>
                     <div class="for-who">— Хотите владеть территорией<br>— Устали от шаблонов</div>
                     <p class="description">Я проектирую сайт как стратегический инструмент. Вы получаете готовый механизм лидогенерации и персональный конструктор: сможете менять что угодно без разработчика.</p>
                     <div class="price-block">Стоимость после консультации</div>
                     <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Обсудить проект</button>
                 </div>
                 <div class="service-card reveal">
-                    <h3>Быстрый, эстетичный сайт на Tilda с вашим характером</h3>
-                    <p class="subtitle">Я настраиваю, вы получаете готовый инструмент.</p>
+                    <h3>Сайт на Tilda</h3>
+                    <p class="subtitle">Быстрый, эстетичный сайт на Tilda с вашим характером</p>
                     <div class="for-who">— Нужен сайт «на вчера»<br>— Хотите лёгкий в управлении ресурс</div>
                     <p class="description">Полная настройка под ваш архетип и нишу. Визуал, структура, формы захвата — всё работает на запись к вам.</p>
                     <div class="price-block">от 12 000 ₽</div>
                     <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Хочу сайт на Tilda</button>
                 </div>
                 <div class="service-card reveal">
-                    <h3>AI-менеджер, который общается как человек и продаёт без скриптов</h3>
-                    <p class="subtitle">Понимает смысл, обучается на вашей экспертизе, работает 24/7.</p>
+                    <h3>AI-Агент «Бессценарный»</h3>
+                    <p class="subtitle">AI-менеджер, который общается как человек и продаёт без скриптов</p>
                     <div class="for-who">— У вас сложный продукт<br>— Хотите индивидуальный подход без штата</div>
                     <p class="description">Нейросетевой агент, который не идёт по жёсткому сценарию. Он анализирует запрос, задаёт вопросы и подводит к покупке, опираясь именно на вашу базу знаний.</p>
                     <div class="price-block">от 50 000 ₽</div>
                     <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Внедрить AI-агента</button>
                 </div>
                 <div class="service-card reveal">
-                    <h3>Убрать страх цены, отказа и синдром самозванца</h3>
-                    <p class="subtitle">Точечная проработка внутренних блоков, мешающих зарабатывать.</p>
+                    <h3>Коучинг страхов в продажах</h3>
+                    <p class="subtitle">Убрать страх цены, отказа и синдром самозванца</p>
                     <div class="for-who">— Неловко называть цену<br>— Сливаете заявки из-за сопротивления<br>— Вы коуч или психолог</div>
                     <p class="description">За 2–5 сессий находим и снимаем конкретные триггеры. Вы выходите с опорами и разрешением зарабатывать.</p>
                     <div class="price-block">1 сессия — 5 500 ₽<br><small>Пакет 4 сессии — 8 888 ₽</small></div>
                     <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Записаться на сессию</button>
                 </div>
                 <div class="service-card full-width reveal">
-                    <h3>Вся техническая система + ваша внутренняя свобода. Под ключ</h3>
-                    <p class="subtitle">Собираю воронку, бота, сайт и параллельно убираю страхи. Механизм работает, а внутри — спокойствие.</p>
+                    <h3>Пакет «Система под ключ»</h3>
+                    <p class="subtitle">Вся техническая система + ваша внутренняя свобода. Под ключ</p>
                     <div class="for-who">— Хотите масштабироваться, а не тушить пожары<br>— Упираетесь и в технику, и в психологию</div>
                     <p class="description">Я забираю всё: от анализа стратегии до внедрения системы заявок в Telegram. Сайт, чат-бот, нейро-менеджер, лидогенерация — и коучинговый трек внутри. Вы получаете работающий механизм и умение им управлять без страха.<br><br>→ Стратегия и аудит воронки<br>→ Сайт на чистом коде<br>→ Чат-бот / AI-агент<br>→ Автоматизация заявок<br>→ Коучинговое сопровождение</p>
                     <div class="price-block">250 000 ₽ <small>(1 месяц)</small></div>
@@ -451,6 +458,7 @@
                 <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)"><span>Какие условия оплаты?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner"><strong>100% предоплата на все услуги.</strong> Перед стартом работы заключается договор, в котором фиксируются обязанности сторон, сумма, состав услуги и условия возврата.</div></div></div>
                 <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)"><span>Какие сроки выполнения?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner"><ul><li>Чат-бот: <strong>2–5 дней</strong></li><li>AI-агент: <strong>5–10 дней</strong></li><li>Сайт на коде: <strong>10–20 дней</strong></li><li>Сайт на Tilda: <strong>3–7 дней</strong></li><li>Пакет «Система под ключ»: <strong>1 месяц</strong></li></ul></div></div></div>
                 <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)"><span>Какие гарантии?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner"><strong>7 дней бесплатной поддержки</strong> после сдачи проекта. Перед стартом работы составляется формальный договор, в котором обе стороны прописывают свои обязанности, внесённую сумму, услугу и её содержимое, а также случаи, в которых возможен возврат 50% от полной суммы оплаты.</div></div></div>
+                <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)"><span>Нужны ли мне технические знания?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner">Нет. Я беру всю архитектуру, код и интеграции на себя. От вас нужны материалы о бизнесе, стиль общения и утверждение промежуточных этапов.</div></div></div>
             </div>
         </div>
     </section>
@@ -463,11 +471,27 @@
                     <a href="https://t.me/marketologdizayner" target="_blank">💬 Telegram</a>
                     <a href="https://vk.ru/kristinavcifre" target="_blank">🔵 VK</a>
                     <a href="https://www.instagram.com/gap_____ova_kristina/" target="_blank">📸 Instagram</a>
+                    <a href="#" onclick="openPrivacy(event)">📄 Политика конфиденциальности</a>
                 </div>
             </div>
             <div class="footer-copy">© 2026 КРИСТИНА.AI — Оазис будущего. Все права защищены.</div>
         </div>
     </footer>
+
+    <div class="modal-overlay" id="privacyModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closePrivacy()">✕</button>
+            <h2>Политика конфиденциальности</h2>
+            <p><strong>Дата публикации:</strong> 01.05.2026</p>
+            <h3>1. Общие положения</h3><p>Настоящая Политика конфиденциальности определяет порядок обработки и защиты персональных данных пользователей сайта КРИСТИНА.AI.</p>
+            <h3>2. Какие данные мы собираем</h3><p>Контактные данные (имя, Telegram/VK username), описание задачи, выбранная услуга, технические данные.</p>
+            <h3>3. Цели обработки</h3><p>Обработка заявок, связь с вами, улучшение сервиса, исполнение договоров.</p>
+            <h3>4. Хранение и защита</h3><p>Данные защищены и не передаются третьим лицам.</p>
+            <h3>5. Условия оплаты и возврата</h3><p>Все услуги предоставляются на условиях <strong>100% предоплаты</strong>. Перед началом работ заключается формальный договор, фиксирующий услугу, стоимость, обязанности сторон и условия возврата. Возврат 50% от уплаченной суммы возможен исключительно в случаях, предусмотренных договором (например, невозможность оказания услуги по нашей вине).</p>
+            <h3>6. Права пользователя</h3><p>Вы можете запросить, исправить или удалить свои данные.</p>
+            <h3>7. Контакты</h3><p>По вопросам: <a href="https://t.me/marketologdizayner" target="_blank" style="color:var(--accent);">@marketologdizayner</a></p>
+        </div>
+    </div>
 
     <div id="vkPopup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:99999;align-items:center;justify-content:center;">
         <div style="background:#1C1C26;border:2px solid #0077FF;padding:30px;border-radius:16px;max-width:450px;width:90%;text-align:center;">
@@ -559,6 +583,9 @@
                 } else { alert('Ошибка при отправке. Попробуйте ещё раз.'); }
             } catch (e) { alert('Ошибка соединения. Проверьте интернет.'); console.error(e); }
         }
+        function openPrivacy(e) { e.preventDefault(); document.getElementById('privacyModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closePrivacy() { document.getElementById('privacyModal').classList.remove('active'); document.body.style.overflow = ''; }
+        document.getElementById('privacyModal').addEventListener('click', function(e) { if (e.target === this) closePrivacy(); });
         function removeHashFromUrl() { if (window.location.hash) history.replaceState(null, null, window.location.pathname + window.location.search); }
         removeHashFromUrl();
         document.querySelectorAll('a[href^="#"]').forEach(a => {
