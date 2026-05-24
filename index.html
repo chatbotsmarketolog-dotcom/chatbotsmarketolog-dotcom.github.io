@@ -15,104 +15,133 @@
         :root {
             --accent: #0A66C2;
             --accent-dark: #1E3A8A;
-            --accent-glow: rgba(10, 102, 194, 0.15);
-            --bg-primary: #F8FAFC;
-            --bg-secondary: #FFFFFF;
-            --bg-card: #FFFFFF;
-            --text-primary: #1A1A2E;
-            --text-secondary: #4A4A6A;
-            --text-muted: #7A7A8A;
-            --border: rgba(0, 0, 0, 0.08);
-            --border-accent: rgba(10, 102, 194, 0.25);
-            --shadow: 0 10px 25px rgba(0,0,0,0.05);
+            --accent-glow: rgba(10, 102, 194, 0.25);
+            --bg-primary: #0B1825;
+            --bg-secondary: #112233;
+            --bg-card: rgba(15, 28, 44, 0.8);
+            --bg-card-hover: rgba(20, 36, 55, 0.9);
+            --text-primary: #FFFFFF;
+            --text-secondary: #C0D0E0;
+            --text-muted: #7A8A9A;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-accent: rgba(10, 102, 194, 0.35);
+            --shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; scroll-padding-top: 80px; }
         body { font-family: 'Inter', 'Manrope', sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
         h1, h2, h3, h4, h5, h6 { font-family: 'Syne', 'Manrope', sans-serif; font-weight: 700; }
         a { text-decoration: none; color: inherit; }
+
+        .grid-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; background-image: linear-gradient(rgba(10, 102, 194, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(10, 102, 194, 0.03) 1px, transparent 1px); background-size: 60px 60px; }
+        .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+        .particle { position: absolute; width: 2px; height: 2px; background: var(--accent); border-radius: 50%; opacity: 0; animation: floatParticle linear infinite; }
+        @keyframes floatParticle { 0% { opacity: 0; transform: translateY(100vh) scale(0); } 10% { opacity: 0.7; } 90% { opacity: 0.7; } 100% { opacity: 0; transform: translateY(-10vh) scale(1); } }
+
+        .header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 12px 0; transition: all 0.4s ease; backdrop-filter: blur(0px); }
+        .header.scrolled { backdrop-filter: blur(20px); background: rgba(11, 24, 37, 0.85); border-bottom: 1px solid var(--border); padding: 8px 0; }
+        .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -0.5px; }
+        .nav { display: flex; align-items: center; gap: 32px; }
+        .nav a { font-size: 0.9rem; font-weight: 500; color: var(--text-secondary); transition: color 0.3s ease; position: relative; }
+        .nav a:hover { color: var(--accent); }
+        .nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s ease; }
+        .nav a:hover::after { width: 100%; }
+        .nav-btn { background: var(--accent); color: #fff; padding: 10px 24px; border-radius: 50px; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease; border: none; cursor: pointer; }
+        .nav-btn:hover { box-shadow: 0 0 30px var(--accent-glow); transform: translateY(-2px); }
+        .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; z-index: 1001; }
+        .burger span { width: 28px; height: 2px; background: var(--text-primary); transition: all 0.3s ease; border-radius: 2px; }
+        .burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .burger.active span:nth-child(2) { opacity: 0; }
+        .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(11, 24, 37, 0.97); backdrop-filter: blur(20px); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+        .mobile-menu.active { display: flex; }
+        .mobile-menu a { font-size: 1.5rem; font-weight: 600; color: var(--text-secondary); transition: color 0.3s ease; }
+        .mobile-menu a:hover { color: var(--accent); }
+
+        section { position: relative; z-index: 1; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-        .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; text-align: center; margin-bottom: 16px; color: #1A1A2E; }
-        .section-title span { color: var(--accent); }
+        .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; text-align: center; margin-bottom: 16px; line-height: 1.2; }
+        .section-title span { background: linear-gradient(135deg, var(--accent), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .section-subtitle { text-align: center; color: var(--text-secondary); font-size: 1.1rem; max-width: 600px; margin: 0 auto 48px; }
-        .hero { background: #F0F4F8; min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; }
+        .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; position: relative; overflow: hidden; }
         .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
         .hero-content { animation: fadeInUp 1s ease forwards; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: rgba(10,102,194,0.08); border: 1px solid var(--border-accent); border-radius: 50px; font-size: 0.85rem; font-weight: 500; color: var(--accent); margin-bottom: 24px; }
-        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 24px; color: #1A1A2E; }
-        .hero h1 span { color: var(--accent); }
-        .hero-text { font-size: 1.15rem; color: #4A4A6A; margin-bottom: 36px; max-width: 500px; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: rgba(10, 102, 194, 0.15); border: 1px solid var(--border-accent); border-radius: 50px; font-size: 0.85rem; font-weight: 500; color: var(--accent); margin-bottom: 24px; }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 24px; }
+        .hero h1 span { background: linear-gradient(135deg, var(--accent), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero-text { font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 36px; max-width: 500px; line-height: 1.7; }
         .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
-        .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; background: var(--accent); color: #fff; border: none; border-radius: 50px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
-        .btn-primary:hover { background: #1E3A8A; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(10,102,194,0.3); }
-        .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; background: transparent; color: var(--accent); border: 1px solid var(--accent); border-radius: 50px; font-size: 1rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; background: var(--accent); color: #fff; border: none; border-radius: 50px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; font-family: inherit; }
+        .btn-primary:hover { box-shadow: 0 0 40px var(--accent-glow), 0 10px 40px rgba(0, 0, 0, 0.4); transform: translateY(-3px); }
+        .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; background: transparent; color: var(--accent); border: 1px solid var(--accent); border-radius: 50px; font-size: 1rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease; font-family: inherit; }
         .btn-secondary:hover { background: var(--accent); color: #fff; }
         .hero-visual { display: flex; justify-content: center; animation: fadeInRight 1s ease 0.3s forwards; opacity: 0; }
-        .phone-mockup { position: relative; width: 300px; height: 580px; background: #1E1E2E; border-radius: 40px; border: 2px solid rgba(255,255,255,0.1); overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
-        .phone-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 28px; background: #1A1A2E; border-radius: 0 0 20px 20px; z-index: 2; }
+        .phone-mockup { position: relative; width: 300px; height: 580px; background: var(--bg-card); border-radius: 40px; border: 2px solid var(--border); overflow: hidden; box-shadow: 0 0 60px rgba(10, 102, 194, 0.2), 0 20px 60px rgba(0, 0, 0, 0.5); }
+        .phone-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 28px; background: var(--bg-primary); border-radius: 0 0 20px 20px; z-index: 2; }
         .phone-screen { padding: 40px 16px 16px; height: 100%; display: flex; flex-direction: column; }
-        .phone-header { text-align: center; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 16px; }
+        .phone-header { text-align: center; padding-bottom: 12px; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
         .phone-header h4 { font-size: 0.9rem; color: var(--accent); }
-        .phone-header p { font-size: 0.7rem; color: #7A7A90; }
+        .phone-header p { font-size: 0.7rem; color: var(--text-muted); }
         .chat-messages { flex: 1; display: flex; flex-direction: column; gap: 12px; }
         .chat-msg { max-width: 85%; padding: 10px 14px; border-radius: 16px; font-size: 0.8rem; line-height: 1.4; opacity: 0; animation: msgAppear 0.5s ease forwards; }
-        .chat-msg.ai { background: #2A2A3A; border: 1px solid rgba(255,255,255,0.08); align-self: flex-start; color: #C0C0D0; }
-        .chat-msg.user { background: rgba(10,102,194,0.25); border: 1px solid rgba(10,102,194,0.4); align-self: flex-end; color: #fff; }
+        .chat-msg.ai { background: var(--bg-card-hover); border: 1px solid var(--border); align-self: flex-start; border-bottom-left-radius: 4px; color: var(--text-secondary); }
+        .chat-msg.user { background: rgba(10, 102, 194, 0.2); border: 1px solid var(--border-accent); align-self: flex-end; border-bottom-right-radius: 4px; color: var(--text-primary); }
+        .chat-msg:nth-child(1) { animation-delay: 0.8s; } .chat-msg:nth-child(2) { animation-delay: 1.6s; }
         @keyframes msgAppear { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .hero-visual::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(10, 102, 194, 0.15) 0%, transparent 70%); animation: pulseGlow 4s ease-in-out infinite; }
+        @keyframes pulseGlow { 0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; } 50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; } }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+
         .pain-section { padding: 100px 0; }
         .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px; }
-        .pain-card { background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: all 0.4s ease; }
+        .pain-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: all 0.4s ease; position: relative; overflow: hidden; }
         .pain-card:hover { border-color: var(--border-accent); transform: translateY(-5px); box-shadow: var(--shadow); }
         .pain-icon { font-size: 2.5rem; margin-bottom: 16px; }
-        .pain-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; color: #1A1A2E; }
+        .pain-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; color: var(--text-primary); }
         .pain-card p { color: var(--text-secondary); line-height: 1.6; }
-        .pain-conclusion { text-align: center; font-size: 1.2rem; font-weight: 600; color: var(--accent); padding: 24px; border: 1px solid var(--border-accent); border-radius: 16px; background: rgba(10,102,194,0.03); }
+        .pain-conclusion { text-align: center; font-size: 1.2rem; font-weight: 600; color: var(--accent); padding: 24px; border: 1px solid var(--border-accent); border-radius: 16px; background: rgba(10, 102, 194, 0.08); }
         .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin: 60px 0; }
-        .stat-item { text-align: center; padding: 24px; background: #fff; border: 1px solid var(--border); border-radius: 16px; }
-        .stat-number { font-size: 2.5rem; font-weight: 800; color: var(--accent); }
+        .stat-item { text-align: center; padding: 24px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; }
+        .stat-number { font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--accent); }
         .stat-label { font-size: 0.85rem; color: var(--text-muted); }
         .quiz-section { padding: 100px 0; }
-        .quiz-container { max-width: 600px; margin: 0 auto; background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 40px; text-align: center; }
-        .quiz-question { font-size: 1.3rem; font-weight: 600; margin-bottom: 30px; color: #1A1A2E; }
+        .quiz-container { max-width: 600px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 40px; text-align: center; backdrop-filter: blur(10px); }
+        .quiz-question { font-size: 1.3rem; font-weight: 600; margin-bottom: 30px; }
         .quiz-answers { display: flex; flex-direction: column; gap: 12px; }
-        .quiz-answer { padding: 16px 20px; background: #F8FAFC; border: 1px solid var(--border); border-radius: 12px; color: var(--text-secondary); cursor: pointer; transition: all 0.3s ease; }
-        .quiz-answer:hover { border-color: var(--accent); color: #1A1A2E; }
-        .quiz-progress { margin-bottom: 24px; font-size: 0.9rem; color: var(--text-muted); }
-        .quiz-result { display: none; }
+        .quiz-answer { padding: 16px 20px; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; color: var(--text-secondary); cursor: pointer; transition: all 0.3s ease; text-align: left; }
+        .quiz-answer:hover { border-color: var(--accent); color: var(--text-primary); }
         .services-section { padding: 100px 0; }
         .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-        .service-card { background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 40px; transition: all 0.4s ease; }
-        .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); border-color: var(--border-accent); }
-        .service-card.full-width { grid-column: 1 / -1; }
+        .service-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; padding: 40px; transition: all 0.4s ease; position: relative; overflow: hidden; backdrop-filter: blur(10px); }
+        .service-card:hover { transform: translateY(-6px); box-shadow: 0 25px 50px rgba(10, 102, 194, 0.2); border-color: var(--border-accent); }
+        .service-card.full-width { grid-column: 1 / -1; border: 2px solid rgba(10, 102, 194, 0.4); box-shadow: 0 0 30px rgba(10, 102, 194, 0.15); }
         .service-card h3 { font-size: 1.6rem; font-weight: 700; color: var(--accent); margin-bottom: 12px; }
         .service-card .subtitle { font-size: 1rem; color: var(--text-secondary); margin-bottom: 20px; }
-        .service-card .for-who { margin-bottom: 20px; color: var(--text-secondary); font-size: 0.9rem; }
         .service-card .description { color: var(--text-secondary); margin-bottom: 24px; line-height: 1.7; }
         .service-card .price-block { font-size: 1.8rem; font-weight: 800; color: var(--accent); margin-bottom: 20px; }
-        .service-card .price-block small { font-size: 0.9rem; color: var(--text-muted); }
-        .btn-service { display: inline-flex; align-items: center; justify-content: center; padding: 14px 28px; border: 1px solid var(--accent); color: var(--accent); border-radius: 12px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; background: transparent; }
+        .btn-service { display: inline-flex; align-items: center; justify-content: center; padding: 14px 28px; border: 1px solid var(--accent); color: var(--accent); border-radius: 12px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; background: transparent; font-family: inherit; }
         .btn-service:hover { background: var(--accent); color: #fff; }
         .reviews-section { padding: 100px 0; }
         .reviews-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 40px; }
-        .review-card { background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: all 0.4s ease; }
+        .review-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: all 0.4s ease; }
         .review-card:hover { border-color: var(--border-accent); }
-        .review-stars { color: #FFBD2E; font-size: 1rem; margin-bottom: 16px; }
+        .review-stars { color: #FFBD2E; font-size: 1rem; margin-bottom: 16px; letter-spacing: 2px; }
         .review-text { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
         .review-author { display: flex; align-items: center; gap: 12px; }
-        .review-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), #1E3A8A); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; }
+        .review-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), #0066FF); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 700; color: #fff; }
         .contact-section { padding: 100px 0; }
         .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-        .contact-methods { display: flex; flex-direction: column; gap: 16px; }
-        .contact-method { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: #fff; border: 1px solid var(--border); border-radius: 14px; transition: all 0.3s ease; }
+        .contact-methods { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
+        .contact-method { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; transition: all 0.3s ease; }
         .contact-method:hover { border-color: var(--border-accent); }
-        .contact-method-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: rgba(10,102,194,0.08); }
-        .application-card { background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 36px; }
-        .application-card input, .application-card select, .application-card textarea { width: 100%; padding: 14px 16px; background: #F8FAFC; border: 1px solid var(--border); border-radius: 12px; color: #1A1A2E; font-size: 0.95rem; margin-bottom: 20px; outline: none; }
+        .contact-method-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; background: rgba(10, 102, 194, 0.15); }
+        .application-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 36px; }
+        .application-card input, .application-card select, .application-card textarea { width: 100%; padding: 14px 16px; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; color: var(--text-primary); font-size: 0.95rem; font-family: inherit; margin-bottom: 20px; outline: none; }
         .application-card input:focus, .application-card select:focus, .application-card textarea:focus { border-color: var(--accent); }
         .lead-buttons { display: flex; gap: 16px; justify-content: center; margin-top: 24px; }
-        .btn-lead { flex: 1; min-width: 180px; padding: 16px 20px; border: none; border-radius: 14px; font-size: 1rem; font-weight: 700; color: #fff; cursor: pointer; }
+        .btn-lead { flex: 1; min-width: 180px; padding: 16px 20px; border: none; border-radius: 14px; font-size: 1rem; font-weight: 700; color: #fff; cursor: pointer; transition: all 0.3s ease; }
         .btn-lead.vk { background: #0077FF; } .btn-lead.tg { background: #2AABEE; }
         .about-section { padding: 100px 0; }
         .about-inner { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: center; }
@@ -120,8 +149,8 @@
         .about-content h2 span { color: var(--accent); }
         .faq-section { padding: 100px 0; }
         .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
-        .faq-item { background: #fff; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
-        .faq-question { width: 100%; padding: 20px 24px; background: none; border: none; color: #1A1A2E; font-size: 1rem; font-weight: 600; text-align: left; cursor: pointer; display: flex; justify-content: space-between; }
+        .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+        .faq-question { width: 100%; padding: 20px 24px; background: none; border: none; color: var(--text-primary); font-size: 1rem; font-weight: 600; text-align: left; cursor: pointer; display: flex; justify-content: space-between; }
         .faq-icon { font-size: 1.2rem; color: var(--accent); }
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
         .faq-answer-inner { padding: 0 24px 20px; color: var(--text-secondary); }
@@ -129,13 +158,15 @@
         .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); z-index: 2000; align-items: center; justify-content: center; padding: 24px; }
+        .glow-line { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity: 0.3; margin: 0; }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(10px); z-index: 2000; align-items: center; justify-content: center; padding: 24px; }
         .modal-overlay.active { display: flex; }
-        .modal { background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 40px; max-width: 700px; width: 100%; max-height: 80vh; overflow-y: auto; position: relative; color: #1A1A2E; }
+        .modal { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 40px; max-width: 700px; width: 100%; max-height: 80vh; overflow-y: auto; position: relative; color: var(--text-primary); }
         .modal h2 { font-size: 1.5rem; margin-bottom: 24px; color: var(--accent); }
-        .modal h3 { font-size: 1.1rem; margin: 20px 0 12px; }
-        .modal p, .modal li { color: var(--text-secondary); line-height: 1.7; }
-        .modal-close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; background: #F8FAFC; border: 1px solid var(--border); color: var(--text-secondary); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .modal h3 { font-size: 1.1rem; margin: 20px 0 12px; color: var(--text-primary); }
+        .modal p, .modal li { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 8px; }
+        .modal ul { padding-left: 20px; }
+        .modal-close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; background: var(--bg-secondary); border: 1px solid var(--border); color: var(--text-secondary); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
         .modal-close:hover { color: var(--accent); border-color: var(--accent); }
         @media (max-width: 1024px) {
             .hero-inner, .about-inner, .contact-inner { grid-template-columns: 1fr; text-align: center; }
@@ -151,6 +182,8 @@
     </style>
 </head>
 <body>
+    <div class="grid-bg"></div>
+    <div class="particles" id="particles"></div>
     <header class="header" id="header">
         <div class="header-inner">
             <a href="#" class="logo">КРИСТИНА.AI</a>
@@ -178,7 +211,7 @@
         <div class="container">
             <div class="hero-inner">
                 <div class="hero-content">
-                    <div class="hero-badge">AI-АГЕНТЫ И АВТОНОМНЫЕ БРЕНДЫ</div>
+                    <div class="hero-badge">🤖 AI-АГЕНТЫ И АВТОНОМНЫЕ БРЕНДЫ</div>
                     <h1>Ваш бренд будет <span>работать самостоятельно</span></h1>
                     <p class="hero-text">Создаю чат-ботов и AI-агентов, которые работают вместо вас 24/7, говорят вашим голосом и закрывают вопросы без вашего участия.</p>
                     <div class="hero-buttons">
@@ -190,11 +223,13 @@
                     <div class="phone-mockup">
                         <div class="phone-notch"></div>
                         <div class="phone-screen">
-                            <div class="phone-header"><h4>AI-Агент Кристины</h4><p>онлайн • отвечает мгновенно</p></div>
+                            <div class="phone-header"><h4>🤖 AI-Агент Кристины</h4><p>онлайн • отвечает мгновенно</p></div>
                             <div class="chat-messages">
-                                <div class="chat-msg ai">Здравствуйте! Я AI-агент. Чем могу помочь?</div>
-                                <div class="chat-msg user">Хочу автоматизировать бизнес</div>
-                                <div class="chat-msg ai">Отлично! Подберём решение под ваши задачи.</div>
+                                <div class="chat-msg ai">Здравствуйте! 👋 Я AI-агент Кристины. Чем могу помочь?</div>
+                                <div class="chat-msg user">Хочу автоматизировать свой бизнес</div>
+                                <div class="chat-msg ai">Отлично! Я помогу подобрать решение. Расскажите, какие задачи хотите автоматизировать?</div>
+                                <div class="chat-msg user">Ответы клиентам и сбор заявок</div>
+                                <div class="chat-msg ai">Идеально! Чат-бот + AI-агент закроют эти задачи на 100%. Хотите узнать стоимость? 🚀</div>
                             </div>
                         </div>
                     </div>
@@ -202,17 +237,18 @@
             </div>
         </div>
     </section>
+    <div class="glow-line"></div>
 
     <section class="pain-section" id="pain">
         <div class="container">
-            <h2 class="section-title reveal">Узнаете себя?</h2>
-            <p class="section-subtitle reveal">Эти проблемы знакомы большинству экспертов</p>
+            <h2 class="section-title reveal"><span>Узнаете себя?</span></h2>
+            <p class="section-subtitle reveal">Эти проблемы знакомы большинству экспертов и предпринимателей</p>
             <div class="pain-grid">
-                <div class="pain-card reveal"><div class="pain-icon">📩</div><h3>Хаос в переписках</h3><p>Клиенты пишут везде, вы путаетесь и теряете заявки.</p></div>
-                <div class="pain-card reveal"><div class="pain-icon">🔋</div><h3>Выгорание от рутины</h3><p>80% времени уходит на однотипные ответы.</p></div>
-                <div class="pain-card reveal"><div class="pain-icon">📉</div><h3>Слив бюджета</h3><p>Лиды не обрабатываются, деньги уходят конкурентам.</p></div>
+                <div class="pain-card reveal"><div class="pain-icon">📩</div><h3>Хаос в переписках</h3><p>Клиенты пишут в Директ, Telegram, VK. Вы путаетесь, забываете ответить, теряете заявки.</p></div>
+                <div class="pain-card reveal"><div class="pain-icon">🔋</div><h3>Выгорание от рутины</h3><p>80% времени уходит на ответы на вопросы «Сколько стоит?».</p></div>
+                <div class="pain-card reveal"><div class="pain-icon">📉</div><h3>Слив бюджета</h3><p>Реклама работает, лиды идут, но вы не успеваете обработать их вовремя.</p></div>
             </div>
-            <div class="pain-conclusion reveal">Вам нужна <strong>система, которая берёт рутину на себя</strong>.</div>
+            <div class="pain-conclusion reveal">Вам нужна <strong>система, которая берет рутину на себя</strong>.</div>
         </div>
     </section>
 
@@ -227,13 +263,13 @@
 
     <section class="quiz-section" id="quiz">
         <div class="container">
-            <h2 class="section-title reveal">Какой AI-инструмент нужен вашему бизнесу?</h2>
+            <h2 class="section-title reveal">Какой AI-инструмент <span>нужен вашему бизнесу?</span></h2>
             <div class="quiz-container reveal" id="quizContainer">
                 <div id="quizProgress" class="quiz-progress"></div>
                 <div id="quizQuestion" class="quiz-question"></div>
                 <div id="quizAnswers" class="quiz-answers"></div>
                 <div id="quizResult" class="quiz-result">
-                    <h3>Ваш идеальный старт</h3>
+                    <h3>🎯 Ваш идеальный старт</h3>
                     <p id="quizRecommendation"></p>
                     <a href="#services" class="btn-primary">Посмотреть услугу</a>
                 </div>
@@ -241,9 +277,11 @@
         </div>
     </section>
 
+    <div class="glow-line"></div>
+
     <section class="services-section" id="services">
         <div class="container">
-            <h2 class="section-title reveal">VIP-решения для вашего бизнеса</h2>
+            <h2 class="section-title reveal">VIP-решения для <span>вашего бизнеса</span></h2>
             <p class="section-subtitle reveal">Каждая услуга — трансформация вашей системы</p>
             <div class="services-grid">
                 <div class="service-card reveal">
@@ -306,25 +344,29 @@
         </div>
     </section>
 
+    <div class="glow-line"></div>
+
     <section class="reviews-section" id="reviews">
         <div class="container">
-            <h2 class="section-title reveal">Цифры и эмоции говорят громче слов</h2>
+            <h2 class="section-title reveal">Цифры и эмоции <span>говорят громче слов</span></h2>
             <div class="reviews-grid">
                 <div class="review-card reveal"><div class="review-stars">★★★★★</div><p class="review-text">«Поработали с Кристиной, мне нужно было сделать чат-бот. Справилась великолепно! просто друг друга ловили на взаимности. Также просила сделать нарезки по видео, сделала не только нарезки, но и изменила, и улучшила качество видео. мне все очень понравилось, рекомендую! 👍 очень приятна Кристина в общении и в понимании. Благодарю! ❤️»</p><div class="review-author"><div class="review-avatar">И</div><div><div class="review-name">Ирина</div></div></div></div>
                 <div class="review-card reveal"><div class="review-stars">★★★★★</div><p class="review-text">«Спустя месяц: вновь начали работать — уже в долгую. Меня зовут Ирина. Работаю с Кристиной сравнительно недавно, примерно третий месяц, очень довольна результатами, её общением со мной. Схватывает все на лету, подстраивается под энергетику, под мои запросы, выдаёт просто потрясающие результаты. прям хвалю, хвалю. И, конечно же, рекомендую.👍 Кристина, благодарю тебя! Ты - профессионал 🧙🥰🎉»</p><div class="review-author"><div class="review-avatar">И</div><div><div class="review-name">Ирина</div></div></div></div>
                 <div class="review-card reveal"><div class="review-stars">★★★★★</div><p class="review-text">«Теперь мне не нужно каждый раз скидывать один и тот же файл с ценами. Клиент сам всё смотрит и пишет уже по делу. Отдельная благодарность, что сейчас на 23.05.2026 эксперт взяла меня в дальнейшую глубокую работу по запуску. К Кристине невозможно прийти 1 раз, всегда в случае новых идей и целей не вижу никого другого.»</p><div class="review-author"><div class="review-avatar">Е</div><div><div class="review-name">Елена</div></div></div></div>
                 <div class="review-card reveal"><div class="review-stars">★★★★★</div><p class="review-text">«Кристина создала мне AI-агента, который реально работает как мой цифровой двойник. Клиенты не отличают его от меня! Теперь я трачу на коммуникацию в 3 раза меньше времени.»</p><div class="review-author"><div class="review-avatar">Д</div><div><div class="review-name">Дмитрий</div></div></div></div>
             </div>
-            <div class="reviews-cta reveal" style="text-align:center; padding:24px; background:rgba(10,102,194,0.03); border:1px solid var(--border-accent); border-radius:16px;">
-                <p style="color:var(--text-secondary); margin-bottom:12px;">Оставьте отзыв в Google ⭐</p>
-                <a href="https://g.page/r/CY8vfg7bKgMSEBI/review" target="_blank" class="btn-secondary">Написать отзыв</a>
+            <div class="reviews-cta reveal" style="text-align:center; padding:24px; background:rgba(10,102,194,0.08); border:1px solid var(--border-accent); border-radius:16px;">
+                <p style="color:var(--text-secondary); margin-bottom:12px;">Хотите оставить отзыв? Мы будем благодарны ⭐</p>
+                <a href="https://g.page/r/CY8vfg7bKgMSEBI/review" target="_blank" class="btn-secondary">⭐ Оставить Google-отзыв</a>
             </div>
         </div>
     </section>
 
+    <div class="glow-line"></div>
+
     <section class="contact-section" id="contact">
         <div class="container">
-            <h2 class="section-title reveal" style="text-align:center;">Свяжитесь со мной</h2>
+            <h2 class="section-title reveal" style="text-align:center;">Свяжитесь <span>со мной</span></h2>
             <div class="contact-inner">
                 <div class="contact-info reveal">
                     <div class="contact-methods">
@@ -339,25 +381,27 @@
                         <input type="text" id="user-contact" placeholder="Telegram или VK" required>
                         <select id="user-service" required>
                             <option value="">Выберите услугу</option>
-                            <option value="diagnostics">Стратегическая диагностика</option>
-                            <option value="chatbot">Чат-бот</option>
-                            <option value="site-code">Сайт на чистом коде</option>
-                            <option value="site-tilda">Сайт на Tilda</option>
-                            <option value="ai-agent">AI-Агент</option>
-                            <option value="coaching">Коучинг страхов</option>
-                            <option value="full-system">Система под ключ</option>
-                            <option value="course">Курс Триггер AI</option>
+                            <option value="diagnostics">🔍 Стратегическая диагностика</option>
+                            <option value="chatbot">🤖 Чат-бот</option>
+                            <option value="site-code">💻 Сайт на чистом коде</option>
+                            <option value="site-tilda">🧩 Сайт на Tilda</option>
+                            <option value="ai-agent">🧠 AI-Агент</option>
+                            <option value="coaching">❤️ Коучинг страхов</option>
+                            <option value="full-system">🚀 Система под ключ</option>
+                            <option value="course">📘 Триггер AI</option>
                         </select>
                         <textarea id="user-task" placeholder="Кратко опишите задачу" rows="3" required></textarea>
                         <div class="lead-buttons">
-                            <button type="button" onclick="submitLead('vk')" class="btn-lead vk">Заявка для ВК</button>
-                            <button type="button" onclick="submitLead('tg')" class="btn-lead tg">Заявка в Telegram</button>
+                            <button type="button" onclick="submitLead('vk')" class="btn-lead vk">📩 Заявка для ВК</button>
+                            <button type="button" onclick="submitLead('tg')" class="btn-lead tg">✈️ Заявка в Telegram</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </section>
+
+    <div class="glow-line"></div>
 
     <section class="about-section" id="about">
         <div class="container">
@@ -367,16 +411,19 @@
                     <h2>Техно-маркетолог <span>и коуч по страхам в продажах</span></h2>
                     <p>Система без смелости — мёртвая архитектура. Смелость без системы — выгорание. Я работаю с обоими.</p>
                     <p><strong style="color:var(--accent);">🔹 Диагностика</strong> — аудит воронки, сайта, чат-бота → пошаговый план.<br>
-                    <strong style="color:var(--accent);">🔹 Коучинг</strong> — проработка страхов за 2–5 сессий.<br>
-                    <strong style="color:var(--accent);">🔹 Под ключ</strong> — техника + внутренняя свобода.</p>
+                    <strong style="color:var(--accent);">🔹 Коучинг</strong> — точечная проработка страха цены, отказа, самозванца за 2–5 сессий.<br>
+                    <strong style="color:var(--accent);">🔹 Под ключ</strong> — собираю всю технику и параллельно убираю внутренние блоки → работающий механизм + ваша внутренняя свобода.</p>
+                    <p>Результат: система продаёт, а внутри спокойствие и азарт.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <div class="glow-line"></div>
+
     <section class="faq-section" id="faq">
         <div class="container">
-            <h2 class="section-title reveal">Прозрачные условия сотрудничества</h2>
+            <h2 class="section-title reveal">Прозрачные <span>условия сотрудничества</span></h2>
             <div class="faq-list">
                 <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)"><span>Как начинаем работу?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner"><strong>Бесплатное знакомство (15 мин):</strong> короткая встреча или переписка. Старт работ — после предоплаты и договора.</div></div></div>
                 <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)"><span>Какие условия оплаты?</span><div class="faq-icon">+</div></button><div class="faq-answer"><div class="faq-answer-inner"><strong>100% предоплата на все услуги.</strong> Договор фиксирует обязанности, сумму и условия возврата.</div></div></div>
@@ -406,34 +453,48 @@
             <button class="modal-close" onclick="closePrivacy()">✕</button>
             <h2>Политика конфиденциальности</h2>
             <p><strong>Дата публикации:</strong> 01.05.2026</p>
-            <h3>1. Общие положения</h3><p>Настоящая Политика определяет порядок обработки и защиты персональных данных пользователей сайта КРИСТИНА.AI.</p>
+            <h3>1. Общие положения</h3><p>Настоящая Политика конфиденциальности определяет порядок обработки и защиты персональных данных пользователей сайта КРИСТИНА.AI.</p>
             <h3>2. Какие данные мы собираем</h3><p>Контактные данные (имя, Telegram/VK username), описание задачи, выбранная услуга, технические данные.</p>
             <h3>3. Цели обработки</h3><p>Обработка заявок, связь с вами, улучшение сервиса, исполнение договоров.</p>
             <h3>4. Хранение и защита</h3><p>Данные защищены и не передаются третьим лицам.</p>
-            <h3>5. Условия оплаты и возврата</h3><p>Все услуги предоставляются на условиях <strong>100% предоплаты</strong>. При заключении договора фиксируются услуга, стоимость, обязанности сторон и условия возврата. Возврат 50% возможен исключительно в случаях, предусмотренных договором.</p>
+            <h3>5. Условия оплаты и возврата</h3><p>Все услуги предоставляются на условиях <strong>100% предоплаты</strong>. Перед началом работ заключается формальный договор, фиксирующий услугу, стоимость, обязанности сторон и условия возврата. Возврат 50% от уплаченной суммы возможен исключительно в случаях, предусмотренных договором.</p>
             <h3>6. Права пользователя</h3><p>Вы можете запросить, исправить или удалить свои данные.</p>
             <h3>7. Контакты</h3><p>По вопросам: <a href="https://t.me/marketologdizayner" target="_blank" style="color:var(--accent);">@marketologdizayner</a></p>
         </div>
     </div>
 
     <div id="vkPopup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:99999;align-items:center;justify-content:center;">
-        <div style="background:#fff;border:2px solid #0077FF;padding:30px;border-radius:16px;max-width:450px;text-align:center;">
-            <h3 style="color:#1A1A2E;">Заявка принята!</h3>
-            <p style="color:#4A4A6A;">Спасибо! Подпишитесь на сообщество:</p>
+        <div style="background:#112233;border:2px solid #0077FF;padding:30px;border-radius:16px;max-width:450px;text-align:center;color:#fff;">
+            <h3>Заявка принята!</h3>
+            <p>Спасибо! Подпишитесь на сообщество:</p>
             <a href="https://vk.ru/vk_prodvizenie_kristina" target="_blank" style="display:block;background:#0077FF;color:#fff;padding:12px;border-radius:8px;margin:10px 0;">Перейти в сообщество</a>
             <button onclick="closePopup('vkPopup')" style="background:none;border:none;color:#7A7A8A;cursor:pointer;">Закрыть</button>
         </div>
     </div>
     <div id="tgPopup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:99999;align-items:center;justify-content:center;">
-        <div style="background:#fff;border:2px solid #2AABEE;padding:30px;border-radius:16px;max-width:450px;text-align:center;">
-            <h3 style="color:#1A1A2E;">Заявка принята!</h3>
-            <p style="color:#4A4A6A;">Спасибо! Подпишитесь на канал:</p>
+        <div style="background:#112233;border:2px solid #2AABEE;padding:30px;border-radius:16px;max-width:450px;text-align:center;color:#fff;">
+            <h3>Заявка принята!</h3>
+            <p>Спасибо! Подпишитесь на канал:</p>
             <a href="https://t.me/fullstack_razrabotka" target="_blank" style="display:block;background:#2AABEE;color:#fff;padding:12px;border-radius:8px;margin:10px 0;">Перейти в канал</a>
             <button onclick="closePopup('tgPopup')" style="background:none;border:none;color:#7A7A8A;cursor:pointer;">Закрыть</button>
         </div>
     </div>
 
     <script>
+        (function() {
+            const container = document.getElementById('particles');
+            const count = 30;
+            for (let i = 0; i < count; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.animationDuration = (8 + Math.random() * 12) + 's';
+                p.style.animationDelay = Math.random() * 10 + 's';
+                p.style.width = (1 + Math.random() * 2) + 'px';
+                p.style.height = p.style.width;
+                container.appendChild(p);
+            }
+        })();
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50));
         const burger = document.getElementById('burger');
