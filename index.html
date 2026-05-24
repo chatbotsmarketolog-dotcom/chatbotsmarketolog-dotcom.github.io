@@ -13,25 +13,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700;800;900&family=Cormorant+Garamond:wght@500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gold: #C9A85A;
-            --gold-light: #E0C080;
-            --gold-glow: rgba(201, 168, 90, 0.3);
-            --emerald: #0F4C3A;
-            --emerald-light: #1A6A4A;
-            --emerald-glow: rgba(15, 76, 58, 0.4);
-            --bg-primary: #1A0A0A;
-            --bg-secondary: #220E0E;
-            --bg-card: rgba(30, 10, 10, 0.8);
-            --bg-card-hover: rgba(40, 15, 15, 0.9);
+            --cherry: #5A0F1A;
+            --cherry-light: #7A1F2A;
+            --gold: #D4AF37;
+            --gold-light: #E5C158;
+            --gold-glow: rgba(212, 175, 55, 0.3);
+            --emerald: #0B3B2A;
+            --emerald-light: #1A5B3A;
+            --emerald-glow: rgba(11, 59, 42, 0.4);
+            --bg-primary: #1A0A0E;
+            --bg-secondary: #240E12;
+            --bg-card: rgba(30, 10, 14, 0.8);
+            --bg-card-hover: rgba(40, 15, 19, 0.9);
             --text-primary: #F5F0EB;
-            --text-secondary: #C0B0A0;
-            --text-muted: #A09080;
+            --text-secondary: #D0C0B0;
+            --text-muted: #B0A090;
             --border: rgba(255, 255, 255, 0.06);
-            --border-gold: rgba(201, 168, 90, 0.4);
-            --border-emerald: rgba(15, 76, 58, 0.4);
-            --shadow-gold: 0 0 20px rgba(201, 168, 90, 0.15);
-            --shadow-emerald: 0 0 20px rgba(15, 76, 58, 0.2);
+            --border-gold: rgba(212, 175, 55, 0.4);
+            --border-emerald: rgba(11, 59, 42, 0.4);
+            --shadow-gold: 0 0 20px rgba(212, 175, 55, 0.15);
+            --shadow-emerald: 0 0 20px rgba(11, 59, 42, 0.2);
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; scroll-padding-top: 80px; }
         body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
@@ -40,10 +43,18 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
         .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; text-align: center; margin-bottom: 16px; color: var(--text-primary); }
         .section-title span { color: var(--gold); }
-        .section-subtitle { text-align: center; color: var(--text-secondary); font-size: 1.1rem; max-width: 600px; margin: 0 auto 48px; }
+        .section-subtitle { text-align: center; color: var(--text-secondary); font-size: 1.1rem; max-width: 600px; margin: 0 auto 40px; }
+
+        /* Floating decorative elements */
+        .decorative-lines { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+        .decorative-line { position: absolute; opacity: 0.1; animation: floatLine 15s ease-in-out infinite; }
+        .decorative-line:nth-child(1) { top: 10%; left: 5%; width: 2px; height: 300px; background: linear-gradient(to bottom, transparent, var(--gold), transparent); animation-delay: 0s; }
+        .decorative-line:nth-child(2) { top: 40%; right: 10%; width: 2px; height: 200px; background: linear-gradient(to bottom, transparent, var(--emerald), transparent); animation-delay: -5s; }
+        .decorative-line:nth-child(3) { bottom: 20%; left: 15%; width: 2px; height: 250px; background: linear-gradient(to bottom, transparent, var(--gold), transparent); animation-delay: -10s; }
+        @keyframes floatLine { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-30px) rotate(3deg); } }
 
         /* Header */
-        .header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; transition: all 0.4s ease; backdrop-filter: blur(10px); background: rgba(26, 10, 10, 0.8); }
+        .header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; transition: all 0.4s ease; backdrop-filter: blur(10px); background: rgba(26, 10, 14, 0.8); }
         .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
         .logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 800; color: var(--gold); letter-spacing: 2px; }
         .nav { display: flex; align-items: center; gap: 32px; }
@@ -55,12 +66,12 @@
         .nav-btn:hover { box-shadow: 0 0 30px var(--gold-glow); transform: translateY(-2px); }
 
         /* Hero */
-        .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; position: relative; overflow: hidden; background: linear-gradient(135deg, #1A0A0A 0%, #0D0505 100%); }
-        .hero::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 30% 50%, rgba(201,168,90,0.08) 0%, transparent 40%), radial-gradient(circle at 70% 50%, rgba(15,76,58,0.08) 0%, transparent 40%); animation: heroFloat 15s ease-in-out infinite; }
+        .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; position: relative; overflow: hidden; background: linear-gradient(135deg, #1A0A0E 0%, #0D0505 100%); }
+        .hero::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 30% 50%, rgba(212,175,55,0.08) 0%, transparent 40%), radial-gradient(circle at 70% 50%, rgba(11,59,42,0.08) 0%, transparent 40%); animation: heroFloat 15s ease-in-out infinite; }
         @keyframes heroFloat { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(2%, 2%); } }
         .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
         .hero-content { animation: fadeInUp 1s ease forwards; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: rgba(201,168,90,0.1); border: 1px solid var(--border-gold); border-radius: 50px; font-size: 0.85rem; font-weight: 500; color: var(--gold); margin-bottom: 24px; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: rgba(212,175,55,0.1); border: 1px solid var(--border-gold); border-radius: 50px; font-size: 0.85rem; font-weight: 500; color: var(--gold); margin-bottom: 24px; }
         .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 24px; color: var(--text-primary); }
         .hero h1 span { color: var(--gold); }
         .hero-text { font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 36px; max-width: 500px; }
@@ -70,7 +81,7 @@
         .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; background: transparent; color: var(--gold); border: 1px solid var(--gold); border-radius: 50px; font-size: 1rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease; font-family: inherit; }
         .btn-secondary:hover { background: var(--gold); color: var(--bg-primary); }
         .hero-visual { display: flex; justify-content: center; animation: fadeInRight 1s ease 0.3s forwards; opacity: 0; }
-        .phone-mockup { position: relative; width: 300px; height: 580px; background: var(--bg-card); border-radius: 40px; border: 2px solid var(--border-gold); overflow: hidden; box-shadow: 0 0 60px rgba(201,168,90,0.15), 0 20px 60px rgba(0,0,0,0.5); animation: phoneFloat 6s ease-in-out infinite; }
+        .phone-mockup { position: relative; width: 300px; height: 580px; background: var(--bg-card); border-radius: 40px; border: 2px solid var(--border-gold); overflow: hidden; box-shadow: 0 0 60px rgba(212,175,55,0.15), 0 20px 60px rgba(0,0,0,0.5); animation: phoneFloat 6s ease-in-out infinite; }
         @keyframes phoneFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         .phone-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 28px; background: var(--bg-primary); border-radius: 0 0 20px 20px; z-index: 2; }
         .phone-screen { padding: 40px 16px 16px; height: 100%; display: flex; flex-direction: column; }
@@ -79,8 +90,8 @@
         .phone-header p { font-size: 0.7rem; color: var(--text-muted); }
         .chat-messages { flex: 1; display: flex; flex-direction: column; gap: 12px; }
         .chat-msg { max-width: 85%; padding: 10px 14px; border-radius: 16px; font-size: 0.8rem; line-height: 1.4; opacity: 0; animation: msgAppear 0.5s ease forwards; }
-        .chat-msg.ai { background: rgba(15,76,58,0.2); border: 1px solid var(--border-emerald); align-self: flex-start; border-bottom-left-radius: 4px; color: var(--text-secondary); }
-        .chat-msg.user { background: rgba(201,168,90,0.15); border: 1px solid var(--border-gold); align-self: flex-end; border-bottom-right-radius: 4px; color: var(--text-primary); }
+        .chat-msg.ai { background: rgba(11,59,42,0.2); border: 1px solid var(--border-emerald); align-self: flex-start; border-bottom-left-radius: 4px; color: var(--text-secondary); }
+        .chat-msg.user { background: rgba(212,175,55,0.15); border: 1px solid var(--border-gold); align-self: flex-end; border-bottom-right-radius: 4px; color: var(--text-primary); }
         .chat-msg:nth-child(1) { animation-delay: 0.8s; } .chat-msg:nth-child(2) { animation-delay: 1.6s; } .chat-msg:nth-child(3) { animation-delay: 2.4s; } .chat-msg:nth-child(4) { animation-delay: 3.2s; } .chat-msg:nth-child(5) { animation-delay: 4s; }
         @keyframes msgAppear { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
@@ -88,20 +99,19 @@
 
         /* Services cards animation */
         .service-card { transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1.2); }
-        .service-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 20px 40px rgba(201,168,90,0.25); }
+        .service-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 20px 40px rgba(212,175,55,0.25); }
 
         /* Reveal animation for scroll */
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
-        /* Rest of styles (same as before but with minor tweaks) */
         .pain-card:hover { border-color: var(--border-gold); transform: translateY(-5px); box-shadow: var(--shadow-gold); }
         .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin: 60px 0; }
         .stat-item { text-align: center; padding: 24px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; }
         .stat-number { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 800; color: var(--gold); }
         .quiz-container { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 40px; text-align: center; }
         .quiz-answer { padding: 16px 20px; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; color: var(--text-secondary); cursor: pointer; transition: all 0.3s ease; }
-        .quiz-answer:hover { border-color: var(--gold); background: rgba(201,168,90,0.1); }
+        .quiz-answer:hover { border-color: var(--gold); background: rgba(212,175,55,0.1); }
         .reviews-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 40px; }
         .review-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: all 0.4s ease; }
         .review-card:hover { border-color: var(--border-gold); }
@@ -111,7 +121,10 @@
         .application-card input, .application-card select, .application-card textarea { width: 100%; padding: 14px 16px; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; color: var(--text-primary); font-size: 0.95rem; margin-bottom: 20px; outline: none; }
         .application-card input:focus, .application-card select:focus, .application-card textarea:focus { border-color: var(--gold); }
         .btn-lead { flex: 1; min-width: 180px; padding: 16px 20px; border: none; border-radius: 14px; font-size: 1rem; font-weight: 700; color: #fff; cursor: pointer; }
-        .btn-lead.vk { background: #0077FF; } .btn-lead.tg { background: #2AABEE; }
+        .btn-lead.vk { background: var(--emerald); border: 1px solid var(--emerald-light); }
+        .btn-lead.vk:hover { background: var(--emerald-light); }
+        .btn-lead.tg { background: var(--gold); color: var(--bg-primary); }
+        .btn-lead.tg:hover { background: var(--gold-light); }
         .footer { border-top: 1px solid var(--border); padding: 48px 0 32px; }
         .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(10px); z-index: 2000; align-items: center; justify-content: center; padding: 24px; }
@@ -135,13 +148,18 @@
         .burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
         .burger.active span:nth-child(2) { opacity: 0; }
         .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-        .mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(26, 10, 10, 0.97); backdrop-filter: blur(20px); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+        .mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(26, 10, 14, 0.97); backdrop-filter: blur(20px); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
         .mobile-menu.active { display: flex; }
         .mobile-menu a { font-size: 1.5rem; font-weight: 600; color: var(--text-secondary); transition: color 0.3s ease; }
         .mobile-menu a:hover { color: var(--gold); }
     </style>
 </head>
 <body>
+    <div class="decorative-lines">
+        <div class="decorative-line"></div>
+        <div class="decorative-line"></div>
+        <div class="decorative-line"></div>
+    </div>
     <header class="header" id="header">
         <div class="header-inner">
             <a href="#" class="logo">КРИСТИНА.AI</a>
@@ -196,7 +214,7 @@
         </div>
     </section>
 
-    <section class="pain-section" id="pain">
+    <section class="pain-section" id="pain" style="padding: 80px 0;">
         <div class="container">
             <h2 class="section-title reveal">Узнаете себя?</h2>
             <p class="section-subtitle reveal">Эти проблемы знакомы большинству экспертов</p>
@@ -205,7 +223,7 @@
                 <div class="pain-card reveal"><div class="pain-icon">🔋</div><h3>Выгорание от рутины</h3><p>80% времени уходит на однотипные ответы.</p></div>
                 <div class="pain-card reveal"><div class="pain-icon">📉</div><h3>Слив бюджета</h3><p>Лиды не обрабатываются, деньги уходят конкурентам.</p></div>
             </div>
-            <div class="pain-conclusion reveal" style="text-align:center; padding:24px; border:1px solid var(--border-gold); border-radius:16px; background:rgba(201,168,90,0.05); margin-top:24px;">Вам нужна <strong>система, которая берёт рутину на себя</strong>.</div>
+            <div class="pain-conclusion reveal" style="text-align:center; padding:24px; border:1px solid var(--border-gold); border-radius:16px; background:rgba(212,175,55,0.05); margin-top:24px;">Вам нужна <strong>система, которая берёт рутину на себя</strong>.</div>
         </div>
     </section>
 
@@ -218,7 +236,7 @@
         </div>
     </section>
 
-    <section class="quiz-section" id="quiz">
+    <section class="quiz-section" id="quiz" style="padding: 80px 0;">
         <div class="container">
             <h2 class="section-title reveal">Какой AI-инструмент нужен вашему бизнесу?</h2>
             <div class="quiz-container reveal" id="quizContainer">
@@ -234,7 +252,7 @@
         </div>
     </section>
 
-    <section class="services-section" id="services">
+    <section class="services-section" id="services" style="padding: 80px 0;">
         <div class="container">
             <h2 class="section-title reveal">VIP-решения для вашего бизнеса</h2>
             <p class="section-subtitle reveal">Каждая услуга — трансформация вашей системы</p>
@@ -292,7 +310,7 @@
         </div>
     </section>
 
-    <section class="reviews-section" id="reviews">
+    <section class="reviews-section" id="reviews" style="padding: 80px 0;">
         <div class="container">
             <h2 class="section-title reveal">Цифры и эмоции говорят громче слов</h2>
             <div class="reviews-grid">
@@ -301,22 +319,22 @@
                 <div class="review-card reveal"><div class="review-stars" style="color:var(--gold);">★★★★★</div><p class="review-text" style="color:var(--text-secondary);">«Теперь клиент сам смотрит и пишет по делу. Кристина взяла меня в глубокую работу по запуску.»</p><div class="review-author" style="display:flex; align-items:center; gap:12px;"><div class="review-avatar" style="width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg, var(--emerald), var(--gold)); display:flex; align-items:center; justify-content:center; color:var(--bg-primary); font-weight:700;">Е</div><div><div class="review-name" style="font-weight:600;">Елена</div></div></div></div>
                 <div class="review-card reveal"><div class="review-stars" style="color:var(--gold);">★★★★★</div><p class="review-text" style="color:var(--text-secondary);">«AI-агент работает как мой цифровой двойник. Трачу в 3 раза меньше времени на коммуникацию.»</p><div class="review-author" style="display:flex; align-items:center; gap:12px;"><div class="review-avatar" style="width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg, var(--emerald), var(--gold)); display:flex; align-items:center; justify-content:center; color:var(--bg-primary); font-weight:700;">Д</div><div><div class="review-name" style="font-weight:600;">Дмитрий</div></div></div></div>
             </div>
-            <div style="text-align:center; padding:24px; background:rgba(201,168,90,0.05); border:1px solid var(--border-gold); border-radius:16px;">
+            <div style="text-align:center; padding:24px; background:rgba(212,175,55,0.05); border:1px solid var(--border-gold); border-radius:16px;">
                 <p style="color:var(--text-secondary); margin-bottom:12px;">Оставьте отзыв в Google ⭐</p>
                 <a href="https://g.page/r/CY8vfg7bKgMSEBI/review" target="_blank" class="btn-secondary">Написать отзыв</a>
             </div>
         </div>
     </section>
 
-    <section class="contact-section" id="contact" style="padding:100px 0;">
+    <section class="contact-section" id="contact" style="padding:80px 0;">
         <div class="container">
             <h2 class="section-title reveal" style="text-align:center;">Свяжитесь со мной</h2>
             <div class="contact-inner" style="display:grid; grid-template-columns:1fr 1fr; gap:48px;">
                 <div class="contact-info reveal">
                     <div style="display:flex; flex-direction:column; gap:16px;">
-                        <a href="https://t.me/marketologdizayner" target="_blank" class="contact-method"><div style="width:44px; height:44px; border-radius:12px; background:rgba(201,168,90,0.1); display:flex; align-items:center; justify-content:center;">💬</div><div><h4>Telegram</h4><p style="color:var(--text-muted);">@marketologdizayner</p></div></a>
-                        <a href="https://vk.ru/kristinavcifre" target="_blank" class="contact-method"><div style="width:44px; height:44px; border-radius:12px; background:rgba(201,168,90,0.1); display:flex; align-items:center; justify-content:center;">🔵</div><div><h4>ВКонтакте</h4><p style="color:var(--text-muted);">@kristinavcifre</p></div></a>
-                        <a href="https://www.instagram.com/gap_____ova_kristina/" target="_blank" class="contact-method"><div style="width:44px; height:44px; border-radius:12px; background:rgba(201,168,90,0.1); display:flex; align-items:center; justify-content:center;">📸</div><div><h4>Instagram</h4><p style="color:var(--text-muted);">@gap_____ova_kristina</p></div></a>
+                        <a href="https://t.me/marketologdizayner" target="_blank" class="contact-method"><div style="width:44px; height:44px; border-radius:12px; background:rgba(212,175,55,0.1); display:flex; align-items:center; justify-content:center;">💬</div><div><h4>Telegram</h4><p style="color:var(--text-muted);">@marketologdizayner</p></div></a>
+                        <a href="https://vk.ru/kristinavcifre" target="_blank" class="contact-method"><div style="width:44px; height:44px; border-radius:12px; background:rgba(11,59,42,0.1); display:flex; align-items:center; justify-content:center;">🔵</div><div><h4>ВКонтакте</h4><p style="color:var(--text-muted);">@kristinavcifre</p></div></a>
+                        <a href="https://www.instagram.com/gap_____ova_kristina/" target="_blank" class="contact-method"><div style="width:44px; height:44px; border-radius:12px; background:rgba(212,175,55,0.1); display:flex; align-items:center; justify-content:center;">📸</div><div><h4>Instagram</h4><p style="color:var(--text-muted);">@gap_____ova_kristina</p></div></a>
                     </div>
                 </div>
                 <div class="application-card reveal">
@@ -345,7 +363,7 @@
         </div>
     </section>
 
-    <section class="about-section" id="about" style="padding:100px 0;">
+    <section class="about-section" id="about" style="padding:80px 0;">
         <div class="container">
             <div class="about-inner" style="display:grid; grid-template-columns:auto 1fr; gap:48px; align-items:center;">
                 <div class="about-photo reveal"><img src="avatar.jpg" alt="Кристина" loading="lazy" style="width:300px; height:380px; object-fit:cover; border-radius:24px; border:2px solid var(--border-gold);"></div>
@@ -360,7 +378,7 @@
         </div>
     </section>
 
-    <section class="faq-section" id="faq" style="padding:100px 0;">
+    <section class="faq-section" id="faq" style="padding:80px 0;">
         <div class="container">
             <h2 class="section-title reveal">Прозрачные условия сотрудничества</h2>
             <div style="max-width:800px; margin:0 auto; display:flex; flex-direction:column; gap:12px;">
@@ -443,19 +461,19 @@
     </div>
 
     <div id="vkPopup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:99999;align-items:center;justify-content:center;">
-        <div style="background:#1A0A0A;border:2px solid #0077FF;padding:30px;border-radius:16px;max-width:450px;text-align:center;color:#F5F0EB;">
+        <div style="background:#1A0A0E;border:2px solid var(--emerald);padding:30px;border-radius:16px;max-width:450px;text-align:center;color:#F5F0EB;">
             <h3>Заявка принята!</h3>
             <p>Подпишитесь на сообщество:</p>
-            <a href="https://vk.ru/vk_prodvizenie_kristina" target="_blank" style="display:block;background:#0077FF;color:#fff;padding:12px;border-radius:8px;margin:10px 0;">Перейти в сообщество</a>
-            <button onclick="closePopup('vkPopup')" style="background:none;border:none;color:#7A7A8A;cursor:pointer;">Закрыть</button>
+            <a href="https://vk.ru/vk_prodvizenie_kristina" target="_blank" style="display:block;background:var(--emerald);color:#fff;padding:12px;border-radius:8px;margin:10px 0;">Перейти в сообщество</a>
+            <button onclick="closePopup('vkPopup')" style="background:none;border:none;color:#B0A090;cursor:pointer;">Закрыть</button>
         </div>
     </div>
     <div id="tgPopup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:99999;align-items:center;justify-content:center;">
-        <div style="background:#1A0A0A;border:2px solid #2AABEE;padding:30px;border-radius:16px;max-width:450px;text-align:center;color:#F5F0EB;">
+        <div style="background:#1A0A0E;border:2px solid var(--gold);padding:30px;border-radius:16px;max-width:450px;text-align:center;color:#F5F0EB;">
             <h3>Заявка принята!</h3>
             <p>Подпишитесь на канал:</p>
-            <a href="https://t.me/fullstack_razrabotka" target="_blank" style="display:block;background:#2AABEE;color:#fff;padding:12px;border-radius:8px;margin:10px 0;">Перейти в канал</a>
-            <button onclick="closePopup('tgPopup')" style="background:none;border:none;color:#7A7A8A;cursor:pointer;">Закрыть</button>
+            <a href="https://t.me/fullstack_razrabotka" target="_blank" style="display:block;background:var(--gold);color:var(--bg-primary);padding:12px;border-radius:8px;margin:10px 0;">Перейти в канал</a>
+            <button onclick="closePopup('tgPopup')" style="background:none;border:none;color:#B0A090;cursor:pointer;">Закрыть</button>
         </div>
     </div>
 
