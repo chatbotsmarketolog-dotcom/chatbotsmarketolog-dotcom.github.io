@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Главная страница -->
   <url>
-    <loc>https://chatbotsmarketolog-dotcom.github.io/Chatbot-and-AI-Agent-Studio/</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://chatbotsmarketolog-dotcom.github.io/</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- Страница экосистемы -->
+  <url>
+    <loc>https://chatbotsmarketolog-dotcom.github.io/ecosystem.html</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Страница АгентУм -->
+  <url>
+    <loc>https://chatbotsmarketolog-dotcom.github.io/agentum.html</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
