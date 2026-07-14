@@ -5,15 +5,21 @@ backend:
 media_folder: "images"
 public_folder: "/images"
 
+local_backend: false
+
 collections:
-  - name: "site"
-    label: "Редактор сайта"
+  - name: "site_settings"
+    label: "Настройки сайта"
     files:
-      - name: "index"
-        label: "Главная страница (index.html)"
+      - name: "general"
+        label: "Основная информация"
         file: "index.html"
         fields:
-          - label: "Код страницы (будь внимательна при редактировании тегов)"
-            name: "body"
-            widget: "code"
-            default_language: "html"
+          - label: "Заголовок страницы (Title)"
+            name: "page_title"
+            widget: "string"
+            required: false
+          - label: "Описание (Description)"
+            name: "meta_description"
+            widget: "text"
+            required: false
