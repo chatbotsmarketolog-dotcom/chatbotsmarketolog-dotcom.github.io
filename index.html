@@ -5,20 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI-агенты и чат-боты для бизнеса | КРИСТИНА.AI — Автоматизация продаж</title>
     <meta name="description" content="Создание AI-агентов и чат-ботов под ключ. Автоматизация продаж в Telegram и VK. Техно-маркетолог Кристина. Бесплатная диагностика воронки.">
-    <meta name="keywords" content="AI-агент, чат-бот, автоматизация продаж, Telegram бот, VK бот, AI-маркетинг, воронка продаж, нейро-менеджер, коучинг продаж">
-    <meta property="og:title" content="КРИСТИНА.AI — AI-агенты, коучинг, сайты и чат-боты">
-    <meta property="og:description" content="Диагностика воронки, коучинг страхов, чат-боты, AI-агенты и сайты. Ваш бренд будет работать самостоятельно.">
+    <meta name="keywords" content="AI-агент, чат-бот, автоматизация продаж, Telegram бот, VK бот, AI-маркетинг, воронка продаж, нейро-менеджер">
+    
+    <!-- Open Graph / Facebook / VK / Telegram -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://chatbotsmarketolog-dotcom.github.io/">
-    <link rel="canonical" href="https://chatbotsmarketolog-dotcom.github.io/">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <meta property="og:title" content="КРИСТИНА.AI — AI-агенты и чат-боты для бизнеса">
+    <meta property="og:description" content="Создание AI-агентов и чат-ботов под ключ. Автоматизация продаж в Telegram и VK.">
+    <meta property="og:image" content="https://chatbotsmarketolog-dotcom.github.io/preview.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="КРИСТИНА.AI — AI-агенты и чат-боты для бизнеса">
+    <meta property="og:locale" content="ru_RU">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://chatbotsmarketolog-dotcom.github.io/">
+    <meta name="twitter:title" content="КРИСТИНА.AI — AI-агенты и чат-боты для бизнеса">
+    <meta name="twitter:description" content="Создание AI-агентов и чат-ботов под ключ. Автоматизация продаж в Telegram и VK.">
+    <meta name="twitter:image" content="https://chatbotsmarketolog-dotcom.github.io/preview.jpg">
+    <meta name="twitter:image:alt" content="КРИСТИНА.AI — AI-агенты и чат-боты для бизнеса">
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://kristina-leads.chatbotsmarketolog.workers.dev">
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700;800;900&family=Cormorant+Garamond:wght@500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap"></noscript>
     
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
+
+    <!-- Schema.org -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -36,137 +56,496 @@
     }
     </script>
 
+    <!-- Critical CSS (First Paint) -->
     <style>
         :root {
-            --cherry-deepest: #1A0508; --cherry-deep: #2D0A12; --cherry-dark: #4A1020; --cherry-primary: #6B1830; --cherry-mid: #8C2240; --cherry-light: #A82D52;
-            --gold-primary: #C9A84C; --gold-light: #D4BA5E; --gold-bright: #E8D078; --gold-pale: #F0E0A0; --gold-glow: rgba(201, 168, 76, 0.25); --gold-glow-strong: rgba(201, 168, 76, 0.45);
-            --emerald-deep: #0A2E1A; --emerald-primary: #0B3B2A; --emerald-light: #1A5B3A; --emerald-glow: rgba(11, 59, 42, 0.35);
+            --cherry-deepest: #1A0508; --cherry-deep: #2D0A12; --cherry-dark: #4A1020; --cherry-primary: #6B1830;
+            --gold-primary: #C9A84C; --gold-light: #D4BA5E; --gold-bright: #E8D078;
+            --emerald-primary: #0B3B2A; --emerald-light: #1A5B3A;
             --text-primary: #F8F0E8; --text-secondary: #D8C8B8; --text-muted: #A89888;
-            --card-bg: rgba(74, 16, 32, 0.55); --card-bg-solid: rgba(74, 16, 32, 0.75); --card-border: rgba(201, 168, 76, 0.12); --card-border-hover: rgba(201, 168, 76, 0.35);
-            --glass-bg: rgba(45, 10, 18, 0.6);
+            --card-bg: rgba(74, 16, 32, 0.55); --card-border: rgba(201, 168, 76, 0.12);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-        body { font-family: 'Inter', sans-serif; background: var(--cherry-deepest); color: var(--text-primary); line-height: 1.65; overflow-x: hidden; position: relative; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--cherry-deepest); color: var(--text-primary); line-height: 1.65; overflow-x: hidden; }
+        .header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(26, 5, 8, 0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--card-border); }
+        .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 800; background: linear-gradient(135deg, var(--gold-primary), var(--gold-bright)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: 3px; }
+        .nav { display: flex; align-items: center; gap: 24px; }
+        .nav a { font-size: 0.82rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; }
+        .nav-btn { background: linear-gradient(135deg, var(--gold-primary), var(--gold-light)); color: var(--cherry-deepest); padding: 9px 24px; border-radius: 50px; font-weight: 700; font-size: 0.82rem; text-decoration: none; }
+        .hero { min-height: 100vh; display: flex; align-items: center; padding: 100px 0 60px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 4.2rem); font-weight: 800; line-height: 1.08; margin-bottom: 20px; color: var(--text-primary); }
+        .hero h1 span { background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-bright) 40%, var(--emerald-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero-text { font-size: clamp(0.95rem, 2vw, 1.15rem); color: var(--text-secondary); margin-bottom: 32px; max-width: 520px; line-height: 1.7; }
+        .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: linear-gradient(135deg, var(--emerald-primary), var(--emerald-light)); color: var(--text-primary); border: 1px solid rgba(26, 91, 58, 0.5); border-radius: 50px; font-size: 0.9rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.4s ease; }
+        .btn-primary:hover { box-shadow: 0 0 40px rgba(11, 59, 42, 0.35); transform: translateY(-3px); }
+        .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: transparent; color: var(--gold-primary); border: 1px solid rgba(201, 168, 76, 0.35); border-radius: 50px; font-size: 0.9rem; font-weight: 500; cursor: pointer; text-decoration: none; transition: all 0.4s ease; }
+        .btn-secondary:hover { background: rgba(201, 168, 76, 0.1); border-color: var(--gold-primary); transform: translateY(-3px); }
+        .phone-mockup { position: relative; width: 260px; height: 500px; background: linear-gradient(160deg, rgba(74, 16, 32, 0.9), rgba(45, 10, 18, 0.95)); border-radius: 36px; border: 1px solid rgba(201, 168, 76, 0.2); overflow: hidden; box-shadow: 0 0 60px rgba(201, 168, 76, 0.08), 0 25px 60px rgba(0, 0, 0, 0.5); }
+        .phone-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100px; height: 24px; background: var(--cherry-deepest); border-radius: 0 0 16px 16px; z-index: 2; }
+        .phone-screen { padding: 36px 14px 14px; height: 100%; display: flex; flex-direction: column; }
+        .phone-header { text-align: center; padding-bottom: 10px; border-bottom: 1px solid rgba(201, 168, 76, 0.08); margin-bottom: 12px; }
+        .phone-header h4 { font-size: 0.8rem; color: var(--gold-primary); font-family: 'Inter', sans-serif; }
+        .phone-header p { font-size: 0.65rem; color: var(--text-muted); }
+        .chat-messages { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+        .chat-msg { max-width: 88%; padding: 9px 12px; border-radius: 14px; font-size: 0.72rem; line-height: 1.4; }
+        .chat-msg.ai { background: rgba(11, 59, 42, 0.2); border: 1px solid rgba(11, 59, 42, 0.3); align-self: flex-start; border-bottom-left-radius: 4px; color: var(--text-secondary); }
+        .chat-msg.user { background: rgba(201, 168, 76, 0.1); border: 1px solid rgba(201, 168, 76, 0.2); align-self: flex-end; border-bottom-right-radius: 4px; color: var(--text-primary); }
+        .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; z-index: 1001; }
+        .burger span { width: 26px; height: 2px; background: var(--text-primary); border-radius: 2px; }
+        @media (max-width: 768px) { .nav { display: none; } .burger { display: flex; } .hero-inner { grid-template-columns: 1fr; text-align: center; } .hero-visual { order: -1; } .hero-buttons { justify-content: center; } .btn-primary, .btn-secondary { width: 100%; justify-content: center; } .phone-mockup { width: 220px; height: 420px; margin: 0 auto; } }
+    </style>
+</head>
+<body>
+    <div class="bg-layer bg-gradient"></div>
+    <div class="bg-layer bg-grid"></div>
+    <div class="bg-layer bg-gold-nodes"></div>
+    <div class="bg-layer bg-overlay"></div>
+    <canvas class="bg-layer particles-canvas" id="particlesCanvas"></canvas>
 
+    <div class="gold-ribbons">
+        <div class="ribbon"></div><div class="ribbon"></div><div class="ribbon"></div>
+        <div class="ribbon"></div><div class="ribbon"></div><div class="ribbon"></div>
+    </div>
+    <div class="gold-waves">
+        <div class="gold-wave"></div><div class="gold-wave"></div><div class="gold-wave"></div>
+    </div>
+    <div class="gold-dust" id="goldDust"></div>
+
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="#" class="logo">КРИСТИНА.AI</a>
+            <nav class="nav">
+                <a href="#services">Услуги</a>
+                <a href="ecosystem.html">Моя экосистема</a>
+                <a href="#reviews">Отзывы</a>
+                <a href="#about">Обо мне</a>
+                <a href="#contact">Контакты</a>
+                <a href="#contact" class="nav-btn">Заявка</a>
+            </nav>
+            <div class="burger" id="burger"><span></span><span></span><span></span></div>
+        </div>
+    </header>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#hero" onclick="closeMobile()">Главная</a>
+        <a href="#services" onclick="closeMobile()">Услуги</a>
+        <a href="ecosystem.html" onclick="closeMobile()">Экосистема</a>
+        <a href="#reviews" onclick="closeMobile()">Отзывы</a>
+        <a href="#about" onclick="closeMobile()">Обо мне</a>
+        <a href="#contact" onclick="closeMobile()">Контакты</a>
+    </div>
+
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <div class="hero-badge">✦ ТЁПЛАЯ МАГИЯ ТЕХНОЛОГИЙ ✦</div>
+                    <h1>Ваш бренд будет <span>работать самостоятельно</span></h1>
+                    <p class="hero-text">Создаю чат-ботов и AI-агентов, которые работают вместо вас 24/7, говорят вашим голосом и закрывают вопросы без вашего участия.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn-primary">Оставить заявку</a>
+                        <a href="#services" class="btn-secondary">Узнать больше</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <div class="phone-header"><h4>AI-Агент Кристины</h4><p>онлайн • отвечает мгновенно</p></div>
+                            <div class="chat-messages">
+                                <div class="chat-msg ai">Здравствуйте! 👋 Я AI-агент Кристины. Чем могу помочь?</div>
+                                <div class="chat-msg user">Хочу автоматизировать свой бизнес</div>
+                                <div class="chat-msg ai">Отлично! Я помогу подобрать решение. Расскажите, какие задачи хотите автоматизировать?</div>
+                                <div class="chat-msg user">Ответы клиентам и сбор заявок</div>
+                                <div class="chat-msg ai">Идеально! Чат-бот + AI-агент закроют эти задачи на 100%. Хотите узнать стоимость? 🚀</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="pain-section" id="pain">
+        <div class="container">
+            <h2 class="section-title reveal">Узнаете себя?</h2>
+            <p class="section-subtitle reveal">Эти проблемы знакомы большинству экспертов</p>
+            <div class="pain-grid">
+                <div class="pain-card reveal reveal-delay-1"><div class="pain-icon">📩</div><h3>Хаос в переписках</h3><p>Клиенты пишут везде, вы путаетесь и теряете заявки.</p></div>
+                <div class="pain-card reveal reveal-delay-2"><div class="pain-icon">🔋</div><h3>Выгорание от рутины</h3><p>80% времени уходит на однотипные ответы.</p></div>
+                <div class="pain-card reveal reveal-delay-3"><div class="pain-icon">📉</div><h3>Слив бюджета</h3><p>Лиды не обрабатываются, деньги уходят конкурентам.</p></div>
+            </div>
+            <div class="pain-conclusion reveal">Вам нужна <strong>система, которая берёт рутину на себя</strong>.</div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="container">
+        <div class="stats-row">
+            <div class="stat-item reveal reveal-delay-1"><div class="stat-number">6+</div><div class="stat-label">лет в маркетинге</div></div>
+            <div class="stat-item reveal reveal-delay-2"><div class="stat-number">4+</div><div class="stat-label">года в чат-ботах</div></div>
+            <div class="stat-item reveal reveal-delay-3"><div class="stat-number">30+</div><div class="stat-label">AI-проектов</div></div>
+            <div class="stat-item reveal reveal-delay-4"><div class="stat-number">24/7</div><div class="stat-label">работа агентов</div></div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="quiz-section" id="quiz">
+        <div class="container">
+            <h2 class="section-title reveal">Какой AI-инструмент нужен вашему бизнесу?</h2>
+            <div class="quiz-container reveal" id="quizContainer">
+                <div id="quizProgress" style="margin-bottom:24px; font-size:0.9rem; color:var(--text-muted);"></div>
+                <div id="quizQuestion" style="font-size:1.3rem; font-weight:600; margin-bottom:30px; color:var(--text-primary);"></div>
+                <div id="quizAnswers" style="display:flex; flex-direction:column; gap:12px;"></div>
+                <div id="quizResult" style="display:none;">
+                    <h3 style="font-size:1.5rem; margin-bottom:12px;"> Ваш идеальный старт</h3>
+                    <p id="quizRecommendation" style="margin-bottom:20px;"></p>
+                    <a href="#services" class="btn-primary">Посмотреть услугу</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="services-section" id="services">
+        <div class="container">
+            <h2 class="section-title reveal">VIP-решения для вашего бизнеса</h2>
+            <p class="section-subtitle reveal">Каждая услуга — трансформация вашей системы</p>
+            <div class="services-grid">
+                <div class="service-card reveal reveal-delay-1">
+                    <h3>Стратегическая диагностика</h3>
+                    <p>Полный разбор вашей воронки продаж: от блога до чат-бота. Я нахожу, где теряются заявки и что нужно усилить. Вы получаете чёткий план действий.</p>
+                    <div class="price" style="color:var(--gold-primary);">3 000 ₽</div>
+                    <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Записаться на диагностику</button>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <h3>Чат-бот, который работает по вашим правилам</h3>
+                    <p>Настраиваю помощника, который сам отвечает клиентам, собирает заявки и передаёт вам только готовых к покупке.</p>
+                    <div class="price" style="color:var(--gold-primary);">от 12 000 ₽</div>
+                    <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Заказать бота</button>
+                </div>
+                <div class="service-card reveal reveal-delay-1">
+                    <h3>Сайт на чистом коде с вашим личным конструктором</h3>
+                    <p>Создаю сайт, который продаёт за вас, и даю инструмент для самостоятельных правок.</p>
+                    <div class="price" style="color:var(--gold-primary);">28 888 ₽</div>
+                    <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Обсудить сайт</button>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <h3>Сайт на Tilda: быстро и эффективно</h3>
+                    <p>Для тех, кому нужен стильный работающий сайт в короткие сроки. Я настраиваю всё под вашу нишу.</p>
+                    <div class="price" style="color:var(--gold-primary);">12 000 ₽</div>
+                    <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Хочу сайт на Tilda</button>
+                </div>
+                <div class="service-card reveal reveal-delay-1">
+                    <h3>AI-менеджер, который общается сам</h3>
+                    <p>Нейросетевой помощник, обученный вашей экспертизе. Понимает вопросы клиентов и подводит их к покупке.</p>
+                    <div class="price" style="color:var(--gold-primary);">от 50 000 ₽</div>
+                    <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Внедрить AI-агента</button>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <h3>Коучинг: убрать страхи, которые мешают зарабатывать</h3>
+                    <p>Даже если вы сами психолог или коуч, есть блоки, которые вы не видите у себя. Я помогу снять страх высокой цены, отказа или самозванца.</p>
+                    <div class="price" style="color:var(--gold-primary); font-size:1.5rem;">1 сессия — 5 500 ₽<br><small>4 сессии — 8 888 ₽</small></div>
+                    <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Записаться на сессию</button>
+                </div>
+                <div class="service-card highlight reveal">
+                    <h3>Полный запуск системы продаж под ключ</h3>
+                    <p>Сайт, чат-бот, автоматизация заявок и параллельная работа с внутренними препятствиями. Через месяц вы получаете работающий механизм и уверенность.</p>
+                    <div class="price" style="color:var(--gold-primary);">250 000 ₽</div>
+                    <p style="color:var(--text-muted);">Рассрочка: 2×125 000 ₽ или 4×62 500 ₽</p>
+                    <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="margin-top:12px;">Обсудить систему под ключ</button>
+                </div>
+                <div class="service-card highlight reveal" style="text-align:center;">
+                    <h3>Курс «Триггер AI»</h3>
+                    <p>Создайте своего агента без программистов. Пошаговая программа с шаблонами и моей поддержкой.</p>
+                    <div class="price" style="color:var(--gold-primary);">10 000 ₽</div>
+                    <button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Записаться на курс</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="reviews-section" id="reviews">
+        <div class="container">
+            <h2 class="section-title reveal">Цифры и эмоции говорят громче слов</h2>
+            <div class="reviews-grid">
+                <div class="review-card reveal reveal-delay-1">
+                    <div class="review-stars" style="color:var(--gold-primary); margin-bottom:12px;">★★★★★</div>
+                    <p class="review-text">«Поработали с Кристиной, мне нужно было сделать чат-бот. Справилась великолепно! Рекомендую!»</p>
+                    <div class="review-author" style="display:flex; align-items:center; gap:12px; margin-top:20px;">
+                        <div class="review-avatar">И</div><div><div class="review-name">Ирина</div></div>
+                    </div>
+                </div>
+                <div class="review-card reveal reveal-delay-2">
+                    <div class="review-stars" style="color:var(--gold-primary); margin-bottom:12px;">★★★★★</div>
+                    <p class="review-text">«Спустя месяц: работаем в долгую. Схватывает на лету, подстраивается под запросы. Профессионал!»</p>
+                    <div class="review-author" style="display:flex; align-items:center; gap:12px; margin-top:20px;">
+                        <div class="review-avatar">И</div><div><div class="review-name">Ирина</div></div>
+                    </div>
+                </div>
+                <div class="review-card reveal reveal-delay-1">
+                    <div class="review-stars" style="color:var(--gold-primary); margin-bottom:12px;">★★★★★</div>
+                    <p class="review-text">«Теперь клиент сам смотрит и пишет по делу. Кристина взяла меня в глубокую работу по запуску.»</p>
+                    <div class="review-author" style="display:flex; align-items:center; gap:12px; margin-top:20px;">
+                        <div class="review-avatar">Е</div><div><div class="review-name">Елена</div></div>
+                    </div>
+                </div>
+                <div class="review-card reveal reveal-delay-2">
+                    <div class="review-stars" style="color:var(--gold-primary); margin-bottom:12px;">★★★★★</div>
+                    <p class="review-text">«AI-агент работает как мой цифровой двойник. Трачу в 3 раза меньше времени на коммуникацию.»</p>
+                    <div class="review-author" style="display:flex; align-items:center; gap:12px; margin-top:20px;">
+                        <div class="review-avatar">Д</div><div><div class="review-name">Дмитрий</div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="review-link-box reveal">
+                <p style="color:var(--text-secondary); margin-bottom:16px;">Оставьте отзыв в Google ⭐</p>
+                <a href="https://g.page/r/CY8vfg7bKgMSEBI/review" target="_blank" class="btn-secondary">Написать отзыв</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title reveal">Свяжитесь со мной</h2>
+            <div class="contact-inner">
+                <div class="contact-info reveal">
+                    <div style="display:flex; flex-direction:column; gap:16px;">
+                        <a href="https://t.me/marketologdizayner" target="_blank" class="contact-method">
+                            <div class="contact-method-icon" style="background:rgba(201,168,76,0.1);">💬</div>
+                            <div><h4>Telegram</h4><p>@marketologdizayner</p></div>
+                        </a>
+                        <a href="https://vk.ru/kristinavcifre" target="_blank" class="contact-method">
+                            <div class="contact-method-icon" style="background:rgba(11,59,42,0.15);"></div>
+                            <div><h4>ВКонтакте</h4><p>@kristinavcifre</p></div>
+                        </a>
+                        <a href="https://www.instagram.com/gap_____ova_kristina/" target="_blank" class="contact-method">
+                            <div class="contact-method-icon" style="background:rgba(201,168,76,0.1);">📸</div>
+                            <div><h4>Instagram</h4><p>@gap_____ova_kristina</p></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="application-card reveal">
+                    <form id="lead-form">
+                        <input type="text" id="user-name" placeholder="Ваше имя" required>
+                        <input type="text" id="user-contact" placeholder="Telegram или VK" required>
+                        <select id="user-service" required>
+                            <option value="">Выберите услугу</option>
+                            <option value="diagnostics">Стратегическая диагностика</option>
+                            <option value="chatbot">Чат-бот</option>
+                            <option value="site-code">Сайт на чистом коде</option>
+                            <option value="site-tilda">Сайт на Tilda</option>
+                            <option value="ai-agent">AI-Агент</option>
+                            <option value="coaching">Коучинг страхов</option>
+                            <option value="full-system">Система под ключ</option>
+                            <option value="course">Курс Триггер AI</option>
+                        </select>
+                        <textarea id="user-task" placeholder="Кратко опишите задачу" rows="3" required></textarea>
+                        <div style="display:flex; gap:16px; justify-content:center; margin-top:24px;">
+                            <button type="button" onclick="submitLead('vk')" class="btn-lead vk">Заявка для ВК</button>
+                            <button type="button" onclick="submitLead('tg')" class="btn-lead tg">Заявка в Telegram</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-inner">
+                <div class="about-photo reveal">
+                    <img src="avatar.jpg" alt="Кристина — техно-маркетолог и коуч" loading="lazy" width="280" height="360">
+                </div>
+                <div class="about-content reveal">
+                    <h2>Техно-маркетолог <span style="background:linear-gradient(135deg, var(--gold-primary), var(--gold-bright));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">и коуч по страхам в продажах</span></h2>
+                    <p>Система без смелости — мёртвая архитектура. Смелость без системы — выгорание. Я работаю с обоими.</p>
+                    <p><strong style="color:var(--gold-primary);">🔹 Диагностика</strong> — аудит воронки, сайта, чат-бота → пошаговый план.<br>
+                    <strong style="color:var(--gold-primary);"> Коучинг</strong> — проработка страхов за 2–5 сессий.<br>
+                    <strong style="color:var(--gold-primary);">🔹 Под ключ</strong> — техника + внутренняя свобода.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <h2 class="section-title reveal">Прозрачные условия сотрудничества</h2>
+            <div style="max-width:800px; margin:0 auto; display:flex; flex-direction:column; gap:12px;">
+                <div class="faq-item reveal reveal-delay-1">
+                    <button class="faq-question" onclick="toggleFaq(this)"><span>Как начинаем работу?</span><span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><div class="faq-answer-content"><strong>Два пути:</strong><br>1. <strong>Стратегическая диагностика</strong> (3 000 ₽) — отдельная услуга, полный аудит и план.<br>2. <strong>Платная консультация</strong> (3 000 ₽) — после неё начинаем полноценную работу, и эти 3 000 ₽ вычитаются из итоговой стоимости заказанной услуги. Если выбрали диагностику, сумма не вычитается, так как это самостоятельная услуга.</div></div>
+                </div>
+                <div class="faq-item reveal reveal-delay-2">
+                    <button class="faq-question" onclick="toggleFaq(this)"><span>Какие условия оплаты?</span><span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><div class="faq-answer-content"><strong>100% предоплата на все услуги.</strong> Перед стартом заключается договор, фиксирующий обязанности, сумму и условия возврата.</div></div>
+                </div>
+                <div class="faq-item reveal reveal-delay-3">
+                    <button class="faq-question" onclick="toggleFaq(this)"><span>Какие сроки выполнения?</span><span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><div class="faq-answer-content">Точные сроки устанавливаются в ходе обсуждения заказанной услуги.</div></div>
+                </div>
+                <div class="faq-item reveal reveal-delay-1">
+                    <button class="faq-question" onclick="toggleFaq(this)"><span>Какие гарантии?</span><span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><div class="faq-answer-content"><strong>7 дней поддержки</strong> после сдачи. Возврат 50% возможен по условиям договора.</div></div>
+                </div>
+                <div class="faq-item reveal reveal-delay-2">
+                    <button class="faq-question" onclick="toggleFaq(this)"><span>Нужны ли технические знания?</span><span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><div class="faq-answer-content">Нет. Я беру всю архитектуру, код и интеграции на себя. От вас нужны материалы о бизнесе и стиль общения.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-logo">КРИСТИНА.AI</div>
+                <div class="footer-links">
+                    <a href="https://t.me/marketologdizayner" target="_blank">Telegram</a>
+                    <a href="https://vk.ru/kristinavcifre" target="_blank">VK</a>
+                    <a href="https://www.instagram.com/gap_____ova_kristina/" target="_blank">Instagram</a>
+                    <a href="#" onclick="openPrivacy(event)">Политика конфиденциальности</a>
+                </div>
+            </div>
+            <div style="text-align:center; color:var(--text-muted); margin-top:36px; padding-top:28px; border-top:1px solid rgba(201,168,76,0.06);">© 2026 КРИСТИНА.AI — Оазис будущего. Все права защищены.</div>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="privacyModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closePrivacy()">✕</button>
+            <h2>Политика конфиденциальности</h2>
+            <p><strong>Дата публикации:</strong> 01.05.2026</p>
+            <h3>1. Общие положения</h3><p>Настоящая Политика определяет порядок обработки и защиты персональных данных пользователей сайта КРИСТИНА.AI.</p>
+            <h3>2. Какие данные мы собираем</h3><p>Контактные данные (имя, Telegram/VK username), описание задачи, выбранная услуга, технические данные.</p>
+            <h3>3. Цели обработки</h3><p>Обработка заявок, связь с вами, улучшение сервиса, исполнение договоров.</p>
+            <h3>4. Хранение и защита</h3><p>Данные защищены и не передаются третьим лицам.</p>
+            <h3>5. Условия оплаты и возврата</h3><p>Все услуги предоставляются на условиях <strong>100% предоплаты</strong>. При заключении договора фиксируются услуга, стоимость, обязанности сторон и условия возврата. Возврат 50% возможен исключительно в случаях, предусмотренных договором.</p>
+            <h3>6. Права пользователя</h3><p>Вы можете запросить, исправить или удалить свои данные.</p>
+            <h3>7. Контакты</h3><p>По вопросам: <a href="https://t.me/marketologdizayner" target="_blank">@marketologdizayner</a></p>
+        </div>
+    </div>
+
+    <div class="popup-overlay" id="vkPopup">
+        <div class="popup-content">
+            <h3>Заявка принята!</h3>
+            <div style="background:rgba(255,255,255,0.05); padding:15px; border-radius:8px; margin-bottom:15px; text-align:left;">
+                <p style="margin:5px 0; color:var(--text-secondary);"><b>Имя:</b> <span id="vkName"></span></p>
+                <p style="margin:5px 0; color:var(--text-secondary);"><b>Контакт:</b> <span id="vkContact"></span></p>
+                <p style="margin:5px 0; color:var(--text-secondary);"><b>Услуга:</b> <span id="vkService"></span></p>
+            </div>
+            <p>Ваша заявка принята и отправлена эксперту.<br>Пока ожидаете связь с экспертом, можете подписаться на сообщество:</p>
+            <a href="https://vk.ru/vk_prodvizenie_kristina" target="_blank" class="popup-btn vk-btn">Перейти в сообщество</a>
+            <button class="popup-close" onclick="closePopup('vkPopup')">Закрыть</button>
+        </div>
+    </div>
+    <div class="popup-overlay" id="tgPopup">
+        <div class="popup-content">
+            <h3>Заявка принята!</h3>
+            <div style="background:rgba(255,255,255,0.05); padding:15px; border-radius:8px; margin-bottom:15px; text-align:left;">
+                <p style="margin:5px 0; color:var(--text-secondary);"><b>Имя:</b> <span id="tgName"></span></p>
+                <p style="margin:5px 0; color:var(--text-secondary);"><b>Контакт:</b> <span id="tgContact"></span></p>
+                <p style="margin:5px 0; color:var(--text-secondary);"><b>Услуга:</b> <span id="tgService"></span></p>
+            </div>
+            <p>Ваша заявка принята и отправлена эксперту.<br>Пока ожидаете связь с экспертом, можете подписаться на канал:</p>
+            <a href="https://telegram.me/expert_voronki" target="_blank" class="popup-btn tg-btn">Перейти в канал</a>
+            <button class="popup-close" onclick="closePopup('tgPopup')">Закрыть</button>
+        </div>
+    </div>
+
+    <div class="sticky-cta"><a href="#contact"> Записаться к эксперту</a></div>
+
+    <!-- Secondary CSS (Loads after first paint) -->
+    <style>
         .bg-layer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
         .bg-gradient { background: radial-gradient(ellipse at 15% 20%, rgba(107, 24, 48, 0.5) 0%, transparent 50%), radial-gradient(ellipse at 85% 80%, rgba(74, 16, 32, 0.4) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(45, 10, 18, 0.8) 0%, transparent 70%), linear-gradient(180deg, var(--cherry-deepest) 0%, var(--cherry-deep) 50%, var(--cherry-deepest) 100%); }
         .bg-grid { background-image: linear-gradient(rgba(201, 168, 76, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(201, 168, 76, 0.03) 1px, transparent 1px); background-size: 80px 80px; }
-        .bg-grid::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(201, 168, 76, 0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(201, 168, 76, 0.015) 1px, transparent 1px); background-size: 40px 40px; }
         .bg-gold-nodes { background-image: radial-gradient(circle, rgba(201, 168, 76, 0.15) 1px, transparent 1px); background-size: 80px 80px; background-position: 40px 40px; animation: goldNodesPulse 4s ease-in-out infinite; }
         @keyframes goldNodesPulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
         .bg-overlay { background: linear-gradient(180deg, rgba(26, 5, 8, 0.3) 0%, rgba(45, 10, 18, 0.15) 40%, rgba(74, 16, 32, 0.2) 60%, rgba(26, 5, 8, 0.4) 100%); }
         .particles-canvas { z-index: 1; }
-
-        .gold-ribbons { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; }
+        .gold-ribbons, .gold-waves, .gold-dust { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; }
         .ribbon { position: absolute; width: 2px; background: linear-gradient(to bottom, transparent 0%, var(--gold-primary) 15%, var(--gold-light) 30%, var(--emerald-primary) 55%, var(--emerald-light) 70%, transparent 100%); opacity: 0; animation: ribbonFlow 12s ease-in-out infinite; }
-        .ribbon:nth-child(1) { left: 8%; top: -10%; height: 35%; animation-delay: 0s; } .ribbon:nth-child(2) { left: 22%; top: -15%; height: 45%; animation-delay: -3s; } .ribbon:nth-child(3) { right: 12%; top: -20%; height: 40%; animation-delay: -6s; } .ribbon:nth-child(4) { right: 28%; top: -10%; height: 30%; animation-delay: -9s; } .ribbon:nth-child(5) { left: 45%; top: -5%; height: 25%; animation-delay: -2s; } .ribbon:nth-child(6) { right: 45%; top: -15%; height: 35%; animation-delay: -7s; }
+        .ribbon:nth-child(1) { left: 8%; top: -10%; height: 35%; } .ribbon:nth-child(2) { left: 22%; top: -15%; height: 45%; animation-delay: -3s; } .ribbon:nth-child(3) { right: 12%; top: -20%; height: 40%; animation-delay: -6s; } .ribbon:nth-child(4) { right: 28%; top: -10%; height: 30%; animation-delay: -9s; } .ribbon:nth-child(5) { left: 45%; top: -5%; height: 25%; animation-delay: -2s; } .ribbon:nth-child(6) { right: 45%; top: -15%; height: 35%; animation-delay: -7s; }
         @keyframes ribbonFlow { 0% { opacity: 0; transform: translateY(-100%) rotate(2deg); } 15% { opacity: 0.5; } 50% { opacity: 0.7; } 85% { opacity: 0.4; } 100% { opacity: 0; transform: translateY(120vh) rotate(-2deg); } }
-
-        .gold-waves { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
         .gold-wave { position: absolute; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(201, 168, 76, 0.08) 20%, rgba(201, 168, 76, 0.15) 50%, rgba(11, 59, 42, 0.1) 70%, transparent 100%); animation: waveSlide 15s linear infinite; }
         .gold-wave:nth-child(1) { top: 25%; width: 60%; left: -60%; } .gold-wave:nth-child(2) { top: 55%; width: 40%; left: -40%; animation-delay: -5s; animation-duration: 20s; } .gold-wave:nth-child(3) { top: 75%; width: 50%; left: -50%; animation-delay: -10s; animation-duration: 18s; }
         @keyframes waveSlide { 0% { transform: translateX(0); opacity: 0; } 10% { opacity: 0.6; } 90% { opacity: 0.6; } 100% { transform: translateX(250vw); opacity: 0; } }
-
-        .gold-dust { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-        .dust-particle { position: absolute; width: 3px; height: 3px; background: var(--gold-primary); border-radius: 50%; box-shadow: 0 0 6px var(--gold-glow); animation: dustFloat 8s ease-in-out infinite; }
+        .dust-particle { position: absolute; width: 3px; height: 3px; background: var(--gold-primary); border-radius: 50%; box-shadow: 0 0 6px rgba(201, 168, 76, 0.25); animation: dustFloat 8s ease-in-out infinite; }
         @keyframes dustFloat { 0%, 100% { transform: translate(0, 0) scale(0.5); opacity: 0; } 25% { opacity: 0.8; transform: translate(20px, -40px) scale(1); } 50% { opacity: 0.6; transform: translate(-10px, -80px) scale(0.8); } 75% { opacity: 0.4; transform: translate(30px, -120px) scale(0.6); } }
-
         h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; font-weight: 700; }
         a { text-decoration: none; color: inherit; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
         .section-title { font-size: clamp(1.6rem, 4vw, 3.2rem); font-weight: 800; text-align: center; margin-bottom: 16px; color: var(--text-primary); }
         .section-title span { background: linear-gradient(135deg, var(--gold-primary), var(--gold-bright), var(--gold-primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .section-title::after { content: ''; display: block; width: 80px; height: 2px; background: linear-gradient(90deg, transparent, var(--gold-primary), var(--emerald-primary), transparent); margin: 16px auto 0; }
         .section-subtitle { text-align: center; color: var(--text-secondary); font-size: clamp(0.95rem, 2vw, 1.1rem); max-width: 600px; margin: 0 auto 48px; }
-
-        .header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); background: transparent; border-bottom: 1px solid transparent; }
-        .header.scrolled { background: rgba(26, 5, 8, 0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--card-border); padding: 10px 0; }
-        .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; }
-        .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 800; background: linear-gradient(135deg, var(--gold-primary), var(--gold-bright)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: 3px; position: relative; }
+        .header.scrolled { padding: 10px 0; }
+        .logo { position: relative; }
         .logo::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 1px; background: linear-gradient(90deg, var(--gold-primary), transparent); }
-        .nav { display: flex; align-items: center; gap: 24px; }
-        .nav a { font-size: 0.82rem; font-weight: 500; color: var(--text-secondary); transition: all 0.3s ease; position: relative; letter-spacing: 0.5px; }
+        .nav a { transition: all 0.3s ease; position: relative; letter-spacing: 0.5px; }
         .nav a:hover { color: var(--gold-primary); }
         .nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: linear-gradient(90deg, var(--gold-primary), var(--emerald-primary)); transition: width 0.4s ease; }
         .nav a:hover::after { width: 100%; }
-        .nav-btn { background: linear-gradient(135deg, var(--gold-primary), var(--gold-light)); color: var(--cherry-deepest); padding: 9px 24px; border-radius: 50px; font-weight: 700; font-size: 0.82rem; transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); border: none; cursor: pointer; letter-spacing: 0.5px; position: relative; overflow: hidden; }
+        .nav-btn { transition: all 0.4s ease; position: relative; overflow: hidden; }
         .nav-btn::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, transparent, rgba(255,255,255,0.2), transparent); transform: translateX(-100%); transition: transform 0.6s ease; }
         .nav-btn:hover::before { transform: translateX(100%); }
-        .nav-btn:hover { box-shadow: 0 0 30px var(--gold-glow); transform: translateY(-2px); }
-
-        .hero { min-height: 100vh; display: flex; align-items: center; padding: 100px 0 60px; position: relative; overflow: hidden; }
-        .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; position: relative; z-index: 2; }
+        .nav-btn:hover { box-shadow: 0 0 30px rgba(201, 168, 76, 0.25); transform: translateY(-2px); }
         .hero-content { animation: heroFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         @keyframes heroFadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
         .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 7px 16px; background: linear-gradient(135deg, rgba(201, 168, 76, 0.12), rgba(11, 59, 42, 0.08)); border: 1px solid rgba(201, 168, 76, 0.25); border-radius: 50px; font-size: 0.72rem; font-weight: 600; color: var(--gold-primary); margin-bottom: 20px; letter-spacing: 1.5px; text-transform: uppercase; animation: badgePulse 3s ease-in-out infinite; }
         @keyframes badgePulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.1); } 50% { box-shadow: 0 0 0 8px rgba(201, 168, 76, 0); } }
-        .hero h1 { font-size: clamp(2rem, 5vw, 4.2rem); font-weight: 800; line-height: 1.08; margin-bottom: 20px; color: var(--text-primary); }
-        .hero h1 span { background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-bright) 40%, var(--emerald-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .hero-text { font-size: clamp(0.95rem, 2vw, 1.15rem); color: var(--text-secondary); margin-bottom: 32px; max-width: 520px; line-height: 1.7; }
-        .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
-
-        .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: linear-gradient(135deg, var(--emerald-primary), var(--emerald-light)); color: var(--text-primary); border: 1px solid rgba(26, 91, 58, 0.5); border-radius: 50px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); font-family: inherit; position: relative; overflow: hidden; }
-        .btn-primary::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, transparent, rgba(255,255,255,0.08), transparent); transform: translateX(-100%); transition: transform 0.6s ease; }
-        .btn-primary:hover::before { transform: translateX(100%); }
-        .btn-primary:hover { box-shadow: 0 0 40px var(--emerald-glow); transform: translateY(-3px); }
-
-        .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: transparent; color: var(--gold-primary); border: 1px solid rgba(201, 168, 76, 0.35); border-radius: 50px; font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); font-family: inherit; position: relative; overflow: hidden; }
-        .btn-secondary:hover { background: linear-gradient(135deg, rgba(201, 168, 76, 0.1), rgba(201, 168, 76, 0.05)); border-color: var(--gold-primary); box-shadow: 0 0 30px rgba(201, 168, 76, 0.15); transform: translateY(-3px); }
-
         .hero-visual { display: flex; justify-content: center; animation: heroFadeRight 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards; opacity: 0; }
         @keyframes heroFadeRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
-
-        .phone-mockup { position: relative; width: 260px; height: 500px; background: linear-gradient(160deg, rgba(74, 16, 32, 0.9), rgba(45, 10, 18, 0.95)); border-radius: 36px; border: 1px solid rgba(201, 168, 76, 0.2); overflow: hidden; box-shadow: 0 0 60px rgba(201, 168, 76, 0.08), 0 25px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(201, 168, 76, 0.1); animation: phoneFloat 6s ease-in-out infinite; }
-        @keyframes phoneFloat { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-12px) rotate(0.5deg); } }
         .phone-mockup::before { content: ''; position: absolute; inset: -1px; border-radius: 36px; padding: 1px; background: linear-gradient(180deg, rgba(201, 168, 76, 0.3), transparent 40%, transparent 60%, rgba(11, 59, 42, 0.3)); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
-        .phone-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100px; height: 24px; background: var(--cherry-deepest); border-radius: 0 0 16px 16px; z-index: 2; }
-        .phone-screen { padding: 36px 14px 14px; height: 100%; display: flex; flex-direction: column; }
-        .phone-header { text-align: center; padding-bottom: 10px; border-bottom: 1px solid rgba(201, 168, 76, 0.08); margin-bottom: 12px; }
-        .phone-header h4 { font-size: 0.8rem; color: var(--gold-primary); }
-        .phone-header p { font-size: 0.65rem; color: var(--text-muted); }
-        .chat-messages { flex: 1; display: flex; flex-direction: column; gap: 10px; }
-        .chat-msg { max-width: 88%; padding: 9px 12px; border-radius: 14px; font-size: 0.72rem; line-height: 1.4; opacity: 0; animation: chatAppear 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        .chat-msg.ai { background: rgba(11, 59, 42, 0.2); border: 1px solid rgba(11, 59, 42, 0.3); align-self: flex-start; border-bottom-left-radius: 4px; color: var(--text-secondary); }
-        .chat-msg.user { background: rgba(201, 168, 76, 0.1); border: 1px solid rgba(201, 168, 76, 0.2); align-self: flex-end; border-bottom-right-radius: 4px; color: var(--text-primary); }
+        .chat-msg { opacity: 0; animation: chatAppear 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         .chat-msg:nth-child(1) { animation-delay: 0.8s; } .chat-msg:nth-child(2) { animation-delay: 1.8s; } .chat-msg:nth-child(3) { animation-delay: 2.8s; } .chat-msg:nth-child(4) { animation-delay: 3.8s; } .chat-msg:nth-child(5) { animation-delay: 4.8s; }
         @keyframes chatAppear { from { opacity: 0; transform: translateY(12px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
-
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.visible { opacity: 1; transform: translateY(0); }
         .reveal-delay-1 { transition-delay: 0.1s; } .reveal-delay-2 { transition-delay: 0.2s; } .reveal-delay-3 { transition-delay: 0.3s; } .reveal-delay-4 { transition-delay: 0.4s; }
-
         .pain-section { padding: 80px 0; }
         .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .pain-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 28px 22px; transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); position: relative; overflow: hidden; backdrop-filter: blur(10px); }
+        .pain-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 28px 22px; transition: all 0.5s ease; position: relative; overflow: hidden; backdrop-filter: blur(10px); }
         .pain-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(201, 168, 76, 0.05), transparent 60%); opacity: 0; transition: opacity 0.5s ease; }
         .pain-card:hover::before { opacity: 1; }
-        .pain-card:hover { border-color: var(--card-border-hover); transform: translateY(-6px); box-shadow: 0 20px 60px rgba(201, 168, 76, 0.08), 0 0 1px rgba(201, 168, 76, 0.2); }
+        .pain-card:hover { border-color: rgba(201, 168, 76, 0.35); transform: translateY(-6px); box-shadow: 0 20px 60px rgba(201, 168, 76, 0.08); }
         .pain-icon { font-size: 2rem; margin-bottom: 14px; display: block; }
         .pain-card h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--gold-primary); }
         .pain-card p { color: var(--text-secondary); font-size: 0.9rem; }
-        .pain-conclusion { text-align: center; padding: 20px 24px; border: 1px solid rgba(201, 168, 76, 0.2); border-radius: 14px; background: linear-gradient(135deg, rgba(201, 168, 76, 0.06), rgba(11, 59, 42, 0.04)); margin-top: 28px; backdrop-filter: blur(10px); position: relative; font-size: 0.95rem; }
-
+        .pain-conclusion { text-align: center; padding: 20px 24px; border: 1px solid rgba(201, 168, 76, 0.2); border-radius: 14px; background: linear-gradient(135deg, rgba(201, 168, 76, 0.06), rgba(11, 59, 42, 0.04)); margin-top: 28px; backdrop-filter: blur(10px); font-size: 0.95rem; }
         .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin: 50px 0; }
         .stat-item { text-align: center; padding: 28px 16px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 18px; transition: all 0.5s ease; position: relative; overflow: hidden; backdrop-filter: blur(10px); }
         .stat-item::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, var(--gold-primary), transparent); opacity: 0.3; }
-        .stat-item:hover { border-color: var(--card-border-hover); transform: translateY(-5px); }
+        .stat-item:hover { border-color: rgba(201, 168, 76, 0.35); transform: translateY(-5px); }
         .stat-number { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 800; background: linear-gradient(135deg, var(--gold-primary), var(--gold-bright)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .stat-label { color: var(--text-secondary); font-size: clamp(0.75rem, 1.5vw, 0.9rem); margin-top: 6px; }
-
         .quiz-section { padding: 80px 0; }
         .quiz-container { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 24px; padding: 40px; text-align: center; position: relative; overflow: hidden; backdrop-filter: blur(15px); }
         .quiz-container::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, var(--gold-primary), var(--emerald-primary), transparent); }
         .quiz-answer { padding: 16px 20px; background: rgba(45, 10, 18, 0.6); border: 1px solid var(--card-border); border-radius: 12px; color: var(--text-secondary); cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem; }
         .quiz-answer:hover { border-color: var(--gold-primary); background: rgba(201, 168, 76, 0.06); color: var(--text-primary); transform: translateX(4px); }
-
         .services-section { padding: 80px 0; }
         .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-        .service-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 22px; padding: 32px; transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); position: relative; overflow: hidden; backdrop-filter: blur(10px); display: flex; flex-direction: column; }
+        .service-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 22px; padding: 32px; transition: all 0.5s ease; position: relative; overflow: hidden; backdrop-filter: blur(10px); display: flex; flex-direction: column; }
         .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(160deg, rgba(201, 168, 76, 0.04) 0%, transparent 40%); opacity: 0; transition: opacity 0.5s ease; }
         .service-card:hover::before { opacity: 1; }
-        .service-card:hover { transform: translateY(-6px) scale(1.01); border-color: var(--card-border-hover); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 0 0 1px rgba(201, 168, 76, 0.3); }
+        .service-card:hover { transform: translateY(-6px) scale(1.01); border-color: rgba(201, 168, 76, 0.35); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); }
         .service-card h3 { font-size: clamp(1.05rem, 2vw, 1.3rem); margin-bottom: 12px; color: var(--gold-primary); line-height: 1.3; }
         .service-card p { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0; line-height: 1.6; flex-grow: 1; }
         .service-card .price { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; margin: 20px 0; }
@@ -176,38 +555,33 @@
         .btn-service:hover { border-color: var(--gold-primary); box-shadow: 0 0 25px rgba(201, 168, 76, 0.12); }
         .service-card.highlight { border: 1px solid rgba(201, 168, 76, 0.25); background: linear-gradient(160deg, rgba(74, 16, 32, 0.7), rgba(45, 10, 18, 0.8)); }
         .service-card.highlight::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, var(--gold-primary), var(--emerald-primary), transparent); }
-
         .reviews-section { padding: 80px 0; }
         .reviews-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 32px; }
         .review-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 28px; transition: all 0.5s ease; position: relative; overflow: hidden; backdrop-filter: blur(10px); }
         .review-card::before { content: '❝'; position: absolute; top: 10px; right: 16px; font-size: 3rem; color: rgba(201, 168, 76, 0.06); font-family: serif; }
-        .review-card:hover { border-color: var(--card-border-hover); transform: translateY(-4px); }
+        .review-card:hover { border-color: rgba(201, 168, 76, 0.35); transform: translateY(-4px); }
         .review-text { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.65; font-style: italic; }
         .review-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--emerald-primary), var(--gold-primary)); display: flex; align-items: center; justify-content: center; color: var(--cherry-deepest); font-weight: 700; font-size: 1rem; }
         .review-name { font-weight: 600; color: var(--text-primary); }
         .review-link-box { text-align: center; padding: 24px; background: linear-gradient(135deg, rgba(201, 168, 76, 0.06), rgba(11, 59, 42, 0.04)); border: 1px solid rgba(201, 168, 76, 0.15); border-radius: 18px; }
-
         .contact-section { padding: 80px 0; }
         .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
         .contact-method { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 16px; display: flex; align-items: center; gap: 14px; transition: all 0.4s ease; backdrop-filter: blur(10px); }
-        .contact-method:hover { border-color: var(--card-border-hover); transform: translateX(6px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); }
+        .contact-method:hover { border-color: rgba(201, 168, 76, 0.35); transform: translateX(6px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); }
         .contact-method-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
         .contact-method h4 { font-size: 0.95rem; margin-bottom: 2px; }
         .contact-method p { color: var(--text-muted); font-size: 0.82rem; }
-
         .application-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 24px; padding: 32px; backdrop-filter: blur(15px); position: relative; overflow: hidden; }
         .application-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, var(--gold-primary), var(--emerald-primary), var(--gold-primary)); }
         .application-card input, .application-card select, .application-card textarea { width: 100%; padding: 14px 16px; background: rgba(26, 5, 8, 0.6); border: 1px solid var(--card-border); border-radius: 12px; color: var(--text-primary); font-size: 0.9rem; margin-bottom: 14px; outline: none; transition: all 0.3s ease; font-family: inherit; }
         .application-card input:focus, .application-card select:focus, .application-card textarea:focus { border-color: var(--gold-primary); box-shadow: 0 0 20px rgba(201, 168, 76, 0.1); }
         .application-card input::placeholder, .application-card textarea::placeholder { color: var(--text-muted); }
         .application-card select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='%23C9A84C'%3E%3Cpath d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
-
         .btn-lead { flex: 1; min-width: 160px; padding: 14px 16px; border: none; border-radius: 12px; font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: all 0.4s ease; font-family: inherit; position: relative; overflow: hidden; }
         .btn-lead.vk { background: linear-gradient(135deg, var(--emerald-primary), var(--emerald-light)); color: var(--text-primary); border: 1px solid rgba(26, 91, 58, 0.4); }
-        .btn-lead.vk:hover { box-shadow: 0 0 30px var(--emerald-glow); transform: translateY(-2px); }
+        .btn-lead.vk:hover { box-shadow: 0 0 30px rgba(11, 59, 42, 0.35); transform: translateY(-2px); }
         .btn-lead.tg { background: linear-gradient(135deg, var(--gold-primary), var(--gold-light)); color: var(--cherry-deepest); }
-        .btn-lead.tg:hover { box-shadow: 0 0 30px var(--gold-glow); transform: translateY(-2px); }
-
+        .btn-lead.tg:hover { box-shadow: 0 0 30px rgba(201, 168, 76, 0.25); transform: translateY(-2px); }
         .about-section { padding: 80px 0; }
         .about-inner { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: center; }
         .about-photo { position: relative; }
@@ -215,24 +589,21 @@
         .about-photo::before { content: ''; position: absolute; top: -8px; left: -8px; width: 100%; height: 100%; border: 1px solid rgba(201, 168, 76, 0.1); border-radius: 28px; }
         .about-content h2 { font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 16px; line-height: 1.3; }
         .about-content p { color: var(--text-secondary); margin-bottom: 14px; line-height: 1.7; font-size: 0.95rem; }
-
         .faq-section { padding: 80px 0; }
         .faq-item { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; overflow: hidden; transition: all 0.4s ease; backdrop-filter: blur(10px); }
-        .faq-item:hover { border-color: var(--card-border-hover); }
+        .faq-item:hover { border-color: rgba(201, 168, 76, 0.35); }
         .faq-question { width: 100%; padding: 18px 22px; background: none; border: none; color: var(--text-primary); font-size: 0.95rem; font-weight: 600; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: inherit; transition: color 0.3s ease; }
         .faq-question:hover { color: var(--gold-primary); }
         .faq-icon { color: var(--gold-primary); font-size: 1.3rem; font-weight: 300; transition: transform 0.4s ease; }
         .faq-item.active .faq-icon { transform: rotate(45deg); }
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
         .faq-answer-content { padding: 0 22px 20px; color: var(--text-secondary); line-height: 1.7; font-size: 0.9rem; }
-
         .footer { border-top: 1px solid rgba(201, 168, 76, 0.08); padding: 48px 0 28px; background: rgba(26, 5, 8, 0.6); position: relative; z-index: 2; }
         .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
         .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 800; background: linear-gradient(135deg, var(--gold-primary), var(--gold-bright)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
         .footer-links a { color: var(--text-secondary); font-size: 0.82rem; transition: color 0.3s ease; }
         .footer-links a:hover { color: var(--gold-primary); }
-
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 2, 4, 0.85); backdrop-filter: blur(15px); z-index: 2000; align-items: center; justify-content: center; padding: 20px; }
         .modal-overlay.active { display: flex; }
         .modal { background: linear-gradient(160deg, rgba(74, 16, 32, 0.95), rgba(45, 10, 18, 0.98)); border: 1px solid rgba(201, 168, 76, 0.2); border-radius: 24px; padding: 32px; max-width: 650px; width: 100%; max-height: 80vh; overflow-y: auto; position: relative; color: var(--text-primary); }
@@ -243,7 +614,6 @@
         .modal h3 { font-size: 1.05rem; margin: 20px 0 8px; color: var(--gold-primary); }
         .modal p { color: var(--text-secondary); margin-bottom: 10px; line-height: 1.7; font-size: 0.9rem; }
         .modal a { color: var(--gold-primary); }
-
         .popup-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 2, 4, 0.85); backdrop-filter: blur(15px); z-index: 99999; align-items: center; justify-content: center; }
         .popup-overlay.active { display: flex; }
         .popup-content { background: linear-gradient(160deg, rgba(74, 16, 32, 0.95), rgba(45, 10, 18, 0.98)); border: 1px solid rgba(201, 168, 76, 0.2); padding: 28px 24px; border-radius: 20px; max-width: 450px; width: calc(100% - 40px); text-align: center; color: var(--text-primary); position: relative; overflow: hidden; }
@@ -252,213 +622,219 @@
         .popup-content p { color: var(--text-secondary); margin-bottom: 14px; line-height: 1.5; }
         .popup-btn { display: block; padding: 14px; border-radius: 10px; margin: 15px 0; text-align: center; font-weight: 600; transition: all 0.3s ease; font-size: 0.95rem; }
         .popup-btn.vk-btn { background: linear-gradient(135deg, var(--emerald-primary), var(--emerald-light)); color: var(--text-primary); }
-        .popup-btn.vk-btn:hover { box-shadow: 0 0 25px var(--emerald-glow); }
+        .popup-btn.vk-btn:hover { box-shadow: 0 0 25px rgba(11, 59, 42, 0.35); }
         .popup-btn.tg-btn { background: linear-gradient(135deg, var(--gold-primary), var(--gold-light)); color: var(--cherry-deepest); }
-        .popup-btn.tg-btn:hover { box-shadow: 0 0 25px var(--gold-glow); }
+        .popup-btn.tg-btn:hover { box-shadow: 0 0 25px rgba(201, 168, 76, 0.25); }
         .popup-close { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 0.85rem; margin-top: 8px; transition: color 0.3s ease; }
         .popup-close:hover { color: var(--gold-primary); }
-
         .sticky-cta { position: fixed; bottom: 20px; right: 20px; z-index: 1000; animation: pulse 2s infinite; }
         .sticky-cta a { display: block; padding: 14px 24px; background: linear-gradient(135deg, var(--emerald-primary), var(--emerald-light)); color: var(--text-primary); text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 0.9rem; border: 1px solid rgba(26, 91, 58, 0.5); box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
         @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
         @media(max-width:768px){ .sticky-cta{left:20px;right:20px;text-align:center;} .sticky-cta a{width:100%;} }
-
-        .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; z-index: 1001; }
-        .burger span { width: 26px; height: 2px; background: var(--text-primary); transition: all 0.3s ease; border-radius: 2px; }
-        .burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); } .burger.active span:nth-child(2) { opacity: 0; } .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
         .mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(26, 5, 8, 0.97); backdrop-filter: blur(20px); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 28px; }
         .mobile-menu.active { display: flex; }
         .mobile-menu a { font-size: 1.3rem; font-weight: 600; color: var(--text-secondary); transition: all 0.3s ease; }
         .mobile-menu a:hover { color: var(--gold-primary); }
         .section-divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.1), rgba(11, 59, 42, 0.1), transparent); margin: 0 auto; }
-
-        @media (max-width: 1024px) {
-            .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 40px; } .hero-visual { order: -1; } .hero-text { margin-left: auto; margin-right: auto; } .hero-buttons { justify-content: center; } .hero h1 { font-size: clamp(2rem, 5vw, 3rem); }
-            .services-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; } .service-card { padding: 26px 22px; }
-            .pain-grid { grid-template-columns: repeat(2, 1fr); } .stats-row { grid-template-columns: repeat(4, 1fr); gap: 16px; }
-            .about-inner { grid-template-columns: auto 1fr; gap: 36px; } .about-photo img { width: 220px; height: 280px; }
-            .contact-inner { grid-template-columns: 1fr 1fr; gap: 32px; } .reviews-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-            .nav { gap: 18px; } .nav a { font-size: 0.78rem; }
-        }
-        @media (max-width: 768px) {
-            .nav { display: none; } .burger { display: flex; } .container { padding: 0 16px; }
-            .hero { padding: 90px 0 50px; min-height: auto; } .hero-inner { gap: 32px; } .hero h1 { font-size: clamp(1.7rem, 6vw, 2.4rem); } .hero-text { font-size: 0.95rem; margin-bottom: 24px; } .hero-buttons { flex-direction: column; align-items: center; gap: 12px; } .btn-primary, .btn-secondary { width: 100%; justify-content: center; padding: 14px 24px; }
-            .phone-mockup { width: 220px; height: 420px; border-radius: 32px; } .phone-notch { width: 80px; height: 20px; border-radius: 0 0 12px 12px; } .phone-screen { padding: 30px 12px 12px; } .phone-header h4 { font-size: 0.7rem; } .phone-header p { font-size: 0.6rem; } .chat-msg { font-size: 0.65rem; padding: 7px 10px; }
-            .services-grid { grid-template-columns: 1fr; gap: 18px; } .service-card { padding: 24px 20px; } .service-card h3 { font-size: 1.1rem; } .service-card p { font-size: 0.88rem; } .service-card .price { font-size: 1.5rem; margin: 16px 0; } .service-card.highlight { grid-column: span 1; } .btn-service { padding: 12px 20px; font-size: 0.82rem; }
-            .pain-section { padding: 60px 0; } .pain-grid { grid-template-columns: 1fr; gap: 16px; } .pain-card { padding: 24px 20px; } .pain-icon { font-size: 1.8rem; } .pain-card h3 { font-size: 1.05rem; } .pain-card p { font-size: 0.88rem; } .pain-conclusion { font-size: 0.9rem; padding: 16px 18px; }
-            .stats-row { grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 40px 0; } .stat-item { padding: 22px 12px; }
-            .quiz-section { padding: 60px 0; } .quiz-container { padding: 28px 20px; } #quizQuestion { font-size: 1.1rem !important; margin-bottom: 20px !important; } .quiz-answer { padding: 14px 16px; font-size: 0.88rem; }
-            .reviews-section { padding: 60px 0; } .reviews-grid { grid-template-columns: 1fr; gap: 16px; } .review-card { padding: 22px 18px; } .review-text { font-size: 0.88rem; } .review-link-box { padding: 20px 16px; }
-            .contact-section { padding: 60px 0; } .contact-inner { grid-template-columns: 1fr; gap: 28px; } .contact-method { padding: 14px 12px; } .contact-method-icon { width: 40px; height: 40px; font-size: 1.2rem; } .contact-method h4 { font-size: 0.9rem; } .application-card { padding: 24px 18px; border-radius: 20px; } .application-card input, .application-card select, .application-card textarea { padding: 12px 14px; font-size: 0.88rem; border-radius: 10px; } .btn-lead { min-width: auto; padding: 13px 14px; font-size: 0.88rem; }
-            .about-section { padding: 60px 0; } .about-inner { grid-template-columns: 1fr; text-align: center; gap: 28px; } .about-photo { display: flex; justify-content: center; } .about-photo img { width: 200px; height: 260px; border-radius: 20px; } .about-content h2 { font-size: 1.4rem; } .about-content p { font-size: 0.9rem; }
-            .faq-section { padding: 60px 0; } .faq-question { padding: 16px 18px; font-size: 0.9rem; } .faq-answer-content { padding: 0 18px 16px; font-size: 0.85rem; } .faq-icon { font-size: 1.2rem; }
-            .footer { padding: 40px 0 24px; } .footer-inner { flex-direction: column; text-align: center; } .footer-links { justify-content: center; }
-            .section-title { margin-bottom: 12px; } .section-title::after { width: 60px; margin: 12px auto 0; } .section-subtitle { margin-bottom: 32px; font-size: 0.95rem; }
-        }
-        @media (max-width: 480px) {
-            .hero { padding: 80px 0 40px; } .hero h1 { font-size: 1.6rem; } .hero-badge { font-size: 0.65rem; padding: 6px 12px; }
-            .phone-mockup { width: 200px; height: 380px; border-radius: 28px; } .phone-notch { width: 70px; height: 18px; }
-            .services-grid { gap: 14px; } .service-card { padding: 20px 16px; } .service-card h3 { font-size: 1rem; } .service-card p { font-size: 0.84rem; } .service-card .price { font-size: 1.3rem; margin: 12px 0; } .btn-service { padding: 11px 16px; font-size: 0.8rem; }
-            .stats-row { grid-template-columns: repeat(2, 1fr); gap: 12px; } .stat-item { padding: 18px 10px; } .stat-number { font-size: 1.6rem; } .stat-label { font-size: 0.72rem; }
-            .pain-card { padding: 20px 16px; } .pain-card h3 { font-size: 1rem; } .pain-card p { font-size: 0.84rem; }
-            .quiz-container { padding: 22px 16px; } #quizQuestion { font-size: 1rem !important; } .quiz-answer { padding: 12px 14px; font-size: 0.84rem; }
-            .review-card { padding: 18px 14px; } .review-text { font-size: 0.84rem; }
-            .application-card { padding: 20px 14px; } .contact-method { padding: 12px 10px; gap: 12px; }
-            .about-photo img { width: 180px; height: 230px; } .about-content h2 { font-size: 1.25rem; }
-            .faq-question { padding: 14px 16px; font-size: 0.88rem; } .faq-answer-content { padding: 0 16px 14px; font-size: 0.82rem; }
-            .modal { padding: 24px 18px; border-radius: 20px; } .modal h2 { font-size: 1.3rem; } .modal h3 { font-size: 0.95rem; } .modal p { font-size: 0.85rem; }
-            .popup-content { padding: 24px 18px; }
-            .footer { padding: 32px 0 20px; } .footer-logo { font-size: 1.1rem; } .footer-links { gap: 14px; } .footer-links a { font-size: 0.78rem; }
-            .section-title { font-size: 1.5rem; } .section-subtitle { font-size: 0.9rem; }
-        }
+        @media (max-width: 1024px) { .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 40px; } .hero-visual { order: -1; } .hero-text { margin-left: auto; margin-right: auto; } .hero-buttons { justify-content: center; } .hero h1 { font-size: clamp(2rem, 5vw, 3rem); } .services-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; } .service-card { padding: 26px 22px; } .pain-grid { grid-template-columns: repeat(2, 1fr); } .stats-row { grid-template-columns: repeat(4, 1fr); gap: 16px; } .about-inner { grid-template-columns: auto 1fr; gap: 36px; } .about-photo img { width: 220px; height: 280px; } .contact-inner { grid-template-columns: 1fr 1fr; gap: 32px; } .reviews-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; } .nav { gap: 18px; } .nav a { font-size: 0.78rem; } }
+        @media (max-width: 768px) { .hero { padding: 90px 0 50px; min-height: auto; } .hero-inner { gap: 32px; } .hero h1 { font-size: clamp(1.7rem, 6vw, 2.4rem); } .hero-text { font-size: 0.95rem; margin-bottom: 24px; } .hero-buttons { flex-direction: column; align-items: center; gap: 12px; } .btn-primary, .btn-secondary { width: 100%; justify-content: center; padding: 14px 24px; } .phone-mockup { width: 220px; height: 420px; border-radius: 32px; } .phone-notch { width: 80px; height: 20px; border-radius: 0 0 12px 12px; } .phone-screen { padding: 30px 12px 12px; } .phone-header h4 { font-size: 0.7rem; } .phone-header p { font-size: 0.6rem; } .chat-msg { font-size: 0.65rem; padding: 7px 10px; } .services-grid { grid-template-columns: 1fr; gap: 18px; } .service-card { padding: 24px 20px; } .service-card h3 { font-size: 1.1rem; } .service-card p { font-size: 0.88rem; } .service-card .price { font-size: 1.5rem; margin: 16px 0; } .service-card.highlight { grid-column: span 1; } .btn-service { padding: 12px 20px; font-size: 0.82rem; } .pain-section { padding: 60px 0; } .pain-grid { grid-template-columns: 1fr; gap: 16px; } .pain-card { padding: 24px 20px; } .pain-icon { font-size: 1.8rem; } .pain-card h3 { font-size: 1.05rem; } .pain-card p { font-size: 0.88rem; } .pain-conclusion { font-size: 0.9rem; padding: 16px 18px; } .stats-row { grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 40px 0; } .stat-item { padding: 22px 12px; } .quiz-section { padding: 60px 0; } .quiz-container { padding: 28px 20px; } #quizQuestion { font-size: 1.1rem !important; margin-bottom: 20px !important; } .quiz-answer { padding: 14px 16px; font-size: 0.88rem; } .reviews-section { padding: 60px 0; } .reviews-grid { grid-template-columns: 1fr; gap: 16px; } .review-card { padding: 22px 18px; } .review-text { font-size: 0.88rem; } .review-link-box { padding: 20px 16px; } .contact-section { padding: 60px 0; } .contact-inner { grid-template-columns: 1fr; gap: 28px; } .contact-method { padding: 14px 12px; } .contact-method-icon { width: 40px; height: 40px; font-size: 1.2rem; } .contact-method h4 { font-size: 0.9rem; } .application-card { padding: 24px 18px; border-radius: 20px; } .application-card input, .application-card select, .application-card textarea { padding: 12px 14px; font-size: 0.88rem; border-radius: 10px; } .btn-lead { min-width: auto; padding: 13px 14px; font-size: 0.88rem; } .about-section { padding: 60px 0; } .about-inner { grid-template-columns: 1fr; text-align: center; gap: 28px; } .about-photo { display: flex; justify-content: center; } .about-photo img { width: 200px; height: 260px; border-radius: 20px; } .about-content h2 { font-size: 1.4rem; } .about-content p { font-size: 0.9rem; } .faq-section { padding: 60px 0; } .faq-question { padding: 16px 18px; font-size: 0.9rem; } .faq-answer-content { padding: 0 18px 16px; font-size: 0.85rem; } .faq-icon { font-size: 1.2rem; } .footer { padding: 40px 0 24px; } .footer-inner { flex-direction: column; text-align: center; } .footer-links { justify-content: center; } .section-title { margin-bottom: 12px; } .section-title::after { width: 60px; margin: 12px auto 0; } .section-subtitle { margin-bottom: 32px; font-size: 0.95rem; } }
+        @media (max-width: 480px) { .hero { padding: 80px 0 40px; } .hero h1 { font-size: 1.6rem; } .hero-badge { font-size: 0.65rem; padding: 6px 12px; } .phone-mockup { width: 200px; height: 380px; border-radius: 28px; } .phone-notch { width: 70px; height: 18px; } .services-grid { gap: 14px; } .service-card { padding: 20px 16px; } .service-card h3 { font-size: 1rem; } .service-card p { font-size: 0.84rem; } .service-card .price { font-size: 1.3rem; margin: 12px 0; } .btn-service { padding: 11px 16px; font-size: 0.8rem; } .stats-row { grid-template-columns: repeat(2, 1fr); gap: 12px; } .stat-item { padding: 18px 10px; } .stat-number { font-size: 1.6rem; } .stat-label { font-size: 0.72rem; } .pain-card { padding: 20px 16px; } .pain-card h3 { font-size: 1rem; } .pain-card p { font-size: 0.84rem; } .quiz-container { padding: 22px 16px; } #quizQuestion { font-size: 1rem !important; } .quiz-answer { padding: 12px 14px; font-size: 0.84rem; } .review-card { padding: 18px 14px; } .review-text { font-size: 0.84rem; } .application-card { padding: 20px 14px; } .contact-method { padding: 12px 10px; gap: 12px; } .about-photo img { width: 180px; height: 230px; } .about-content h2 { font-size: 1.25rem; } .faq-question { padding: 14px 16px; font-size: 0.88rem; } .faq-answer-content { padding: 0 16px 14px; font-size: 0.82rem; } .modal { padding: 24px 18px; border-radius: 20px; } .modal h2 { font-size: 1.3rem; } .modal h3 { font-size: 0.95rem; } .modal p { font-size: 0.85rem; } .popup-content { padding: 24px 18px; } .footer { padding: 32px 0 20px; } .footer-logo { font-size: 1.1rem; } .footer-links { gap: 14px; } .footer-links a { font-size: 0.78rem; } .section-title { font-size: 1.5rem; } .section-subtitle { font-size: 0.9rem; } }
         ::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: var(--cherry-deepest); } ::-webkit-scrollbar-thumb { background: rgba(201, 168, 76, 0.3); border-radius: 4px; } ::-webkit-scrollbar-thumb:hover { background: rgba(201, 168, 76, 0.5); }
     </style>
-</head>
-<body>
-    <div class="bg-layer bg-gradient"></div><div class="bg-layer bg-grid"></div><div class="bg-layer bg-gold-nodes"></div><div class="bg-layer bg-overlay"></div><canvas class="bg-layer particles-canvas" id="particlesCanvas"></canvas>
-    <div class="gold-ribbons"><div class="ribbon"></div><div class="ribbon"></div><div class="ribbon"></div><div class="ribbon"></div><div class="ribbon"></div><div class="ribbon"></div></div>
-    <div class="gold-waves"><div class="gold-wave"></div><div class="gold-wave"></div><div class="gold-wave"></div></div>
-    <div class="gold-dust" id="goldDust"></div>
 
-    <header class="header" id="header"><div class="header-inner"><a href="#" class="logo">КРИСТИНА.AI</a><nav class="nav"><a href="#services">Услуги</a><a href="ecosystem.html">Моя экосистема</a><a href="#reviews">Отзывы</a><a href="#about">Обо мне</a><a href="#contact">Контакты</a><a href="#contact" class="nav-btn">Заявка</a></nav><div class="burger" id="burger"><span></span><span></span><span></span></div></div></header>
-    <div class="mobile-menu" id="mobileMenu"><a href="#hero" onclick="closeMobile()">Главная</a><a href="#services" onclick="closeMobile()">Услуги</a><a href="ecosystem.html" onclick="closeMobile()">Экосистема</a><a href="#reviews" onclick="closeMobile()">Отзывы</a><a href="#about" onclick="closeMobile()">Обо мне</a><a href="#contact" onclick="closeMobile()">Контакты</a></div>
-
-    <section class="hero" id="hero"><div class="container"><div class="hero-inner"><div class="hero-content"><div class="hero-badge">✦ ТЁПЛАЯ МАГИЯ ТЕХНОЛОГИЙ ✦</div><h1>Ваш бренд будет <span>работать самостоятельно</span></h1><p class="hero-text">Создаю чат-ботов и AI-агентов, которые работают вместо вас 24/7, говорят вашим голосом и закрывают вопросы без вашего участия.</p><div class="hero-buttons"><a href="#contact" class="btn-primary">Оставить заявку</a><a href="#services" class="btn-secondary">Узнать больше</a></div></div><div class="hero-visual"><div class="phone-mockup"><div class="phone-notch"></div><div class="phone-screen"><div class="phone-header"><h4>AI-Агент Кристины</h4><p>онлайн • отвечает мгновенно</p></div><div class="chat-messages"><div class="chat-msg ai">Здравствуйте! 👋 Я AI-агент Кристины. Чем могу помочь?</div><div class="chat-msg user">Хочу автоматизировать свой бизнес</div><div class="chat-msg ai">Отлично! Я помогу подобрать решение. Расскажите, какие задачи хотите автоматизировать?</div><div class="chat-msg user">Ответы клиентам и сбор заявок</div><div class="chat-msg ai">Идеально! Чат-бот + AI-агент закроют эти задачи на 100%. Хотите узнать стоимость? </div></div></div></div></div></div></div></section>
-
-    <div class="section-divider"></div>
-    <section class="pain-section" id="pain"><div class="container"><h2 class="section-title reveal">Узнаете себя?</h2><p class="section-subtitle reveal">Эти проблемы знакомы большинству экспертов</p><div class="pain-grid"><div class="pain-card reveal reveal-delay-1"><div class="pain-icon"></div><h3>Хаос в переписках</h3><p>Клиенты пишут везде, вы путаетесь и теряете заявки.</p></div><div class="pain-card reveal reveal-delay-2"><div class="pain-icon">🔋</div><h3>Выгорание от рутины</h3><p>80% времени уходит на однотипные ответы.</p></div><div class="pain-card reveal reveal-delay-3"><div class="pain-icon">📉</div><h3>Слив бюджета</h3><p>Лиды не обрабатываются, деньги уходят конкурентам.</p></div></div><div class="pain-conclusion reveal">Вам нужна <strong>система, которая берёт рутину на себя</strong>.</div></div></section>
-    <div class="section-divider"></div>
-    <section class="container"><div class="stats-row"><div class="stat-item reveal reveal-delay-1"><div class="stat-number">6+</div><div class="stat-label">лет в маркетинге</div></div><div class="stat-item reveal reveal-delay-2"><div class="stat-number">4+</div><div class="stat-label">года в чат-ботах</div></div><div class="stat-item reveal reveal-delay-3"><div class="stat-number">30+</div><div class="stat-label">AI-проектов</div></div><div class="stat-item reveal reveal-delay-4"><div class="stat-number">24/7</div><div class="stat-label">работа агентов</div></div></div></section>
-    <div class="section-divider"></div>
-
-    <section class="quiz-section" id="quiz"><div class="container"><h2 class="section-title reveal">Какой AI-инструмент нужен вашему бизнесу?</h2><div class="quiz-container reveal" id="quizContainer"><div id="quizProgress" style="margin-bottom:24px; font-size:0.9rem; color:var(--text-muted);"></div><div id="quizQuestion" style="font-size:1.3rem; font-weight:600; margin-bottom:30px; color:var(--text-primary);"></div><div id="quizAnswers" style="display:flex; flex-direction:column; gap:12px;"></div><div id="quizResult" style="display:none;"><h3 style="font-size:1.5rem; margin-bottom:12px;"> Ваш идеальный старт</h3><p id="quizRecommendation" style="margin-bottom:20px;"></p><a href="#services" class="btn-primary">Посмотреть услугу</a></div></div></div></section>
-    <div class="section-divider"></div>
-
-    <section class="services-section" id="services"><div class="container"><h2 class="section-title reveal">VIP-решения для вашего бизнеса</h2><p class="section-subtitle reveal">Каждая услуга — трансформация вашей системы</p><div class="services-grid">
-        <div class="service-card reveal reveal-delay-1"><h3>Стратегическая диагностика</h3><p>Полный разбор вашей воронки продаж: от блога до чат-бота. Я нахожу, где теряются заявки и что нужно усилить. Вы получаете чёткий план действий.</p><div class="price" style="color:var(--gold-primary);">3 000 ₽</div><button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Записаться на диагностику</button></div>
-        <div class="service-card reveal reveal-delay-2"><h3>Чат-бот, который работает по вашим правилам</h3><p>Настраиваю помощника, который сам отвечает клиентам, собирает заявки и передаёт вам только готовых к покупке.</p><div class="price" style="color:var(--gold-primary);">от 12 000 ₽</div><button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Заказать бота</button></div>
-        <div class="service-card reveal reveal-delay-1"><h3>Сайт на чистом коде с вашим личным конструктором</h3><p>Создаю сайт, который продаёт за вас, и даю инструмент для самостоятельных правок.</p><div class="price" style="color:var(--gold-primary);">28 888 ₽</div><button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Обсудить сайт</button></div>
-        <div class="service-card reveal reveal-delay-2"><h3>Сайт на Tilda: быстро и эффективно</h3><p>Для тех, кому нужен стильный работающий сайт в короткие сроки. Я настраиваю всё под вашу нишу.</p><div class="price" style="color:var(--gold-primary);">12 000 ₽</div><button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Хочу сайт на Tilda</button></div>
-        <div class="service-card reveal reveal-delay-1"><h3>AI-менеджер, который общается сам</h3><p>Нейросетевой помощник, обученный вашей экспертизе. Понимает вопросы клиентов и подводит их к покупке.</p><div class="price" style="color:var(--gold-primary);">от 50 000 ₽</div><button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Внедрить AI-агента</button></div>
-        <div class="service-card reveal reveal-delay-2"><h3>Коучинг: убрать страхи, которые мешают зарабатывать</h3><p>Даже если вы сами психолог или коуч, есть блоки, которые вы не видите у себя. Я помогу снять страх высокой цены, отказа или самозванца.</p><div class="price" style="color:var(--gold-primary); font-size:1.5rem;">1 сессия — 5 500 ₽<br><small>4 сессии — 8 888 ₽</small></div><button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Записаться на сессию</button></div>
-        <div class="service-card highlight reveal"><h3>Полный запуск системы продаж под ключ</h3><p>Сайт, чат-бот, автоматизация заявок и параллельная работа с внутренними препятствиями. Через месяц вы получаете работающий механизм и уверенность.</p><div class="price" style="color:var(--gold-primary);">250 000 ₽</div><p style="color:var(--text-muted);">Рассрочка: 2×125 000 ₽ или 4×62 500 ₽</p><button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="margin-top:12px;">Обсудить систему под ключ</button></div>
-        <div class="service-card highlight reveal" style="text-align:center;"><h3>Курс «Триггер AI»</h3><p>Создайте своего агента без программистов. Пошаговая программа с шаблонами и моей поддержкой.</p><div class="price" style="color:var(--gold-primary);">10 000 ₽</div><button class="btn-service" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Записаться на курс</button></div>
-    </div></div></section>
-    <div class="section-divider"></div>
-
-    <section class="reviews-section" id="reviews"><div class="container"><h2 class="section-title reveal">Цифры и эмоции говорят громче слов</h2><div class="reviews-grid">
-        <div class="review-card reveal reveal-delay-1"><div class="review-stars" style="color:var(--gold-primary); margin-bottom:12px;">★★★★★</div><p class="review-text">«Поработали с Кристиной, мне нужно было сделать чат-бот. Справилась великолепно! Рекомендую!»</p><div class="review-author" style="display:flex; align-items:center; gap:12px; margin-top:20px;"><div class="review-avatar">И</div><div><div class="review-name">Ирина</div></div></div></div>
-        <div class="review-card reveal reveal-delay-2"><div class="review-stars" style="color:var(--gold-primary); margin-bottom:12px;">★★★★★</div><p class="review-text">«Спустя месяц: работаем в долгую. Схватывает на лету, подстраивается под запросы. Профессионал!»</p><div class="review-author" style="display:flex; align-items:center; gap:12px; margin-top:20px;"><div class="review-avatar">И</div><div><div class="review-name">Ирина</div></div></div></div>
-        <div class="review-card reveal reveal-delay-1"><div class="review-stars" style="color:var(--gold-primary); margin-bottom:12px;">★★★★★</div><p class="review-text">«Теперь клиент сам смотрит и пишет по делу. Кристина взяла меня в глубокую работу по запуску.»</p><div class="review-author" style="display:flex; align-items:center; gap:12px; margin-top:20px;"><div class="review-avatar">Е</div><div><div class="review-name">Елена</div></div></div></div>
-        <div class="review-card reveal reveal-delay-2"><div class="review-stars" style="color:var(--gold-primary); margin-bottom:12px;">★★★★★</div><p class="review-text">«AI-агент работает как мой цифровой двойник. Трачу в 3 раза меньше времени на коммуникацию.»</p><div class="review-author" style="display:flex; align-items:center; gap:12px; margin-top:20px;"><div class="review-avatar">Д</div><div><div class="review-name">Дмитрий</div></div></div></div>
-    </div><div class="review-link-box reveal"><p style="color:var(--text-secondary); margin-bottom:16px;">Оставьте отзыв в Google </p><a href="https://g.page/r/CY8vfg7bKgMSEBI/review" target="_blank" class="btn-secondary">Написать отзыв</a></div></div></section>
-    <div class="section-divider"></div>
-
-    <section class="contact-section" id="contact"><div class="container"><h2 class="section-title reveal">Свяжитесь со мной</h2><div class="contact-inner">
-        <div class="contact-info reveal"><div style="display:flex; flex-direction:column; gap:16px;">
-            <a href="https://t.me/marketologdizayner" target="_blank" class="contact-method"><div class="contact-method-icon" style="background:rgba(201,168,76,0.1);">💬</div><div><h4>Telegram</h4><p>@marketologdizayner</p></div></a>
-            <a href="https://vk.ru/kristinavcifre" target="_blank" class="contact-method"><div class="contact-method-icon" style="background:rgba(11,59,42,0.15);"></div><div><h4>ВКонтакте</h4><p>@kristinavcifre</p></div></a>
-            <a href="https://www.instagram.com/gap_____ova_kristina/" target="_blank" class="contact-method"><div class="contact-method-icon" style="background:rgba(201,168,76,0.1);">📸</div><div><h4>Instagram</h4><p>@gap_____ova_kristina</p></div></a>
-        </div></div>
-        <div class="application-card reveal">
-            <form id="lead-form">
-                <input type="text" id="user-name" placeholder="Ваше имя" required>
-                <input type="text" id="user-contact" placeholder="Telegram или VK" required>
-                <select id="user-service" required><option value="">Выберите услугу</option><option value="diagnostics">Стратегическая диагностика</option><option value="chatbot">Чат-бот</option><option value="site-code">Сайт на чистом коде</option><option value="site-tilda">Сайт на Tilda</option><option value="ai-agent">AI-Агент</option><option value="coaching">Коучинг страхов</option><option value="full-system">Система под ключ</option><option value="course">Курс Триггер AI</option></select>
-                <textarea id="user-task" placeholder="Кратко опишите задачу" rows="3" required></textarea>
-                <div style="display:flex; gap:16px; justify-content:center; margin-top:24px;">
-                    <button type="button" onclick="submitLead('vk')" class="btn-lead vk">Заявка для ВК</button>
-                    <button type="button" onclick="submitLead('tg')" class="btn-lead tg">Заявка в Telegram</button>
-                </div>
-            </form>
-        </div>
-    </div></div></section>
-    <div class="section-divider"></div>
-
-    <section class="about-section" id="about"><div class="container"><div class="about-inner"><div class="about-photo reveal"><img src="avatar.jpg" alt="Кристина — техно-маркетолог и коуч" loading="lazy" width="280" height="360"></div><div class="about-content reveal"><h2>Техно-маркетолог <span style="background:linear-gradient(135deg, var(--gold-primary), var(--gold-bright));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">и коуч по страхам в продажах</span></h2><p>Система без смелости — мёртвая архитектура. Смелость без системы — выгорание. Я работаю с обоими.</p><p><strong style="color:var(--gold-primary);">🔹 Диагностика</strong> — аудит воронки, сайта, чат-бота → пошаговый план.<br><strong style="color:var(--gold-primary);">🔹 Коучинг</strong> — проработка страхов за 2–5 сессий.<br><strong style="color:var(--gold-primary);">🔹 Под ключ</strong> — техника + внутренняя свобода.</p></div></div></div></section>
-    <div class="section-divider"></div>
-
-    <section class="faq-section" id="faq"><div class="container"><h2 class="section-title reveal">Прозрачные условия сотрудничества</h2><div style="max-width:800px; margin:0 auto; display:flex; flex-direction:column; gap:12px;">
-        <div class="faq-item reveal reveal-delay-1"><button class="faq-question" onclick="toggleFaq(this)"><span>Как начинаем работу?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-content"><strong>Два пути:</strong><br>1. <strong>Стратегическая диагностика</strong> (3 000 ₽) — отдельная услуга, полный аудит и план.<br>2. <strong>Платная консультация</strong> (3 000 ₽) — после неё начинаем полноценную работу, и эти 3 000 ₽ вычитаются из итоговой стоимости заказанной услуги. Если выбрали диагностику, сумма не вычитается, так как это самостоятельная услуга.</div></div></div>
-        <div class="faq-item reveal reveal-delay-2"><button class="faq-question" onclick="toggleFaq(this)"><span>Какие условия оплаты?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-content"><strong>100% предоплата на все услуги.</strong> Перед стартом заключается договор, фиксирующий обязанности, сумму и условия возврата.</div></div></div>
-        <div class="faq-item reveal reveal-delay-3"><button class="faq-question" onclick="toggleFaq(this)"><span>Какие сроки выполнения?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-content">Точные сроки устанавливаются в ходе обсуждения заказанной услуги.</div></div></div>
-        <div class="faq-item reveal reveal-delay-1"><button class="faq-question" onclick="toggleFaq(this)"><span>Какие гарантии?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-content"><strong>7 дней поддержки</strong> после сдачи. Возврат 50% возможен по условиям договора.</div></div></div>
-        <div class="faq-item reveal reveal-delay-2"><button class="faq-question" onclick="toggleFaq(this)"><span>Нужны ли технические знания?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-content">Нет. Я беру всю архитектуру, код и интеграции на себя. От вас нужны материалы о бизнесе и стиль общения.</div></div></div>
-    </div></div></section>
-
-    <footer class="footer"><div class="container"><div class="footer-inner"><div class="footer-logo">КРИСТИНА.AI</div><div class="footer-links"><a href="https://t.me/marketologdizayner" target="_blank">Telegram</a><a href="https://vk.ru/kristinavcifre" target="_blank">VK</a><a href="https://www.instagram.com/gap_____ova_kristina/" target="_blank">Instagram</a><a href="#" onclick="openPrivacy(event)">Политика конфиденциальности</a></div></div><div style="text-align:center; color:var(--text-muted); margin-top:36px; padding-top:28px; border-top:1px solid rgba(201,168,76,0.06);">© 2026 КРИСТИНА.AI — Оазис будущего. Все права защищены.</div></div></footer>
-
-    <div class="modal-overlay" id="privacyModal"><div class="modal"><button class="modal-close" onclick="closePrivacy()">✕</button><h2>Политика конфиденциальности</h2><p><strong>Дата публикации:</strong> 01.05.2026</p><h3>1. Общие положения</h3><p>Настоящая Политика определяет порядок обработки и защиты персональных данных пользователей сайта КРИСТИНА.AI.</p><h3>2. Какие данные мы собираем</h3><p>Контактные данные (имя, Telegram/VK username), описание задачи, выбранная услуга, технические данные.</p><h3>3. Цели обработки</h3><p>Обработка заявок, связь с вами, улучшение сервиса, исполнение договоров.</p><h3>4. Хранение и защита</h3><p>Данные защищены и не передаются третьим лицам.</p><h3>5. Условия оплаты и возврата</h3><p>Все услуги предоставляются на условиях <strong>100% предоплаты</strong>. При заключении договора фиксируются услуга, стоимость, обязанности сторон и условия возврата. Возврат 50% возможен исключительно в случаях, предусмотренных договором.</p><h3>6. Права пользователя</h3><p>Вы можете запросить, исправить или удалить свои данные.</p><h3>7. Контакты</h3><p>По вопросам: <a href="https://t.me/marketologdizayner" target="_blank">@marketologdizayner</a></p></div></div>
-
-    <!-- ИСПРАВЛЕННЫЕ ПОПАПЫ -->
-    <div class="popup-overlay" id="vkPopup"><div class="popup-content"><h3>Заявка принята!</h3><div style="background:rgba(255,255,255,0.05); padding:15px; border-radius:8px; margin-bottom:15px; text-align:left;"><p style="margin:5px 0; color:var(--text-secondary);"><b>Имя:</b> <span id="vkName"></span></p><p style="margin:5px 0; color:var(--text-secondary);"><b>Контакт:</b> <span id="vkContact"></span></p><p style="margin:5px 0; color:var(--text-secondary);"><b>Услуга:</b> <span id="vkService"></span></p></div><p>Ваша заявка принята и отправлена эксперту.<br>Пока ожидаете связь с экспертом, можете подписаться на сообщество:</p><a href="https://vk.ru/vk_prodvizenie_kristina" target="_blank" class="popup-btn vk-btn">Перейти в сообщество</a><button class="popup-close" onclick="closePopup('vkPopup')">Закрыть</button></div></div>
-    <div class="popup-overlay" id="tgPopup"><div class="popup-content"><h3>Заявка принята!</h3><div style="background:rgba(255,255,255,0.05); padding:15px; border-radius:8px; margin-bottom:15px; text-align:left;"><p style="margin:5px 0; color:var(--text-secondary);"><b>Имя:</b> <span id="tgName"></span></p><p style="margin:5px 0; color:var(--text-secondary);"><b>Контакт:</b> <span id="tgContact"></span></p><p style="margin:5px 0; color:var(--text-secondary);"><b>Услуга:</b> <span id="tgService"></span></p></div><p>Ваша заявка принята и отправлена эксперту.<br>Пока ожидаете связь с экспертом, можете подписаться на канал:</p><a href="https://telegram.me/expert_voronki" target="_blank" class="popup-btn tg-btn">Перейти в канал</a><button class="popup-close" onclick="closePopup('tgPopup')">Закрыть</button></div></div>
-
-    <!-- ПЛАВАЮЩАЯ КНОПКА -->
-    <div class="sticky-cta"><a href="#contact"> Записаться к эксперту</a></div>
-
-    <script>
-        const canvas = document.getElementById('particlesCanvas'); const ctx = canvas.getContext('2d'); let particlesArr = []; const particleCount = 50;
-        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; } resizeCanvas(); window.addEventListener('resize', resizeCanvas);
-        class Particle { constructor() { this.reset(); } reset() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.size = Math.random() * 2 + 0.5; this.speedX = (Math.random() - 0.5) * 0.3; this.speedY = (Math.random() - 0.5) * 0.3; this.opacity = Math.random() * 0.4 + 0.1; this.life = Math.random() * 200 + 100; this.maxLife = this.life; this.isGold = Math.random() > 0.3; } update() { this.x += this.speedX; this.y += this.speedY; this.life--; if (this.life <= 0 || this.x < -10 || this.x > canvas.width + 10 || this.y < -10 || this.y > canvas.height + 10) this.reset(); } draw() { const lifeRatio = this.life / this.maxLife; const alpha = this.opacity * lifeRatio; ctx.fillStyle = this.isGold ? `rgba(201, 168, 76, ${alpha})` : `rgba(11, 59, 42, ${alpha * 1.5})`; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); } }
-        for (let i = 0; i < particleCount; i++) particlesArr.push(new Particle());
-        function animateParticles() { ctx.clearRect(0, 0, canvas.width, canvas.height); particlesArr.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animateParticles); } animateParticles();
-
-        const goldDust = document.getElementById('goldDust'); for (let i = 0; i < 20; i++) { const dust = document.createElement('div'); dust.className = 'dust-particle'; dust.style.left = Math.random() * 100 + '%'; dust.style.top = Math.random() * 100 + '%'; dust.style.animationDelay = Math.random() * 8 + 's'; dust.style.animationDuration = (Math.random() * 6 + 6) + 's'; goldDust.appendChild(dust); }
-
-        const header = document.getElementById('header'); window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50));
-        const burger = document.getElementById('burger'); const mobileMenu = document.getElementById('mobileMenu'); burger.addEventListener('click', () => { burger.classList.toggle('active'); mobileMenu.classList.toggle('active'); document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : ''; });
-        function closeMobile() { burger.classList.remove('active'); mobileMenu.classList.remove('active'); document.body.style.overflow = ''; }
-
-        const revealObserver = new IntersectionObserver(entries => { entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } }); }, { threshold: 0.08 }); document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-        function toggleFaq(btn) { const item = btn.parentElement; const isActive = item.classList.contains('active'); document.querySelectorAll('.faq-item').forEach(faq => { faq.classList.remove('active'); faq.querySelector('.faq-answer').style.maxHeight = '0'; }); if (!isActive) { item.classList.add('active'); item.querySelector('.faq-answer').style.maxHeight = item.querySelector('.faq-answer').scrollHeight + 'px'; } }
-        function closePopup(id) { document.getElementById(id).classList.remove('active'); }
-        window.onclick = e => { if (e.target.classList.contains('popup-overlay')) e.target.classList.remove('active'); };
-
-        // ИСПРАВЛЕННАЯ ОТПРАВКА ЗАЯВКИ
-        async function submitLead(platform) {
-            const name = document.getElementById('user-name').value.trim();
-            const contact = document.getElementById('user-contact').value.trim();
-            const service = document.getElementById('user-service').value;
-            const task = document.getElementById('user-task').value.trim();
-            if (!name || !contact || !service || !task) { alert('Заполните все поля!'); return; }
-            const leadId = 'lead_' + Date.now().toString(36);
-            try {
-                const res = await fetch('https://kristina-leads.chatbotsmarketolog.workers.dev/api/leads', {
-                    method: 'POST', headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ leadId, name, contact, service, task, platform })
-                });
-                if (res.ok) {
-                    document.getElementById(platform + 'Name').textContent = name;
-                    document.getElementById(platform + 'Contact').textContent = contact;
-                    document.getElementById(platform + 'Service').textContent = service;
-                    document.getElementById(platform + 'Popup').classList.add('active');
-                    document.getElementById('lead-form').reset();
-                } else alert('Ошибка отправки');
-            } catch (e) { alert('Ошибка соединения'); }
+    <!-- Deferred JS (Loads after first paint) -->
+    <script defer>
+    window.addEventListener('load', function() {
+        const canvas = document.getElementById('particlesCanvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            let particlesArr = [];
+            const particleCount = 30;
+            function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+            class Particle {
+                constructor() { this.reset(); }
+                reset() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 2 + 0.5;
+                    this.speedX = (Math.random() - 0.5) * 0.3;
+                    this.speedY = (Math.random() - 0.5) * 0.3;
+                    this.opacity = Math.random() * 0.4 + 0.1;
+                    this.life = Math.random() * 200 + 100;
+                    this.maxLife = this.life;
+                    this.isGold = Math.random() > 0.3;
+                }
+                update() {
+                    this.x += this.speedX; this.y += this.speedY; this.life--;
+                    if (this.life <= 0 || this.x < -10 || this.x > canvas.width + 10 || this.y < -10 || this.y > canvas.height + 10) this.reset();
+                }
+                draw() {
+                    const lifeRatio = this.life / this.maxLife;
+                    const alpha = this.opacity * lifeRatio;
+                    ctx.fillStyle = this.isGold ? `rgba(201, 168, 76, ${alpha})` : `rgba(11, 59, 42, ${alpha * 1.5})`;
+                    ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
+                }
+            }
+            for (let i = 0; i < particleCount; i++) particlesArr.push(new Particle());
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particlesArr.forEach(p => { p.update(); p.draw(); });
+                requestAnimationFrame(animateParticles);
+            }
+            animateParticles();
         }
 
-        function openPrivacy(e) { e.preventDefault(); document.getElementById('privacyModal').classList.add('active'); }
-        function closePrivacy() { document.getElementById('privacyModal').classList.remove('active'); }
-        document.getElementById('privacyModal').addEventListener('click', e => { if (e.target === document.getElementById('privacyModal')) closePrivacy(); });
+        const goldDust = document.getElementById('goldDust');
+        if (goldDust) {
+            for (let i = 0; i < 15; i++) {
+                const dust = document.createElement('div');
+                dust.className = 'dust-particle';
+                dust.style.left = Math.random() * 100 + '%';
+                dust.style.top = Math.random() * 100 + '%';
+                dust.style.animationDelay = Math.random() * 8 + 's';
+                dust.style.animationDuration = (Math.random() * 6 + 6) + 's';
+                goldDust.appendChild(dust);
+            }
+        }
 
-        function cleanUrl() { const path = window.location.pathname; const cleanPath = path.replace(/\/index\.html\/?$/, '/') || '/'; const search = window.location.search; if (path.endsWith('index.html') || path.endsWith('index.html/')) { history.replaceState(null, '', cleanPath + search); } } cleanUrl();
-        document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const target = document.querySelector(a.getAttribute('href')); if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); cleanUrl(); } }));
-        window.addEventListener('hashchange', cleanUrl);
+        const revealObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
+            });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
         const quizData = [
-            { question: "Что вас больше всего беспокоит в бизнесе?", answers: [ { text: "Хаос в коммуникациях, теряю заявки", points: { diagnostics: 2, chatbot: 1 } }, { text: "Не хватает автоматизации", points: { chatbot: 2, ai: 1 } }, { text: "Мало заявок", points: { site: 2, diagnostics: 1 } }, { text: "Личные страхи мешают продавать", points: { coaching: 3 } }, { text: "Нужна комплексная перестройка", points: { fullsystem: 3 } }]},
-            { question: "Какой у вас бюджет на решение?", answers: [ { text: "Минимальный, нужно начать с малого", points: { diagnostics: 2, chatbot: 1 } }, { text: "Средний, готов инвестировать в рост", points: { chatbot: 2, ai: 2, site: 2 } }, { text: "Готов вложиться основательно", points: { fullsystem: 3, ai: 1 } }]},
-            { question: "Какая цель?", answers: [ { text: "Разобраться в проблеме и получить план", points: { diagnostics: 3 } }, { text: "Автоматизировать отдельную задачу", points: { chatbot: 2, site: 1 } }, { text: "Полностью делегировать продажи", points: { ai: 3, fullsystem: 2 } }, { text: "Проработать страхи", points: { coaching: 3 } }]}
+            { question: "Что вас больше всего беспокоит в бизнесе?", answers: [
+                { text: "Хаос в коммуникациях, теряю заявки", points: { diagnostics: 2, chatbot: 1 } },
+                { text: "Не хватает автоматизации", points: { chatbot: 2, ai: 1 } },
+                { text: "Мало заявок", points: { site: 2, diagnostics: 1 } },
+                { text: "Личные страхи мешают продавать", points: { coaching: 3 } },
+                { text: "Нужна комплексная перестройка", points: { fullsystem: 3 } }
+            ]},
+            { question: "Какой у вас бюджет на решение?", answers: [
+                { text: "Минимальный, нужно начать с малого", points: { diagnostics: 2, chatbot: 1 } },
+                { text: "Средний, готов инвестировать в рост", points: { chatbot: 2, ai: 2, site: 2 } },
+                { text: "Готов вложиться основательно", points: { fullsystem: 3, ai: 1 } }
+            ]},
+            { question: "Какая цель?", answers: [
+                { text: "Разобраться в проблеме и получить план", points: { diagnostics: 3 } },
+                { text: "Автоматизировать отдельную задачу", points: { chatbot: 2, site: 1 } },
+                { text: "Полностью делегировать продажи", points: { ai: 3, fullsystem: 2 } },
+                { text: "Проработать страхи", points: { coaching: 3 } }
+            ]}
         ];
         let quizStep = 0, scores = { diagnostics: 0, chatbot: 0, site: 0, ai: 0, coaching: 0, fullsystem: 0 };
         const progressEl = document.getElementById('quizProgress'), questionEl = document.getElementById('quizQuestion'), answersEl = document.getElementById('quizAnswers'), resultEl = document.getElementById('quizResult');
-        function startQuiz() { quizStep = 0; scores = { diagnostics: 0, chatbot: 0, site: 0, ai: 0, coaching: 0, fullsystem: 0 }; resultEl.style.display = 'none'; answersEl.style.display = 'flex'; questionEl.style.display = 'block'; progressEl.style.display = 'block'; showQuestion(); }
-        function showQuestion() { const q = quizData[quizStep]; questionEl.textContent = q.question; progressEl.textContent = `Вопрос ${quizStep+1} из ${quizData.length}`; answersEl.innerHTML = q.answers.map((a, i) => `<div class="quiz-answer" onclick="selectAnswer(${i})">${a.text}</div>`).join(''); }
-        function selectAnswer(index) { const answer = quizData[quizStep].answers[index]; for (let key in answer.points) scores[key] = (scores[key] || 0) + answer.points[key]; quizStep++; quizStep < quizData.length ? showQuestion() : showResult(); }
-        function showResult() { questionEl.style.display = 'none'; answersEl.style.display = 'none'; progressEl.style.display = 'none'; resultEl.style.display = 'block'; let maxService = 'diagnostics', maxScore = 0; for (let s in scores) if (scores[s] > maxScore) { maxScore = scores[s]; maxService = s; } const rec = { diagnostics: "Вам нужна <strong>стратегическая диагностика</strong>.", chatbot: "Рекомендую <strong>чат-бота с кнопочным меню</strong>.", site: "Для вас — <strong>сайт на чистом коде или Tilda</strong>.", ai: "Идеально подойдёт <strong>AI-агент «Бессценарный»</strong>.", coaching: "Начните с <strong>коучинга страхов в продажах</strong>.", fullsystem: "Ваш выбор — <strong>пакет «Система под ключ»</strong>." }; document.getElementById('quizRecommendation').innerHTML = rec[maxService] || rec.diagnostics; }
+        function startQuiz() {
+            quizStep = 0; scores = { diagnostics: 0, chatbot: 0, site: 0, ai: 0, coaching: 0, fullsystem: 0 };
+            resultEl.style.display = 'none'; answersEl.style.display = 'flex'; questionEl.style.display = 'block'; progressEl.style.display = 'block';
+            showQuestion();
+        }
+        function showQuestion() {
+            const q = quizData[quizStep];
+            questionEl.textContent = q.question;
+            progressEl.textContent = `Вопрос ${quizStep+1} из ${quizData.length}`;
+            answersEl.innerHTML = q.answers.map((a, i) => `<div class="quiz-answer" onclick="selectAnswer(${i})">${a.text}</div>`).join('');
+        }
+        function selectAnswer(index) {
+            const answer = quizData[quizStep].answers[index];
+            for (let key in answer.points) scores[key] = (scores[key] || 0) + answer.points[key];
+            quizStep++;
+            quizStep < quizData.length ? showQuestion() : showResult();
+        }
+        function showResult() {
+            questionEl.style.display = 'none'; answersEl.style.display = 'none'; progressEl.style.display = 'none'; resultEl.style.display = 'block';
+            let maxService = 'diagnostics', maxScore = 0;
+            for (let s in scores) if (scores[s] > maxScore) { maxScore = scores[s]; maxService = s; }
+            const rec = {
+                diagnostics: "Вам нужна <strong>стратегическая диагностика</strong>.",
+                chatbot: "Рекомендую <strong>чат-бота с кнопочным меню</strong>.",
+                site: "Для вас — <strong>сайт на чистом коде или Tilda</strong>.",
+                ai: "Идеально подойдёт <strong>AI-агент «Бессценарный»</strong>.",
+                coaching: "Начните с <strong>коучинга страхов в продажах</strong>.",
+                fullsystem: "Ваш выбор — <strong>пакет «Система под ключ»</strong>."
+            };
+            document.getElementById('quizRecommendation').innerHTML = rec[maxService] || rec.diagnostics;
+        }
         startQuiz();
+    });
+
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50));
+
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    burger.addEventListener('click', () => {
+        burger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    });
+    function closeMobile() {
+        burger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function toggleFaq(btn) {
+        const item = btn.parentElement;
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(faq => {
+            faq.classList.remove('active');
+            faq.querySelector('.faq-answer').style.maxHeight = '0';
+        });
+        if (!isActive) {
+            item.classList.add('active');
+            item.querySelector('.faq-answer').style.maxHeight = item.querySelector('.faq-answer').scrollHeight + 'px';
+        }
+    }
+
+    function closePopup(id) { document.getElementById(id).classList.remove('active'); }
+    window.onclick = e => { if (e.target.classList.contains('popup-overlay')) e.target.classList.remove('active'); };
+
+    async function submitLead(platform) {
+        const name = document.getElementById('user-name').value.trim();
+        const contact = document.getElementById('user-contact').value.trim();
+        const service = document.getElementById('user-service').value;
+        const task = document.getElementById('user-task').value.trim();
+        if (!name || !contact || !service || !task) { alert('Заполните все поля!'); return; }
+        const leadId = 'lead_' + Date.now().toString(36);
+        try {
+            const res = await fetch('https://kristina-leads.chatbotsmarketolog.workers.dev/api/leads', {
+                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ leadId, name, contact, service, task, platform })
+            });
+            if (res.ok) {
+                document.getElementById(platform + 'Name').textContent = name;
+                document.getElementById(platform + 'Contact').textContent = contact;
+                document.getElementById(platform + 'Service').textContent = service;
+                document.getElementById(platform + 'Popup').classList.add('active');
+                document.getElementById('lead-form').reset();
+            } else alert('Ошибка отправки');
+        } catch (e) { alert('Ошибка соединения'); }
+    }
+
+    function openPrivacy(e) { e.preventDefault(); document.getElementById('privacyModal').classList.add('active'); }
+    function closePrivacy() { document.getElementById('privacyModal').classList.remove('active'); }
+    document.getElementById('privacyModal').addEventListener('click', e => { if (e.target === document.getElementById('privacyModal')) closePrivacy(); });
+
+    function cleanUrl() {
+        const path = window.location.pathname;
+        const cleanPath = path.replace(/\/index\.html\/?$/, '/') || '/';
+        const search = window.location.search;
+        if (path.endsWith('index.html') || path.endsWith('index.html/')) {
+            history.replaceState(null, '', cleanPath + search);
+        }
+    }
+    cleanUrl();
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); cleanUrl(); }
+    }));
+    window.addEventListener('hashchange', cleanUrl);
     </script>
 </body>
 </html>
