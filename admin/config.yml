@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: main # Убедись, что твоя основная ветка называется main, а не master
+  branch: main
 
 media_folder: "images"
 public_folder: "/images"
