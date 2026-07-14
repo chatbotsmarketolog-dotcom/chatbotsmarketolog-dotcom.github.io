@@ -26,6 +26,11 @@
     <meta name="twitter:image" content="https://chatbotsmarketolog-dotcom.github.io/preview.jpg">
     <meta name="twitter:image:alt" content="КРИСТИНА.AI — AI-агенты и чат-боты для бизнеса">
     
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="120x120">
+    <link rel="apple-touch-icon" href="/favicon.png">
+
     <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,6 +60,20 @@
       ]
     }
     </script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110742003', 'ym');
+
+        ym(110742003, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/110742003" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
 
     <!-- Critical CSS (First Paint) -->
     <style>
@@ -205,7 +224,7 @@
                 <div id="quizQuestion" style="font-size:1.3rem; font-weight:600; margin-bottom:30px; color:var(--text-primary);"></div>
                 <div id="quizAnswers" style="display:flex; flex-direction:column; gap:12px;"></div>
                 <div id="quizResult" style="display:none;">
-                    <h3 style="font-size:1.5rem; margin-bottom:12px;"> Ваш идеальный старт</h3>
+                    <h3 style="font-size:1.5rem; margin-bottom:12px;">🎯 Ваш идеальный старт</h3>
                     <p id="quizRecommendation" style="margin-bottom:20px;"></p>
                     <a href="#services" class="btn-primary">Посмотреть услугу</a>
                 </div>
@@ -328,7 +347,7 @@
                             <div><h4>Telegram</h4><p>@marketologdizayner</p></div>
                         </a>
                         <a href="https://vk.ru/kristinavcifre" target="_blank" class="contact-method">
-                            <div class="contact-method-icon" style="background:rgba(11,59,42,0.15);"></div>
+                            <div class="contact-method-icon" style="background:rgba(11,59,42,0.15);">🔵</div>
                             <div><h4>ВКонтакте</h4><p>@kristinavcifre</p></div>
                         </a>
                         <a href="https://www.instagram.com/gap_____ova_kristina/" target="_blank" class="contact-method">
@@ -375,7 +394,7 @@
                     <h2>Техно-маркетолог <span style="background:linear-gradient(135deg, var(--gold-primary), var(--gold-bright));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">и коуч по страхам в продажах</span></h2>
                     <p>Система без смелости — мёртвая архитектура. Смелость без системы — выгорание. Я работаю с обоими.</p>
                     <p><strong style="color:var(--gold-primary);">🔹 Диагностика</strong> — аудит воронки, сайта, чат-бота → пошаговый план.<br>
-                    <strong style="color:var(--gold-primary);"> Коучинг</strong> — проработка страхов за 2–5 сессий.<br>
+                    <strong style="color:var(--gold-primary);">🔹 Коучинг</strong> — проработка страхов за 2–5 сессий.<br>
                     <strong style="color:var(--gold-primary);">🔹 Под ключ</strong> — техника + внутренняя свобода.</p>
                 </div>
             </div>
@@ -455,6 +474,7 @@
             <button class="popup-close" onclick="closePopup('vkPopup')">Закрыть</button>
         </div>
     </div>
+    
     <div class="popup-overlay" id="tgPopup">
         <div class="popup-content">
             <h3>Заявка принята!</h3>
@@ -469,7 +489,7 @@
         </div>
     </div>
 
-    <div class="sticky-cta"><a href="#contact"> Записаться к эксперту</a></div>
+    <div class="sticky-cta"><a href="#contact">✦ Записаться к эксперту</a></div>
 
     <!-- Secondary CSS (Loads after first paint) -->
     <style>
