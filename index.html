@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KRISTINA | Мультидисциплинарный специалист: Разработка, Тестирование, ИИ, Маркетинг</title>
+    <meta name="description" content="Мультидисциплинарный специалист: разработка сайтов, чат-ботов, AI-агентов, тестирование, ИИ-инструменты и маркетинг. 10 лет опыта. Создаю инструменты, которые продают.">
+    <meta name="keywords" content="разработка сайтов, чат-боты, AI-агенты, веб-разработка, тестирование ПО, ИИ-инструменты, маркетинг, Tilda, лендинги, интернет-магазины, торговые платформы, образовательные игры, генерация контента">
+    <meta name="author" content="KRISTINA">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="KRISTINA | Цифровые решения, которые продают">
+    <meta property="og:description" content="Мультидисциплинарный специалист: разработка, тестирование, ИИ-инструменты и маркетинг. 10 лет создаю инструменты, которые решают задачи бизнеса.">
+    <meta property="og:image" content="preview.jpg">
+    
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="KRISTINA | Цифровые решения, которые продают">
+    <meta property="twitter:description" content="Мультидисциплинарный специалист: разработка, тестирование, ИИ-инструменты и маркетинг. 10 лет создаю инструменты, которые решают задачи бизнеса.">
+    <meta property="twitter:image" content="preview.jpg">
+    
+    <meta name="yandex-verification" content="your-yandex-verification-code">
+    <meta name="google-site-verification" content="your-google-verification-code">
+    
     <style>
         * {
             margin: 0;
@@ -12,9 +29,9 @@
         }
 
         :root {
-            --bg-primary: #1a1512;
-            --bg-secondary: #241f1c;
-            --bg-card: #2d2622;
+            --bg-primary: #241f1c;
+            --bg-secondary: #2d2622;
+            --bg-card: #362f2a;
             --text-primary: #f5f0ec;
             --text-secondary: #d4c9be;
             --accent-gold: #c9a962;
@@ -44,7 +61,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(26, 21, 18, 0.95);
+            background: rgba(36, 31, 28, 0.95);
             backdrop-filter: blur(20px);
             z-index: 1000;
             padding: 20px 0;
@@ -282,6 +299,36 @@
             align-items: center;
         }
 
+        .about-photo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .photo-placeholder {
+            width: 300px;
+            height: 300px;
+            background: var(--gradient-premium);
+            padding: 5px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .photo-placeholder-inner {
+            width: 100%;
+            height: 100%;
+            background: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .photo-placeholder svg {
+            width: 120px;
+            height: 120px;
+            opacity: 0.6;
+        }
+
         .about-text h3 {
             font-size: 32px;
             margin-bottom: 30px;
@@ -426,11 +473,13 @@
             width: 20px;
             height: 20px;
             accent-color: var(--accent-gold);
+            flex-shrink: 0;
         }
 
         .checkbox-item span {
             font-size: 15px;
             color: var(--text-secondary);
+            line-height: 1.4;
         }
 
         .price-display {
@@ -482,41 +531,70 @@
             text-align: center;
         }
 
-        .contact-info {
+        .contact-form {
             max-width: 600px;
             margin: 0 auto;
+            background: var(--bg-card);
+            padding: 50px;
+            border: var(--border-subtle);
+            box-shadow: var(--shadow-soft);
         }
 
-        .contact-info p {
-            font-size: 18px;
-            color: var(--text-secondary);
-            margin-bottom: 40px;
-            line-height: 1.8;
+        .form-group {
+            margin-bottom: 25px;
         }
 
-        .contact-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .contact-btn {
-            padding: 18px 40px;
-            background: transparent;
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 15px;
+            background: var(--bg-secondary);
             border: var(--border-subtle);
             color: var(--text-primary);
-            text-decoration: none;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
+            font-family: inherit;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
         }
 
-        .contact-btn:hover {
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-select {
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
             background: var(--gradient-premium);
             color: var(--bg-primary);
-            border-color: transparent;
+            border: none;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
 
         footer {
@@ -572,6 +650,142 @@
             .price-total {
                 font-size: 42px;
             }
+
+            .contact-form {
+                padding: 30px 20px;
+            }
+
+            .photo-placeholder {
+                width: 250px;
+                height: 250px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .section-subtitle {
+                font-size: 16px;
+            }
+
+            .service-card {
+                padding: 30px 20px;
+            }
+
+            .service-card h3 {
+                font-size: 20px;
+            }
+
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+
+            .calc-tab {
+                padding: 10px 15px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 28px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+            }
+
+            .stat-number {
+                font-size: 28px;
+            }
+
+            .stat-label {
+                font-size: 12px;
+            }
+
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 14px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .photo-placeholder {
+                width: 200px;
+                height: 200px;
+            }
+
+            .photo-placeholder svg {
+                width: 80px;
+                height: 80px;
+            }
+
+            .highlight-item h4 {
+                font-size: 28px;
+            }
+
+            .price-total {
+                font-size: 36px;
+            }
+
+            .checkbox-item {
+                padding: 12px;
+            }
+
+            .checkbox-item span {
+                font-size: 14px;
+            }
+
+            .calc-tab {
+                padding: 8px 12px;
+                font-size: 11px;
+            }
+
+            .service-card {
+                padding: 25px 15px;
+            }
+
+            .service-card h3 {
+                font-size: 18px;
+            }
+
+            .service-card p {
+                font-size: 14px;
+            }
+
+            .form-input,
+            .form-textarea,
+            .form-select {
+                padding: 12px;
+                font-size: 14px;
+            }
+
+            .submit-btn {
+                padding: 15px;
+                font-size: 14px;
+            }
+
+            .price-display {
+                padding: 30px 20px;
+            }
+
+            .breakdown-item {
+                font-size: 13px;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .calculator-container {
+                padding: 20px 15px;
+            }
+
+            .contact-form {
+                padding: 25px 15px;
+            }
         }
     </style>
 </head>
@@ -626,101 +840,64 @@
             
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">🤖</div>
-                    <h3>Кнопочные чат-боты</h3>
-                    <p>Простые и эффективные боты с фиксированными сценариями для автоматизации рутинных задач: ответы на частые вопросы, запись клиентов, сбор заявок.</p>
-                    <ul class="service-features">
-                        <li>Меню с кнопками</li>
-                        <li>Автоматические ответы</li>
-                        <li>Интеграция с мессенджерами</li>
-                        <li>Сбор лидов</li>
-                    </ul>
-                    <div class="service-price">от 10 000 ₽</div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">🧠</div>
-                    <h3>Умные AI-агенты</h3>
-                    <p>Интеллектуальные боты на базе искусственного интеллекта, которые понимают контекст, обучаются и адаптируются под потребности клиентов. Собственный конструктор «АгентУм».</p>
-                    <ul class="service-features">
-                        <li>Понимание естественного языка</li>
-                        <li>Обучение на ваших данных</li>
-                        <li>Контекстные диалоги</li>
-                        <li>Интеграция с CRM и базами знаний</li>
-                    </ul>
+                    <div class="service-icon">💻</div>
+                    <h3>Лендинг / Сайт на Коде</h3>
+                    <p>Индивидуальная разработка на чистом коде или фреймворках. Максимальная скорость, безопасность и уникальность дизайна.</p>
                     <div class="service-price">от 25 000 ₽</div>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon">💻</div>
-                    <h3>Веб-сайты и платформы</h3>
-                    <p>Сайты на Tilda и на коде. Полноценные торговые платформы (аналог WB/Ozon) с системой управления заказами, статусами и остатками в реальном времени.</p>
-                    <ul class="service-features">
-                        <li>Лендинги и корпоративные сайты</li>
-                        <li>Интернет-магазины</li>
-                        <li>Торговые платформы для продавцов</li>
-                        <li>Адаптивность под все устройства</li>
-                    </ul>
-                    <div class="service-price">от 30 000 ₽</div>
+                    <div class="service-icon">🛠️</div>
+                    <h3>Лендинг / Сайт на Tilda</h3>
+                    <p>Быстрый запуск на платформе Tilda. Стильный дизайн, Zero Block, удобная админка для самостоятельного управления.</p>
+                    <div class="service-price">от 15 000 ₽</div>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon">🔍</div>
-                    <h3>Мануальное тестирование</h3>
-                    <p>Профессиональное тестирование веб-приложений, игр, программ на ПК и мобильных устройствах. Проверка адаптивности, функциональности, удобства использования.</p>
-                    <ul class="service-features">
-                        <li>Тестирование по методологиям (белый, серый, чёрный ящик)</li>
-                        <li>Проверка на всех устройствах</li>
-                        <li>Составление чек-листов</li>
-                        <li>Отчёт о найденных ошибках</li>
-                    </ul>
-                    <div class="service-price">от 20 000 ₽</div>
+                    <div class="service-icon">🛒</div>
+                    <h3>Интернет-магазины</h3>
+                    <p>Полноценные магазины с корзиной, оплатой, личным кабинетом и интеграцией служб доставки.</p>
+                    <div class="service-price">от 40 000 ₽</div>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon">🎮</div>
-                    <h3>Разработка образовательных игр</h3>
-                    <p>Создание обучающих веб-игр для детей и взрослых. Пример: игра «Пчёлка умняшка» для дошкольников с выявлением пробелов в знаниях и дневником ошибок.</p>
-                    <ul class="service-features">
-                        <li>Образовательные механики</li>
-                        <li>Система прогресса и статистики</li>
-                        <li>Адаптивный дизайн</li>
-                        <li>Интеграция с платформами</li>
-                    </ul>
-                    <div class="service-price">от 35 000 ₽</div>
+                    <div class="service-icon">🏢</div>
+                    <h3>Торговые платформы для продавцов</h3>
+                    <p>Сложные системы (аналог WB/Ozon): управление заказами, статусами, остатками в реальном времени.</p>
+                    <div class="service-price">от 80 000 ₽</div>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon">🎬</div>
-                    <h3>ИИ и мультимедиа</h3>
-                    <p>Генерация изображений, анимации, видео с помощью ИИ. Профессиональный монтаж рекламных роликов. Обучение команды работе с ИИ-инструментами.</p>
+                    <div class="service-icon">🤖</div>
+                    <h3>Веб-боты и Веб-агенты</h3>
+                    <p>Боты, встроенные прямо в сайт (не привязаны к мессенджерам). Сбор лидов через формы, умные сценарии, AI-консультанты.</p>
+                    <div class="service-price">от 15 000 ₽</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💬</div>
+                    <h3>Чат-боты в мессенджерах</h3>
+                    <p>Автоматизация в Telegram, VK, Одноклассниках. Интеграция с CRM, рассылки, воронки продаж.</p>
+                    <div class="service-price">от 10 000 ₽</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"></div>
+                    <h3>ИИ-производство и Контент</h3>
+                    <p>Генерация рекламной продукции через ИИ: фото, видео, анимация. Профессиональный монтаж, написание сценариев, тексты, переводы.</p>
                     <ul class="service-features">
                         <li>ИИ-видео от 1 500 ₽/ролик</li>
                         <li>ИИ-фото от 1 000 ₽/изображение</li>
                         <li>Монтаж рекламных роликов</li>
-                        <li>Обучение команды ИИ-инструментам</li>
+                        <li>Написание сценариев и текстов</li>
                     </ul>
                     <div class="service-price">от 1 000 ₽</div>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon">✍️</div>
-                    <h3>Контент и тексты</h3>
-                    <p>Корректировка и редактура текстов, набор текста из аудио/видео, перенос текста с изображений, написание сценариев для видео, переводы с английского.</p>
-                    <ul class="service-features">
-                        <li>Редактура и корректура</li>
-                        <li>Транскрибация аудио/видео</li>
-                        <li>Распознавание текста с изображения</li>
-                        <li>Сценарии для видео</li>
-                        <li>Переводы с английского</li>
-                    </ul>
-                    <div class="service-price">от 2 000 ₽</div>
-                </div>
-
-                <div class="service-card">
                     <div class="service-icon">📊</div>
-                    <h3>Диагностика и консультация</h3>
-                    <p>Аудит текущего проекта (сайт, бот, приложение) для выявления проблем и точек роста. Консультация по выбору решений, объяснение технологий и возможностей.</p>
+                    <h3>Диагностика и Консультация</h3>
+                    <p>Аудит текущего проекта (сайт, бот, приложение) для выявления проблем и точек роста. Консультация по выбору решений.</p>
                     <ul class="service-features">
                         <li>Диагностика проекта — 8 000 ₽</li>
                         <li>Консультация по технологиям — 5 000 ₽</li>
@@ -729,6 +906,13 @@
                     </ul>
                     <div class="service-price">5 000 — 8 000 ₽</div>
                 </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Адаптивность под все устройства</h3>
+                    <p>Гарантия идеального отображения вашего продукта на всех устройствах: ПК, планшеты, смартфоны.</p>
+                    <div class="service-price">включено</div>
+                </div>
             </div>
         </div>
     </section>
@@ -736,6 +920,16 @@
     <section id="about" class="section about-section">
         <div class="container">
             <div class="about-content">
+                <div class="about-photo">
+                    <div class="photo-placeholder">
+                        <div class="photo-placeholder-inner">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#c9a962" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
                 <div class="about-text">
                     <h3>Кто я</h3>
                     <p>Я — мультидисциплинарный специалист с уникальным сочетанием навыков: разработчик, тестировщик, маркетолог и эксперт по ИИ-инструментам.</p>
@@ -761,23 +955,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="about-skills">
-                    <div class="service-card" style="height: 100%;">
-                        <h3 style="margin-bottom: 25px;">Мои компетенции</h3>
-                        <ul class="service-features">
-                            <li>Разработка чат-ботов (кнопочные и AI-агенты)</li>
-                            <li>Создание сайтов на Tilda и коде</li>
-                            <li>Разработка торговых платформ</li>
-                            <li>Мануальное тестирование ПО</li>
-                            <li>Создание образовательных игр</li>
-                            <li>Генерация контента с помощью ИИ</li>
-                            <li>Видеомонтаж и ретушь</li>
-                            <li>Обучение команд ИИ-инструментам</li>
-                            <li>Написание и редактура текстов</li>
-                            <li>Переводы с английского языка</li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -789,110 +966,94 @@
             
             <div class="calculator-container">
                 <div class="calc-tabs">
-                    <button class="calc-tab active" data-tab="chatbot-simple">Кнопочный бот</button>
-                    <button class="calc-tab" data-tab="chatbot-ai">AI-агент</button>
-                    <button class="calc-tab" data-tab="website">Сайт</button>
+                    <button class="calc-tab active" data-tab="landing-code">Сайт на Коде</button>
+                    <button class="calc-tab" data-tab="landing-tilda">Сайт на Tilda</button>
+                    <button class="calc-tab" data-tab="shop">Интернет-магазин</button>
                     <button class="calc-tab" data-tab="platform">Торговая платформа</button>
-                    <button class="calc-tab" data-tab="testing">Тестирование</button>
-                    <button class="calc-tab" data-tab="game">Игра</button>
-                    <button class="calc-tab" data-tab="ai-media">ИИ Медиа</button>
-                    <button class="calc-tab" data-tab="content">Контент</button>
+                    <button class="calc-tab" data-tab="web-bot">Веб-бот</button>
+                    <button class="calc-tab" data-tab="web-agent">Веб-агент</button>
+                    <button class="calc-tab" data-tab="mess-bot">Бот в мессенджере</button>
+                    <button class="calc-tab" data-tab="ai-media">ИИ-производство</button>
                     <button class="calc-tab" data-tab="diagnosis">Диагностика</button>
                 </div>
 
-                <div class="calc-content active" id="chatbot-simple">
-                    <div class="calc-group">
-                        <label>Тип бота</label>
-                        <select id="simple-bot-type" onchange="calculatePrice()">
-                            <option value="10000">Базовый кнопочный бот — 10 000 ₽</option>
-                            <option value="15000">Бот с меню и формами — 15 000 ₽</option>
-                            <option value="20000">Бот с интеграцией CRM — 20 000 ₽</option>
-                        </select>
-                    </div>
-                    <div class="calc-group">
-                        <label>Дополнительные опции</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-item">
-                                <input type="checkbox" value="5000" class="simple-bot-option" onchange="calculatePrice()">
-                                <span>Интеграция с Telegram (+5 000 ₽)</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" value="5000" class="simple-bot-option" onchange="calculatePrice()">
-                                <span>Интеграция с WhatsApp (+5 000 ₽)</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" value="7000" class="simple-bot-option" onchange="calculatePrice()">
-                                <span>Админ-панель (+7 000 ₽)</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" value="10000" class="simple-bot-option" onchange="calculatePrice()">
-                                <span>Аналитика и статистика (+10 000 ₽)</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="calc-content" id="chatbot-ai">
-                    <div class="calc-group">
-                        <label>Тип AI-агента</label>
-                        <select id="ai-bot-type" onchange="calculatePrice()">
-                            <option value="25000">Базовый AI-бот (контекстные ответы) — 25 000 ₽</option>
-                            <option value="40000">AI-бот с обучением на данных клиента — 40 000 ₽</option>
-                            <option value="60000">Полноценный AI-агент с интеграциями — 60 000 ₽</option>
-                        </select>
-                    </div>
-                    <div class="calc-group">
-                        <label>Дополнительные опции</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-item">
-                                <input type="checkbox" value="10000" class="ai-bot-option" onchange="calculatePrice()">
-                                <span>Интеграция с базой знаний (+10 000 ₽)</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" value="15000" class="ai-bot-option" onchange="calculatePrice()">
-                                <span>Подключение к CRM (+15 000 ₽)</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" value="20000" class="ai-bot-option" onchange="calculatePrice()">
-                                <span>Мультиязычность (+20 000 ₽)</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" value="10000" class="ai-bot-option" onchange="calculatePrice()">
-                                <span>Обучение персонала работе с ботом (+10 000 ₽)</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="calc-content" id="website">
+                <div class="calc-content active" id="landing-code">
                     <div class="calc-group">
                         <label>Тип сайта</label>
-                        <select id="website-type" onchange="calculatePrice()">
-                            <option value="30000">Лендинг на Tilda — 30 000 ₽</option>
-                            <option value="50000">Корпоративный сайт на Tilda — 50 000 ₽</option>
-                            <option value="60000">Лендинг на коде — 60 000 ₽</option>
-                            <option value="90000">Корпоративный сайт на коде — 90 000 ₽</option>
-                            <option value="120000">Интернет-магазин — 120 000 ₽</option>
+                        <select id="landing-code-type" onchange="calculatePrice()">
+                            <option value="25000">Лендинг на коде — 25 000 ₽</option>
+                            <option value="50000">Корпоративный сайт на коде — 50 000 ₽</option>
                         </select>
                     </div>
                     <div class="calc-group">
                         <label>Дополнительные опции</label>
                         <div class="checkbox-group">
                             <label class="checkbox-item">
-                                <input type="checkbox" value="15000" class="website-option" onchange="calculatePrice()">
-                                <span>Адаптивный дизайн (+15 000 ₽)</span>
+                                <input type="checkbox" value="15000" class="landing-code-option" onchange="calculatePrice()">
+                                <span>Уникальный дизайн (UX/UI) (+15 000 ₽)</span>
                             </label>
                             <label class="checkbox-item">
-                                <input type="checkbox" value="20000" class="website-option" onchange="calculatePrice()">
-                                <span>SEO-оптимизация (+20 000 ₽)</span>
+                                <input type="checkbox" value="10000" class="landing-code-option" onchange="calculatePrice()">
+                                <span>Сложная анимация (+10 000 ₽)</span>
                             </label>
                             <label class="checkbox-item">
-                                <input type="checkbox" value="25000" class="website-option" onchange="calculatePrice()">
-                                <span>Интеграция с платёжными системами (+25 000 ₽)</span>
+                                <input type="checkbox" value="5000" class="landing-code-option" onchange="calculatePrice()">
+                                <span>Базовое SEO (+5 000 ₽)</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-content" id="landing-tilda">
+                    <div class="calc-group">
+                        <label>Тип сайта</label>
+                        <select id="landing-tilda-type" onchange="calculatePrice()">
+                            <option value="15000">Лендинг на Tilda — 15 000 ₽</option>
+                            <option value="30000">Корпоративный сайт на Tilda — 30 000 ₽</option>
+                        </select>
+                    </div>
+                    <div class="calc-group">
+                        <label>Дополнительные опции</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="10000" class="landing-tilda-option" onchange="calculatePrice()">
+                                <span>Дизайн в Zero Block (+10 000 ₽)</span>
                             </label>
                             <label class="checkbox-item">
-                                <input type="checkbox" value="10000" class="website-option" onchange="calculatePrice()">
-                                <span>Наполнение контентом (+10 000 ₽)</span>
+                                <input type="checkbox" value="5000" class="landing-tilda-option" onchange="calculatePrice()">
+                                <span>Настройка форм и CRM (+5 000 ₽)</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="3000" class="landing-tilda-option" onchange="calculatePrice()">
+                                <span>Подключение домена и SSL (+3 000 ₽)</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-content" id="shop">
+                    <div class="calc-group">
+                        <label>Тип магазина</label>
+                        <select id="shop-type" onchange="calculatePrice()">
+                            <option value="40000">Базовый интернет-магазин — 40 000 ₽</option>
+                            <option value="70000">Магазин с личным кабинетом — 70 000 ₽</option>
+                            <option value="120000">Магазин с полной интеграцией — 120 000 ₽</option>
+                        </select>
+                    </div>
+                    <div class="calc-group">
+                        <label>Дополнительные опции</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="10000" class="shop-option" onchange="calculatePrice()">
+                                <span>Подключение онлайн-оплаты (+10 000 ₽)</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="15000" class="shop-option" onchange="calculatePrice()">
+                                <span>Интеграция служб доставки (+15 000 ₽)</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="5000" class="shop-option" onchange="calculatePrice()">
+                                <span>Загрузка каталога товаров (+5 000 ₽)</span>
                             </label>
                         </div>
                     </div>
@@ -902,95 +1063,122 @@
                     <div class="calc-group">
                         <label>Тип платформы</label>
                         <select id="platform-type" onchange="calculatePrice()">
-                            <option value="150000">Базовая платформа (витрина + заказы) — 150 000 ₽</option>
-                            <option value="250000">Платформа с управлением остатками — 250 000 ₽</option>
-                            <option value="350000">Полноценный аналог WB/Ozon — 350 000 ₽</option>
+                            <option value="80000">Базовая платформа (витрина + заказы) — 80 000 ₽</option>
+                            <option value="150000">Платформа с управлением остатками — 150 000 ₽</option>
+                            <option value="250000">Полноценный аналог WB/Ozon — 250 000 ₽</option>
                         </select>
                     </div>
                     <div class="calc-group">
                         <label>Дополнительные опции</label>
                         <div class="checkbox-group">
                             <label class="checkbox-item">
-                                <input type="checkbox" value="30000" class="platform-option" onchange="calculatePrice()">
-                                <span>Статусы заказов в реальном времени (+30 000 ₽)</span>
-                            </label>
-                            <label class="checkbox-item">
                                 <input type="checkbox" value="40000" class="platform-option" onchange="calculatePrice()">
-                                <span>Интеграция с 1С (+40 000 ₽)</span>
+                                <span>Кабинет продавца (статусы, остатки) (+40 000 ₽)</span>
                             </label>
                             <label class="checkbox-item">
-                                <input type="checkbox" value="50000" class="platform-option" onchange="calculatePrice()">
-                                <span>Мобильное приложение (+50 000 ₽)</span>
+                                <input type="checkbox" value="30000" class="platform-option" onchange="calculatePrice()">
+                                <span>Real-time синхронизация (+30 000 ₽)</span>
                             </label>
                             <label class="checkbox-item">
                                 <input type="checkbox" value="25000" class="platform-option" onchange="calculatePrice()">
-                                <span>Система лояльности (+25 000 ₽)</span>
+                                <span>Расширенная админ-панель (+25 000 ₽)</span>
                             </label>
                         </div>
                     </div>
                 </div>
 
-                <div class="calc-content" id="testing">
+                <div class="calc-content" id="web-bot">
                     <div class="calc-group">
-                        <label>Тип тестирования</label>
-                        <select id="testing-type" onchange="calculatePrice()">
-                            <option value="20000">Базовое тестирование веб-приложения — 20 000 ₽</option>
-                            <option value="35000">Тестирование веб-игры — 35 000 ₽</option>
-                            <option value="40000">Тестирование мобильного приложения — 40 000 ₽</option>
-                            <option value="50000">Комплексное тестирование платформы — 50 000 ₽</option>
+                        <label>Тип веб-бота</label>
+                        <select id="web-bot-type" onchange="calculatePrice()">
+                            <option value="15000">Базовый веб-бот с меню — 15 000 ₽</option>
+                            <option value="25000">Веб-бот с формами сбора данных — 25 000 ₽</option>
+                            <option value="35000">Веб-бот с интеграцией CRM — 35 000 ₽</option>
                         </select>
                     </div>
                     <div class="calc-group">
                         <label>Дополнительные опции</label>
                         <div class="checkbox-group">
                             <label class="checkbox-item">
-                                <input type="checkbox" value="10000" class="testing-option" onchange="calculatePrice()">
-                                <span>Составление чек-листов (+10 000 ₽)</span>
+                                <input type="checkbox" value="5000" class="web-bot-option" onchange="calculatePrice()">
+                                <span>Сложные формы сбора данных (+5 000 ₽)</span>
                             </label>
                             <label class="checkbox-item">
-                                <input type="checkbox" value="15000" class="testing-option" onchange="calculatePrice()">
-                                <span>Тестирование на всех устройствах (+15 000 ₽)</span>
+                                <input type="checkbox" value="7000" class="web-bot-option" onchange="calculatePrice()">
+                                <span>Многоуровневое меню (+7 000 ₽)</span>
                             </label>
                             <label class="checkbox-item">
-                                <input type="checkbox" value="12000" class="testing-option" onchange="calculatePrice()">
-                                <span>Проверка безопасности (+12 000 ₽)</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" value="8000" class="testing-option" onchange="calculatePrice()">
-                                <span>Повторное тестирование исправлений (+8 000 ₽)</span>
+                                <input type="checkbox" value="15000" class="web-bot-option" onchange="calculatePrice()">
+                                <span>Интеграция с внешней CRM (+15 000 ₽)</span>
                             </label>
                         </div>
                     </div>
                 </div>
 
-                <div class="calc-content" id="game">
+                <div class="calc-content" id="web-agent">
                     <div class="calc-group">
-                        <label>Тип игры</label>
-                        <select id="game-type" onchange="calculatePrice()">
-                            <option value="35000">Простая образовательная игра — 35 000 ₽</option>
-                            <option value="60000">Игра с системой прогресса — 60 000 ₽</option>
-                            <option value="90000">Игра с аналитикой и дневником ошибок — 90 000 ₽</option>
-                            <option value="120000">Многопользовательская игра — 120 000 ₽</option>
+                        <label>Тип веб-агента</label>
+                        <select id="web-agent-type" onchange="calculatePrice()">
+                            <option value="25000">Базовый AI-консультант — 25 000 ₽</option>
+                            <option value="45000">AI-агент с обучением на данных — 45 000 ₽</option>
+                            <option value="70000">Полноценный AI-агент с интеграциями — 70 000 ₽</option>
                         </select>
                     </div>
                     <div class="calc-group">
                         <label>Дополнительные опции</label>
                         <div class="checkbox-group">
                             <label class="checkbox-item">
-                                <input type="checkbox" value="20000" class="game-option" onchange="calculatePrice()">
-                                <span>Адаптивный дизайн (+20 000 ₽)</span>
+                                <input type="checkbox" value="20000" class="web-agent-option" onchange="calculatePrice()">
+                                <span>Подключение LLM (AI мозг) (+20 000 ₽)</span>
                             </label>
                             <label class="checkbox-item">
-                                <input type="checkbox" value="25000" class="game-option" onchange="calculatePrice()">
-                                <span>Интеграция с LMS (+25 000 ₽)</span>
+                                <input type="checkbox" value="15000" class="web-agent-option" onchange="calculatePrice()">
+                                <span>Обучение на базе знаний клиента (+15 000 ₽)</span>
                             </label>
                             <label class="checkbox-item">
-                                <input type="checkbox" value="15000" class="game-option" onchange="calculatePrice()">
-                                <span>Геймификация (+15 000 ₽)</span>
+                                <input type="checkbox" value="25000" class="web-agent-option" onchange="calculatePrice()">
+                                <span>Голосовой интерфейс (+25 000 ₽)</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-content" id="mess-bot">
+                    <div class="calc-group">
+                        <label>Тип бота</label>
+                        <select id="mess-bot-type" onchange="calculatePrice()">
+                            <option value="10000">Базовый кнопочный бот — 10 000 ₽</option>
+                            <option value="18000">Бот с воронкой продаж — 18 000 ₽</option>
+                            <option value="28000">Бот с приемом оплаты — 28 000 ₽</option>
+                        </select>
+                    </div>
+                    <div class="calc-group">
+                        <label>Платформа</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="0" class="mess-bot-platform" onchange="calculatePrice()" checked>
+                                <span>Telegram (базовая)</span>
                             </label>
                             <label class="checkbox-item">
-                                <input type="checkbox" value="10000" class="game-option" onchange="calculatePrice()">
-                                <span>Настройка аналитики (+10 000 ₽)</span>
+                                <input type="checkbox" value="2000" class="mess-bot-platform" onchange="calculatePrice()">
+                                <span>ВКонтакте (+2 000 ₽)</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="2000" class="mess-bot-platform" onchange="calculatePrice()">
+                                <span>Одноклассники (+2 000 ₽)</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="calc-group">
+                        <label>Дополнительные опции</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="10000" class="mess-bot-option" onchange="calculatePrice()">
+                                <span>Воронка продаж (+10 000 ₽)</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="8000" class="mess-bot-option" onchange="calculatePrice()">
+                                <span>Прием оплаты внутри бота (+8 000 ₽)</span>
                             </label>
                         </div>
                     </div>
@@ -1004,6 +1192,8 @@
                             <option value="1500">ИИ-видео (1 ролик до 30 сек) — 1 500 ₽</option>
                             <option value="3000">ИИ-видео (1 ролик до 60 сек) — 3 000 ₽</option>
                             <option value="5000">ИИ-анимация (1 сцена) — 5 000 ₽</option>
+                            <option value="3000">Монтаж рекламного ролика — 3 000 ₽</option>
+                            <option value="5000">Написание сценария для видео — 5 000 ₽</option>
                         </select>
                     </div>
                     <div class="calc-group">
@@ -1027,39 +1217,6 @@
                             <label class="checkbox-item">
                                 <input type="checkbox" value="7000" class="ai-media-option" onchange="calculatePrice()">
                                 <span>Предоставление исходников (+7 000 ₽)</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="calc-content" id="content">
-                    <div class="calc-group">
-                        <label>Тип услуги</label>
-                        <select id="content-type" onchange="calculatePrice()">
-                            <option value="2000">Редактура текста (до 5000 знаков) — 2 000 ₽</option>
-                            <option value="3000">Транскрибация аудио/видео (1 минута) — 3 000 ₽</option>
-                            <option value="2500">Распознавание текста с изображения (1 страница) — 2 500 ₽</option>
-                            <option value="5000">Написание сценария для видео — 5 000 ₽</option>
-                            <option value="4000">Перевод с английского (1000 знаков) — 4 000 ₽</option>
-                        </select>
-                    </div>
-                    <div class="calc-group">
-                        <label>Количество / Объём</label>
-                        <input type="range" id="content-quantity" min="1" max="20" value="1" oninput="updateQuantityDisplay('content-qty-display', this.value); calculatePrice()" style="width: 100%;">
-                        <div style="text-align: center; margin-top: 10px; color: var(--text-secondary);">
-                            <span id="content-qty-display">1</span> ед.
-                        </div>
-                    </div>
-                    <div class="calc-group">
-                        <label>Дополнительные опции</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-item">
-                                <input type="checkbox" value="2000" class="content-option" onchange="calculatePrice()">
-                                <span>Срочное выполнение (+2 000 ₽)</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" value="3000" class="content-option" onchange="calculatePrice()">
-                                <span>SEO-оптимизация текста (+3 000 ₽)</span>
                             </label>
                         </div>
                     </div>
@@ -1110,15 +1267,31 @@
 
     <section id="contact" class="section contact-section">
         <div class="container">
-            <h2 class="section-title">Связаться со мной</h2>
-            <div class="contact-info">
-                <p>Готовы обсудить ваш проект? Напишите мне, и мы определим оптимальное решение для вашего бизнеса. После первичной консультации или диагностики вы получите точный расчёт стоимости и сроки реализации.</p>
-                
-                <div class="contact-buttons">
-                    <a href="https://t.me/" class="contact-btn">Telegram</a>
-                    <a href="https://wa.me/" class="contact-btn">WhatsApp</a>
-                    <a href="mailto:" class="contact-btn">Email</a>
-                </div>
+            <h2 class="section-title">Обсудить Проект</h2>
+            <p class="section-subtitle">Заполните форму, и я свяжусь с вами в ближайшее время для обсуждения деталей</p>
+            
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-input" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <select name="contact_type" class="form-select" required>
+                            <option value="">Выберите способ связи</option>
+                            <option value="telegram">Telegram</option>
+                            <option value="vk">ВКонтакте</option>
+                            <option value="ok">Одноклассники</option>
+                            <option value="email">Email</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="contact" class="form-input" placeholder="Ник в мессенджере или Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" class="form-textarea" placeholder="Опишите вашу задачу или детали проекта"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn" id="submitBtn">Отправить заявку</button>
+                </form>
             </div>
         </div>
     </section>
@@ -1130,6 +1303,7 @@
     </footer>
 
     <script>
+        // Calculator functionality
         document.querySelectorAll('.calc-tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 document.querySelectorAll('.calc-tab').forEach(t => t.classList.remove('active'));
@@ -1152,29 +1326,29 @@
             let optionsTotal = 0;
             let breakdown = [];
 
-            if (activeTab === 'chatbot-simple') {
-                basePrice = parseInt(document.getElementById('simple-bot-type').value);
-                breakdown.push({name: 'Кнопочный бот', price: basePrice});
+            if (activeTab === 'landing-code') {
+                basePrice = parseInt(document.getElementById('landing-code-type').value);
+                breakdown.push({name: 'Сайт на коде', price: basePrice});
                 
-                document.querySelectorAll('.simple-bot-option:checked').forEach(cb => {
+                document.querySelectorAll('.landing-code-option:checked').forEach(cb => {
                     const price = parseInt(cb.value);
                     optionsTotal += price;
                     breakdown.push({name: cb.nextElementSibling.textContent.split('(')[0].trim(), price: price});
                 });
-            } else if (activeTab === 'chatbot-ai') {
-                basePrice = parseInt(document.getElementById('ai-bot-type').value);
-                breakdown.push({name: 'AI-агент', price: basePrice});
+            } else if (activeTab === 'landing-tilda') {
+                basePrice = parseInt(document.getElementById('landing-tilda-type').value);
+                breakdown.push({name: 'Сайт на Tilda', price: basePrice});
                 
-                document.querySelectorAll('.ai-bot-option:checked').forEach(cb => {
+                document.querySelectorAll('.landing-tilda-option:checked').forEach(cb => {
                     const price = parseInt(cb.value);
                     optionsTotal += price;
                     breakdown.push({name: cb.nextElementSibling.textContent.split('(')[0].trim(), price: price});
                 });
-            } else if (activeTab === 'website') {
-                basePrice = parseInt(document.getElementById('website-type').value);
-                breakdown.push({name: 'Сайт', price: basePrice});
+            } else if (activeTab === 'shop') {
+                basePrice = parseInt(document.getElementById('shop-type').value);
+                breakdown.push({name: 'Интернет-магазин', price: basePrice});
                 
-                document.querySelectorAll('.website-option:checked').forEach(cb => {
+                document.querySelectorAll('.shop-option:checked').forEach(cb => {
                     const price = parseInt(cb.value);
                     optionsTotal += price;
                     breakdown.push({name: cb.nextElementSibling.textContent.split('(')[0].trim(), price: price});
@@ -1188,20 +1362,37 @@
                     optionsTotal += price;
                     breakdown.push({name: cb.nextElementSibling.textContent.split('(')[0].trim(), price: price});
                 });
-            } else if (activeTab === 'testing') {
-                basePrice = parseInt(document.getElementById('testing-type').value);
-                breakdown.push({name: 'Тестирование', price: basePrice});
+            } else if (activeTab === 'web-bot') {
+                basePrice = parseInt(document.getElementById('web-bot-type').value);
+                breakdown.push({name: 'Веб-бот', price: basePrice});
                 
-                document.querySelectorAll('.testing-option:checked').forEach(cb => {
+                document.querySelectorAll('.web-bot-option:checked').forEach(cb => {
                     const price = parseInt(cb.value);
                     optionsTotal += price;
                     breakdown.push({name: cb.nextElementSibling.textContent.split('(')[0].trim(), price: price});
                 });
-            } else if (activeTab === 'game') {
-                basePrice = parseInt(document.getElementById('game-type').value);
-                breakdown.push({name: 'Разработка игры', price: basePrice});
+            } else if (activeTab === 'web-agent') {
+                basePrice = parseInt(document.getElementById('web-agent-type').value);
+                breakdown.push({name: 'Веб-агент', price: basePrice});
                 
-                document.querySelectorAll('.game-option:checked').forEach(cb => {
+                document.querySelectorAll('.web-agent-option:checked').forEach(cb => {
+                    const price = parseInt(cb.value);
+                    optionsTotal += price;
+                    breakdown.push({name: cb.nextElementSibling.textContent.split('(')[0].trim(), price: price});
+                });
+            } else if (activeTab === 'mess-bot') {
+                basePrice = parseInt(document.getElementById('mess-bot-type').value);
+                breakdown.push({name: 'Чат-бот в мессенджере', price: basePrice});
+                
+                document.querySelectorAll('.mess-bot-platform:checked').forEach(cb => {
+                    const price = parseInt(cb.value);
+                    optionsTotal += price;
+                    if (price > 0) {
+                        breakdown.push({name: cb.nextElementSibling.textContent.split('(')[0].trim(), price: price});
+                    }
+                });
+                
+                document.querySelectorAll('.mess-bot-option:checked').forEach(cb => {
                     const price = parseInt(cb.value);
                     optionsTotal += price;
                     breakdown.push({name: cb.nextElementSibling.textContent.split('(')[0].trim(), price: price});
@@ -1210,20 +1401,9 @@
                 const unitPrice = parseInt(document.getElementById('ai-media-type').value);
                 const quantity = parseInt(document.getElementById('ai-media-quantity').value);
                 basePrice = unitPrice * quantity;
-                breakdown.push({name: `ИИ Медиа (${quantity} шт.)`, price: basePrice});
+                breakdown.push({name: `ИИ-производство (${quantity} шт.)`, price: basePrice});
                 
                 document.querySelectorAll('.ai-media-option:checked').forEach(cb => {
-                    const price = parseInt(cb.value);
-                    optionsTotal += price;
-                    breakdown.push({name: cb.nextElementSibling.textContent.split('(')[0].trim(), price: price});
-                });
-            } else if (activeTab === 'content') {
-                const unitPrice = parseInt(document.getElementById('content-type').value);
-                const quantity = parseInt(document.getElementById('content-quantity').value);
-                basePrice = unitPrice * quantity;
-                breakdown.push({name: `Контент (${quantity} ед.)`, price: basePrice});
-                
-                document.querySelectorAll('.content-option:checked').forEach(cb => {
                     const price = parseInt(cb.value);
                     optionsTotal += price;
                     breakdown.push({name: cb.nextElementSibling.textContent.split('(')[0].trim(), price: price});
@@ -1259,6 +1439,52 @@
         }
 
         calculatePrice();
+
+        // Telegram Bot Integration
+        const TELEGRAM_BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE'; // Замените на токен вашего бота
+        const TELEGRAM_CHAT_ID = 'YOUR_CHAT_ID_HERE'; // Замените на ваш Chat ID
+
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Отправка...';
+            
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const contactType = formData.get('contact_type');
+            const contact = formData.get('contact');
+            const message = formData.get('message') || 'Не указано';
+            
+            const contactTypeNames = {
+                'telegram': 'Telegram',
+                'vk': 'ВКонтакте',
+                'ok': 'Одноклассники',
+                'email': 'Email'
+            };
+            
+            const text = ` *Новая заявка с сайта!*%0A%0A👤 *Имя:* ${name}%0A📱 *Способ связи:* ${contactTypeNames[contactType]}%0A *Контакт:* ${contact}%0A *Сообщение:* ${message}`;
+            
+            try {
+                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${text}&parse_mode=Markdown`);
+                
+                if (response.ok) {
+                    alert('Спасибо! Ваша заявка успешно отправлена. Я свяжусь с вами в ближайшее время.');
+                    this.reset();
+                } else {
+                    alert('Произошла ошибка при отправке. Пожалуйста, попробуйте позже.');
+                }
+            } catch (error) {
+                console.error('Ошибка:', error);
+                alert('Ошибка сети. Пожалуйста, проверьте подключение к интернету и попробуйте снова.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
+        });
     </script>
 </body>
 </html>
