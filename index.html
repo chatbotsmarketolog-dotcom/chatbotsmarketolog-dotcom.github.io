@@ -4,21 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KRISTINA | Мультидисциплинарный специалист: Разработка, Тестирование, ИИ, Маркетинг</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="favicon.png">
+    
+    <!-- SEO Meta -->
     <meta name="description" content="Мультидисциплинарный специалист: разработка сайтов, чат-ботов, AI-агентов, тестирование, ИИ-инструменты и маркетинг. 10 лет опыта. Создаю инструменты, которые продают.">
     <meta name="keywords" content="разработка сайтов, чат-боты, AI-агенты, веб-разработка, тестирование ПО, ИИ-инструменты, маркетинг, Tilda, лендинги, интернет-магазины, торговые платформы, образовательные игры, генерация контента">
     <meta name="author" content="KRISTINA">
     
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="KRISTINA | Цифровые решения, которые продают">
     <meta property="og:description" content="Мультидисциплинарный специалист: разработка, тестирование, ИИ-инструменты и маркетинг. 10 лет создаю инструменты, которые решают задачи бизнеса.">
     <meta property="og:image" content="preview.jpg">
+    <meta property="og:url" content="https://your-site.com/">
+    <meta property="og:locale" content="ru_RU">
     
+    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="KRISTINA | Цифровые решения, которые продают">
     <meta property="twitter:description" content="Мультидисциплинарный специалист: разработка, тестирование, ИИ-инструменты и маркетинг. 10 лет создаю инструменты, которые решают задачи бизнеса.">
     <meta property="twitter:image" content="preview.jpg">
     
+    <!-- Yandex verification -->
     <meta name="yandex-verification" content="your-yandex-verification-code">
+    
+    <!-- Google verification -->
     <meta name="google-site-verification" content="your-google-verification-code">
     
     <style>
@@ -305,7 +319,7 @@
             align-items: center;
         }
 
-        .photo-placeholder {
+        .photo-frame {
             width: 300px;
             height: 300px;
             background: var(--gradient-premium);
@@ -313,20 +327,12 @@
             box-shadow: var(--shadow-soft);
         }
 
-        .photo-placeholder-inner {
+        .photo-frame img {
             width: 100%;
             height: 100%;
+            object-fit: cover;
+            display: block;
             background: var(--bg-card);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .photo-placeholder svg {
-            width: 120px;
-            height: 120px;
-            opacity: 0.6;
         }
 
         .about-text h3 {
@@ -655,7 +661,7 @@
                 padding: 30px 20px;
             }
 
-            .photo-placeholder {
+            .photo-frame {
                 width: 250px;
                 height: 250px;
             }
@@ -712,14 +718,9 @@
                 font-size: 28px;
             }
 
-            .photo-placeholder {
+            .photo-frame {
                 width: 200px;
                 height: 200px;
-            }
-
-            .photo-placeholder svg {
-                width: 80px;
-                height: 80px;
             }
 
             .highlight-item h4 {
@@ -882,7 +883,7 @@
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon"></div>
+                    <div class="service-icon">🎬</div>
                     <h3>ИИ-производство и Контент</h3>
                     <p>Генерация рекламной продукции через ИИ: фото, видео, анимация. Профессиональный монтаж, написание сценариев, тексты, переводы.</p>
                     <ul class="service-features">
@@ -895,7 +896,7 @@
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon">📊</div>
+                    <div class="service-icon"></div>
                     <h3>Диагностика и Консультация</h3>
                     <p>Аудит текущего проекта (сайт, бот, приложение) для выявления проблем и точек роста. Консультация по выбору решений.</p>
                     <ul class="service-features">
@@ -921,13 +922,8 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-photo">
-                    <div class="photo-placeholder">
-                        <div class="photo-placeholder-inner">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#c9a962" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </svg>
-                        </div>
+                    <div class="photo-frame">
+                        <img src="avatar.jpg" alt="Фото KRISTINA — мультидисциплинарный специалист">
                     </div>
                 </div>
                 <div class="about-text">
@@ -1303,7 +1299,6 @@
     </footer>
 
     <script>
-        // Calculator functionality
         document.querySelectorAll('.calc-tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 document.querySelectorAll('.calc-tab').forEach(t => t.classList.remove('active'));
@@ -1440,9 +1435,8 @@
 
         calculatePrice();
 
-        // Telegram Bot Integration
-        const TELEGRAM_BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE'; // Замените на токен вашего бота
-        const TELEGRAM_CHAT_ID = 'YOUR_CHAT_ID_HERE'; // Замените на ваш Chat ID
+        const TELEGRAM_BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';
+        const TELEGRAM_CHAT_ID = 'YOUR_CHAT_ID_HERE';
 
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -1466,7 +1460,7 @@
                 'email': 'Email'
             };
             
-            const text = ` *Новая заявка с сайта!*%0A%0A👤 *Имя:* ${name}%0A📱 *Способ связи:* ${contactTypeNames[contactType]}%0A *Контакт:* ${contact}%0A *Сообщение:* ${message}`;
+            const text = `🔥 *Новая заявка с сайта!*%0A%0A👤 *Имя:* ${name}%0A📱 *Способ связи:* ${contactTypeNames[contactType]}%0A📧 *Контакт:* ${contact}%0A📝 *Сообщение:* ${message}`;
             
             try {
                 const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${text}&parse_mode=Markdown`);
@@ -1487,4 +1481,10 @@
         });
     </script>
 </body>
+</html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>Verification: 3353c976ecc5160f</body>
 </html>
